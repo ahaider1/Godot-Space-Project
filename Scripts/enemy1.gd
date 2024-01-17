@@ -2,6 +2,8 @@ extends MyCharacterBody
 
 ######### initialise variables #########
 
+signal is_firing
+
 @onready var anim = $AnimatedSprite2D
 
 # reference to player
@@ -17,7 +19,8 @@ var forward_backward: int = 0
 
 # AI stuff
 var has_seen_player: bool = false
-
+var player_in_range: bool = false
+var aim_and_shoot: bool = false
 
 # get reference to components
 @onready var pathfind_component = $PathfindComponent
@@ -34,7 +37,12 @@ func decideMovement():
 	# for now, only target the player
 	# if they exist
 	if player != null && has_seen_player:
-		moveTo(player.global_position)
+		if sight_component.player_in_raycircle:
+			stopAndShoot(player.global_position)
+		else: 
+			moveTo(player.global_position)
+		
+		aim_and_shoot = false
 
 
 # set the enemy to pathfind to a position
@@ -45,9 +53,28 @@ func moveTo(pos: Vector2):
 	
 	# where is the pathfind alg currently pointing to?
 	var pathfind_dir: Vector2 = pathfind_component.current_dir
+	rotateToward(pathfind_dir)
 
+# stop and shoot at a position
+func stopAndShoot(pos: Vector2):
+	# stop
+	forward_backward = 0
+	
+	# aim
+	var direction = pos - global_position
+	rotateToward(direction)
+	
+	# angle to target
+	var angle: float = rad_to_deg(face_dir.angle_to(pos))
+	
+	if abs(angle) > 10:
+		# shoot 
+		is_firing.emit()
+
+# rotate towards a position
+func rotateToward(pos: Vector2):
 	# find which way to rotate 
-	var angle: float = rad_to_deg(face_dir.angle_to(pathfind_dir))
+	var angle: float = rad_to_deg(face_dir.angle_to(pos))
 	
 	# decide whether we need to rotate or not
 	# if angle between desired vector and current dir vector is > 10 degrees
@@ -62,8 +89,6 @@ func moveTo(pos: Vector2):
 	else: 
 		# dont rotate
 		rotation_direction = 0
-
-
 
 # calculate rotation
 func calcRotation(delta):
@@ -124,6 +149,20 @@ func _physics_process(delta):
 
 ######### Godot signal functions #########
 
+# catch the can see player signal
 func on_can_see_player():
 	has_seen_player = true
-	
+
+
+
+
+# when player enters the shoot range
+func _on_shoot_area_body_entered(body):
+	if body.is_in_group("player"):
+		player_in_range = true
+
+
+# when player exits shoot range
+func _on_shoot_area_body_exited(body):
+	if body.is_in_group("player"):
+		player_in_range = false

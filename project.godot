@@ -32,6 +32,8 @@ mouse_cursor/custom_image_hotspot=Vector2(32, 32)
 
 [editor]
 
+movie_writer/movie_file="C:/Users/xiaoy/OneDrive/Desktop/Space Game Recordings/recording.avi"
+movie_writer/fps=30
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
 
@@ -78,6 +80,7 @@ escape={
 2d_physics/layer_2="Walls"
 2d_physics/layer_3="PlayerProjectile"
 2d_physics/layer_4="Enemy"
+2d_physics/layer_5="EnemyProjectile"
 
 [rendering]
 
