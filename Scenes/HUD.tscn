@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlu086iuonjm7"]
+
+[ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_le6ac"]
+[ext_resource type="Texture2D" uid="uid://ipmhr83c38uf" path="res://Sprites/Healthbar.png" id="1_q7lyp"]
+[ext_resource type="Texture2D" uid="uid://bjmje8nyb6gkl" path="res://Sprites/Healthbar2.png" id="2_mitvj"]
+[ext_resource type="Theme" uid="uid://cg51xn2o6bhqx" path="res://Themes/new_theme.tres" id="2_mqy5o"]
+
+[node name="HUD" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_le6ac")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_mqy5o")
+
+[node name="Healthbar" type="TextureProgressBar" parent="Control"]
+layout_mode = 0
+offset_left = 54.0
+offset_top = -48.0
+offset_right = 170.0
+offset_bottom = 59.0
+scale = Vector2(2, 2)
+value = 32.0
+nine_patch_stretch = true
+texture_under = ExtResource("1_q7lyp")
+texture_progress = ExtResource("2_mitvj")
+
+[node name="PausedScreen" type="ColorRect" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.470588)
+
+[node name="GridContainer" type="GridContainer" parent="Control/PausedScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -191.0
+offset_right = 250.0
+offset_bottom = 191.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/v_separation = 30
+
+[node name="ResumeButtom" type="Button" parent="Control/PausedScreen/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Resume"
+
+[node name="MenuButton" type="Button" parent="Control/PausedScreen/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Main Menu"
+
+[connection signal="pressed" from="Control/PausedScreen/GridContainer/ResumeButtom" to="." method="_on_resume_buttom_pressed"]
+[connection signal="pressed" from="Control/PausedScreen/GridContainer/MenuButton" to="." method="_on_menu_button_pressed"]

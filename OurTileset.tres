@@ -1,0 +1,26 @@
+[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://dcmulqhgkngjh"]
+
+[ext_resource type="Texture2D" uid="uid://cb1k3bgwiutup" path="res://Sprites/Tilemap/testTilemap.png" id="1_phdfr"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_2bua1"]
+vertices = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_be5tx"]
+texture = ExtResource("1_phdfr")
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_2bua1")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
+
+[resource]
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 13
+navigation_layer_0/layers = 1
+sources/0 = SubResource("TileSetAtlasSource_be5tx")

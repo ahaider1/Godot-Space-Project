@@ -1,0 +1,89 @@
+[gd_scene load_steps=15 format=3 uid="uid://i50ur55hpmhl"]
+
+[ext_resource type="Script" path="res://Scripts/enemy1.gd" id="1_obd57"]
+[ext_resource type="Texture2D" uid="uid://bf1tbifarsrp" path="res://Sprites/Enemy/EnemyDamaged.png" id="2_fsmrt"]
+[ext_resource type="Texture2D" uid="uid://c21l1mv7drck0" path="res://Sprites/Enemy/Enemy.png" id="2_spmqb"]
+[ext_resource type="Texture2D" uid="uid://dcrktg52norcl" path="res://Sprites/Enemy/EnemyDeath1.png" id="3_ad61d"]
+[ext_resource type="Texture2D" uid="uid://del63tkds7xia" path="res://Sprites/Enemy/EnemyDeath2.png" id="4_1a703"]
+[ext_resource type="Texture2D" uid="uid://cis7bkow8itre" path="res://Sprites/Enemy/EnemyDeath3.png" id="5_kij2d"]
+[ext_resource type="Texture2D" uid="uid://5df2kjqlqogo" path="res://Sprites/Enemy/EnemyDeath4.png" id="6_suv7a"]
+[ext_resource type="PackedScene" uid="uid://jtvlcehy0nfl" path="res://Scenes/Components/HealthComponent.tscn" id="8_7ls4r"]
+[ext_resource type="PackedScene" uid="uid://1supvjtsm3dy" path="res://Scenes/Components/HitboxComponent.tscn" id="9_sl2ee"]
+[ext_resource type="PackedScene" uid="uid://q70mr8ml54qa" path="res://Scenes/Components/MovementComponent.tscn" id="10_5ngq2"]
+[ext_resource type="PackedScene" uid="uid://bo7etjs2vl81y" path="res://Scenes/Components/PathfindComponent.tscn" id="11_jaf5c"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6j7ua"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fsmrt")
+}],
+"loop": true,
+"name": &"Damaged",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ad61d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1a703")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_kij2d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_suv7a")
+}],
+"loop": true,
+"name": &"Death",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_spmqb")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u1ams"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xky50"]
+radius = 8.0
+
+[node name="Enemy1" type="CharacterBody2D" node_paths=PackedStringArray("pathfind_component", "move_component")]
+modulate = Color(1, 0, 1, 1)
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_obd57")
+pathfind_component = NodePath("PathfindComponent")
+move_component = NodePath("MovementComponent")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_6j7ua")
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.168, 0)
+scale = Vector2(0.574, 0.574)
+shape = SubResource("CircleShape2D_u1ams")
+debug_color = Color(0.992157, 0, 0.262745, 0.419608)
+
+[node name="HealthComponent" parent="." instance=ExtResource("8_7ls4r")]
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("collision_shape", "health_component") instance=ExtResource("9_sl2ee")]
+collision_layer = 8
+collision_mask = 5
+collision_shape = NodePath("HitboxShape")
+health_component = NodePath("../HealthComponent")
+
+[node name="HitboxShape" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_xky50")
+
+[node name="MovementComponent" parent="." instance=ExtResource("10_5ngq2")]
+max_speed = 50
+
+[node name="PathfindComponent" parent="." instance=ExtResource("11_jaf5c")]

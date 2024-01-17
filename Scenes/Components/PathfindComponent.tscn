@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bo7etjs2vl81y"]
+
+[ext_resource type="Script" path="res://Scripts/Component Scripts/PathfindComponent.gd" id="1_gym8b"]
+
+[node name="PathfindComponent" type="Node2D"]
+script = ExtResource("1_gym8b")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1
+debug_enabled = true
