@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b72r5cu2ik1sv"]
+
+[ext_resource type="Script" path="res://Scripts/Component Scripts/SightComponent.gd" id="1_gt64b"]
+
+[node name="SightComponent" type="Node2D"]
+rotation = -1.5708
+script = ExtResource("1_gt64b")
+angle_between_rays = 5.0
+view_distance = 150.0

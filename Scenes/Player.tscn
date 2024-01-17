@@ -54,12 +54,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_hadoe"]
 radius = 8.06226
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "hitbox_component", "move_component") groups=["player"]]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 10
 script = ExtResource("1_rohca")
-health_component = NodePath("HealthComponent")
-hitbox_component = NodePath("HitboxComponent")
-move_component = NodePath("MovementComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.168, 0)

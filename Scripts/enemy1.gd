@@ -8,44 +8,51 @@ extends MyCharacterBody
 @onready var player: MyCharacterBody = get_parent().get_node("Player")
 
 # movement stuff
-
 # IMPORTANT: current direction that entity wants to rotate towards
 var rotation_direction = 0
-
 # IMPORTANT: current direction that entity is facing
 var face_dir: Vector2
+# whether we want to go forwards, backwards, or neither
+var forward_backward: int = 0
 
-# unit vector of face_dir, since face_dir could have length 0
-var face_dir_unit: Vector2 
+# AI stuff
+var has_seen_player: bool = false
 
-# get reference to pathfind component
-@export var pathfind_component: PathfindComponent
-@export var move_component: MovementComponent
 
+# get reference to components
+@onready var pathfind_component = $PathfindComponent
+@onready var move_component = $MovementComponent
+@onready var sight_component = $SightComponent
 
 ######### my functions #########
 
 # core AI movement design
 func decideMovement():
 	# set face dir
-	face_dir_unit = Vector2.from_angle(rotation)
-	face_dir = face_dir_unit
-
+	face_dir = Vector2.from_angle(rotation)
+	
 	# for now, only target the player
 	# if they exist
-	if player != null:
-		pathfind_component.target_pos = player.global_position
+	if player != null && has_seen_player:
+		moveTo(player.global_position)
 
+
+# set the enemy to pathfind to a position
+func moveTo(pos: Vector2):
+	forward_backward = 1
+
+	pathfind_component.target_pos = pos
+	
 	# where is the pathfind alg currently pointing to?
 	var pathfind_dir: Vector2 = pathfind_component.current_dir
 
 	# find which way to rotate 
-	var angle: float = rad_to_deg(face_dir_unit.angle_to(pathfind_dir))
+	var angle: float = rad_to_deg(face_dir.angle_to(pathfind_dir))
 	
 	# decide whether we need to rotate or not
 	# if angle between desired vector and current dir vector is > 10 degrees
+	# then we need to rotate
 	if abs(angle) > 10:
-
 		if angle < 0:
 			# Counterclockwise rotation is faster
 			rotation_direction = -1
@@ -55,8 +62,6 @@ func decideMovement():
 	else: 
 		# dont rotate
 		rotation_direction = 0
-	
-
 
 
 
@@ -68,7 +73,7 @@ func calcRotation(delta):
 # calculate velocity vector
 func calcVelocity(delta): 
 	# set velocity
-	velocity += face_dir * move_component.acceleration * delta
+	velocity += face_dir * forward_backward * move_component.acceleration * delta
 
 
 ######### Godot functions #########
@@ -76,6 +81,9 @@ func calcVelocity(delta):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	anim.play("Idle")
+	
+	# connect signals
+	sight_component.connect("can_see_player", on_can_see_player)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -116,3 +124,6 @@ func _physics_process(delta):
 
 ######### Godot signal functions #########
 
+func on_can_see_player():
+	has_seen_player = true
+	

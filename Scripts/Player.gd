@@ -12,12 +12,12 @@ extends MyCharacterBody
 signal is_firing
 
 # init components
-@export var health_component: HealthComponent
-@export var hitbox_component: HitboxComponent
+@onready var health_component = $HealthComponent
+@onready var hitbox_component = $HitboxComponent
 
 # movement
 # all movement stats are declared in movement component
-@export var move_component: MovementComponent
+@onready var move_component = $MovementComponent
 
 # IMPORTANT: current direction that entity wants to rotate towards
 var rotation_direction = 0

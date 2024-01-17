@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://i50ur55hpmhl"]
+[gd_scene load_steps=16 format=3 uid="uid://i50ur55hpmhl"]
 
 [ext_resource type="Script" path="res://Scripts/enemy1.gd" id="1_obd57"]
 [ext_resource type="Texture2D" uid="uid://bf1tbifarsrp" path="res://Sprites/Enemy/EnemyDamaged.png" id="2_fsmrt"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://1supvjtsm3dy" path="res://Scenes/Components/HitboxComponent.tscn" id="9_sl2ee"]
 [ext_resource type="PackedScene" uid="uid://q70mr8ml54qa" path="res://Scenes/Components/MovementComponent.tscn" id="10_5ngq2"]
 [ext_resource type="PackedScene" uid="uid://bo7etjs2vl81y" path="res://Scenes/Components/PathfindComponent.tscn" id="11_jaf5c"]
+[ext_resource type="PackedScene" uid="uid://b72r5cu2ik1sv" path="res://Scenes/Components/SightComponent.tscn" id="12_pkvas"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6j7ua"]
 animations = [{
@@ -53,13 +54,11 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_xky50"]
 radius = 8.0
 
-[node name="Enemy1" type="CharacterBody2D" node_paths=PackedStringArray("pathfind_component", "move_component")]
+[node name="Enemy1" type="CharacterBody2D"]
 modulate = Color(1, 0, 1, 1)
 collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_obd57")
-pathfind_component = NodePath("PathfindComponent")
-move_component = NodePath("MovementComponent")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = 1.5708
@@ -84,6 +83,7 @@ health_component = NodePath("../HealthComponent")
 shape = SubResource("CircleShape2D_xky50")
 
 [node name="MovementComponent" parent="." instance=ExtResource("10_5ngq2")]
-max_speed = 50
 
 [node name="PathfindComponent" parent="." instance=ExtResource("11_jaf5c")]
+
+[node name="SightComponent" parent="." instance=ExtResource("12_pkvas")]
