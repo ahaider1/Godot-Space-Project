@@ -23,4 +23,7 @@ func _on_Hitbox_area_entered(area:Area2D)-> void:
 func _on_body_entered(body):
 	if body.is_in_group("player"):
 		next_level.emit()
+		
+		#Testing victory screen functionality
+		#get_tree().change_scene_to_file("res://Scenes/Level_3.tscn")
 
