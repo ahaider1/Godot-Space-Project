@@ -1,12 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://b8h064xd04ley"]
+[gd_scene load_steps=12 format=3 uid="uid://b8h064xd04ley"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_rohca"]
 [ext_resource type="Texture2D" uid="uid://bjn8gj6krihfa" path="res://Sprites/Player/PlayerDamaged.png" id="3_ku120"]
 [ext_resource type="Texture2D" uid="uid://c6gixve6sf1o" path="res://Sprites/Player/Player.png" id="3_rud1o"]
-[ext_resource type="Texture2D" uid="uid://8qmqwo0ocddw" path="res://Sprites/Player/PlayerDeath1.png" id="4_gv1hu"]
-[ext_resource type="Texture2D" uid="uid://dr5dmhp6yg0rf" path="res://Sprites/Player/PlayerDeath2.png" id="5_pcsl2"]
-[ext_resource type="Texture2D" uid="uid://87wyda2y37e1" path="res://Sprites/Player/PlayerDeath3.png" id="6_f04si"]
-[ext_resource type="Texture2D" uid="uid://dxbm7a383vf57" path="res://Sprites/Player/PlayerDeath4.png" id="7_kbre2"]
 [ext_resource type="PackedScene" uid="uid://csswrn8fq4e5o" path="res://Scenes/Weapons/WeaponSlot.tscn" id="8_3ekoj"]
 [ext_resource type="PackedScene" uid="uid://bm2uvcvn5etk1" path="res://Scenes/Weapons/TestWeapon.tscn" id="9_g2cb6"]
 [ext_resource type="PackedScene" uid="uid://q70mr8ml54qa" path="res://Scenes/Components/MovementComponent.tscn" id="10_p5vso"]
@@ -23,23 +19,6 @@ animations = [{
 }],
 "loop": false,
 "name": &"Damaged",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_gv1hu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_pcsl2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_f04si")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_kbre2")
-}],
-"loop": false,
-"name": &"Die",
 "speed": 10.0
 }, {
 "frames": [{
@@ -66,7 +45,7 @@ shape = SubResource("CircleShape2D_hk31r")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_1d0r3")
-animation = &"Die"
+animation = &"Idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5.009, 5.009)

@@ -1,12 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckyhxjfmlarsi"]
+[gd_scene load_steps=7 format=3 uid="uid://ckyhxjfmlarsi"]
 
 [ext_resource type="Script" path="res://Scripts/Level_2.gd" id="1_p6bd5"]
 [ext_resource type="TileSet" uid="uid://dcmulqhgkngjh" path="res://OurTileset.tres" id="2_1w6us"]
 [ext_resource type="PackedScene" uid="uid://b8h064xd04ley" path="res://Scenes/Player.tscn" id="2_7e3of"]
 [ext_resource type="PackedScene" uid="uid://dlu086iuonjm7" path="res://Scenes/HUD.tscn" id="3_2ed1n"]
 [ext_resource type="PackedScene" uid="uid://i50ur55hpmhl" path="res://Scenes/enemy1.tscn" id="4_k7eng"]
+[ext_resource type="PackedScene" uid="uid://qpmoiutjx3ki" path="res://Scenes/LevelObjective.tscn" id="6_foyjp"]
 
-[node name="Node" type="Node"]
+[node name="Level_2" type="Node"]
 script = ExtResource("1_p6bd5")
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -18,7 +19,10 @@ layer_0/tile_data = PackedInt32Array(-131075, 65536, 0, -65539, 65536, 0, -3, 0,
 [node name="Player" parent="." instance=ExtResource("2_7e3of")]
 position = Vector2(-24, 19)
 
-[node name="HUD" parent="." instance=ExtResource("3_2ed1n")]
-
 [node name="Enemy1" parent="." instance=ExtResource("4_k7eng")]
 position = Vector2(34, -29)
+
+[node name="LevelObjective" parent="." instance=ExtResource("6_foyjp")]
+position = Vector2(27, 69)
+
+[node name="HUD" parent="." instance=ExtResource("3_2ed1n")]
