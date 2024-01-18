@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://v6n5q2bg4ux6"]
+[gd_scene load_steps=11 format=3 uid="uid://v6n5q2bg4ux6"]
 
 [ext_resource type="Script" path="res://Scripts/Weapon Scripts/TurretWeapon.gd" id="1_y3s6p"]
 [ext_resource type="Texture2D" uid="uid://qceq1n3ts7hk" path="res://Sprites/Weapons/Turret Weapon.png" id="2_cyx21"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cwnav8d631vl4" path="res://Sprites/Weapons/Turret Weapon Fire3.png" id="4_lkcaq"]
 [ext_resource type="Texture2D" uid="uid://dw4vou44a362" path="res://Sprites/Weapons/Turret Weapon Fire4.png" id="5_ill2j"]
 [ext_resource type="PackedScene" uid="uid://bjrgoe3hux3j3" path="res://Scenes/Components/WeaponComponent.tscn" id="7_30fpo"]
+[ext_resource type="PackedScene" uid="uid://hxwwa3tx0fav" path="res://Scenes/TurretBullet.tscn" id="8_rjo3a"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gyu3a"]
 animations = [{
@@ -55,6 +56,7 @@ shape = SubResource("RectangleShape2D_nkpbd")
 
 [node name="WeaponComponent" parent="." node_paths=PackedStringArray("proj_spawnpoint", "anim") instance=ExtResource("7_30fpo")]
 fire_rate = 1.0
+projectile_tscn = ExtResource("8_rjo3a")
 proj_spawnpoint = NodePath("ProjSpawnPt")
 anim = NodePath("../AnimatedSprite2D")
 

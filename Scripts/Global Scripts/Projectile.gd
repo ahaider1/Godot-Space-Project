@@ -8,10 +8,10 @@ class_name Projectile
 @export var explosion: PackedScene
 
 # proj stats
-@export var proj_speed = 250
-@export var proj_damage = 30
+@export var proj_speed: int = 250
+@export var proj_damage: int = 30
 # after 3 seconds, proj will vanish
-@export var proj_lifetime = 1
+@export var proj_lifetime: float = 1
 
 var proj_direction = Vector2.ZERO
 

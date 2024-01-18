@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://hxwwa3tx0fav"]
+
+[ext_resource type="Script" path="res://Scripts/TurretBullet.gd" id="1_1xyud"]
+[ext_resource type="Texture2D" uid="uid://by1o2lrtcr8k0" path="res://Sprites/Projectiles/Turret Bullet.png" id="2_df6sw"]
+[ext_resource type="PackedScene" uid="uid://doxqg8fmjjfa4" path="res://Scenes/test_explosion.tscn" id="2_yaqb4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x66ru"]
+radius = 2.0
+
+[node name="TurretBullet" type="Area2D"]
+script = ExtResource("1_1xyud")
+explosion = ExtResource("2_yaqb4")
+proj_speed = 100
+proj_damage = 50
+proj_lifetime = 4.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_df6sw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_x66ru")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
