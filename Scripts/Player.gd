@@ -34,6 +34,8 @@ func getInput():
 	if Manager.player_is_dead:
 		forward_backward = 0
 		rotation_direction = 0
+		#added death screen here, seemed cleanest way to do it
+		get_tree().change_scene_to_file("res://Scenes/death_scene.tscn")
 		return
 	
 	# set current direction player is facing
