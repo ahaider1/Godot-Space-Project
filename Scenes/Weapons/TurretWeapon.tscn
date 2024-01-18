@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=3 uid="uid://v6n5q2bg4ux6"]
+
+[ext_resource type="Script" path="res://Scripts/Weapon Scripts/TurretWeapon.gd" id="1_y3s6p"]
+[ext_resource type="Texture2D" uid="uid://qceq1n3ts7hk" path="res://Sprites/Weapons/Turret Weapon.png" id="2_cyx21"]
+[ext_resource type="Texture2D" uid="uid://bj8i0qysqpkjq" path="res://Sprites/Weapons/Turret Weapon Fire1.png" id="2_mqcjm"]
+[ext_resource type="Texture2D" uid="uid://c5nsvkmrp8e4i" path="res://Sprites/Weapons/Turret Weapon Fire2.png" id="3_ys14b"]
+[ext_resource type="Texture2D" uid="uid://cwnav8d631vl4" path="res://Sprites/Weapons/Turret Weapon Fire3.png" id="4_lkcaq"]
+[ext_resource type="Texture2D" uid="uid://dw4vou44a362" path="res://Sprites/Weapons/Turret Weapon Fire4.png" id="5_ill2j"]
+[ext_resource type="PackedScene" uid="uid://bjrgoe3hux3j3" path="res://Scenes/Components/WeaponComponent.tscn" id="7_30fpo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gyu3a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mqcjm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ys14b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lkcaq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ill2j")
+}],
+"loop": false,
+"name": &"fire",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_cyx21")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkpbd"]
+size = Vector2(6, 8)
+
+[node name="TurretWeapon" type="Area2D"]
+rotation = 1.5708
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_y3s6p")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gyu3a")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_nkpbd")
+
+[node name="WeaponComponent" parent="." node_paths=PackedStringArray("proj_spawnpoint", "anim") instance=ExtResource("7_30fpo")]
+fire_rate = 1.0
+proj_spawnpoint = NodePath("ProjSpawnPt")
+anim = NodePath("../AnimatedSprite2D")
+
+[node name="ProjSpawnPt" type="Marker2D" parent="WeaponComponent"]
+position = Vector2(0, -5)

@@ -1,13 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://cytueldhukhkk"]
+[gd_scene load_steps=12 format=3 uid="uid://cytueldhukhkk"]
 
 [ext_resource type="Script" path="res://Scripts/Level_1.gd" id="1_m0bav"]
 [ext_resource type="PackedScene" uid="uid://i50ur55hpmhl" path="res://Scenes/enemy1.tscn" id="2_41gdj"]
-[ext_resource type="PackedScene" uid="uid://b8h064xd04ley" path="res://Scenes/Player.tscn" id="3_yb63t"]
+[ext_resource type="PackedScene" uid="uid://b8h064xd04ley" path="res://Sprites/Player.tscn" id="3_yb63t"]
 [ext_resource type="Texture2D" uid="uid://ipmhr83c38uf" path="res://Sprites/Healthbar.png" id="4_1wou2"]
 [ext_resource type="Texture2D" uid="uid://bjmje8nyb6gkl" path="res://Sprites/Healthbar2.png" id="5_t36xj"]
 [ext_resource type="PackedScene" uid="uid://dlu086iuonjm7" path="res://Scenes/HUD.tscn" id="6_aoqt1"]
 [ext_resource type="PackedScene" uid="uid://qpmoiutjx3ki" path="res://Scenes/LevelObjective.tscn" id="7_6a0nd"]
 [ext_resource type="TileSet" uid="uid://dcmulqhgkngjh" path="res://OurTileset.tres" id="8_nv2tt"]
+[ext_resource type="PackedScene" uid="uid://crci032yq4fo6" path="res://Scenes/Enemies/RedEnemyTurret.tscn" id="9_y2y8l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_710cg"]
 size = Vector2(414, 26.5)
@@ -126,3 +127,6 @@ position = Vector2(-177, -132)
 
 [node name="LevelObjective" parent="." instance=ExtResource("7_6a0nd")]
 position = Vector2(38, -75)
+
+[node name="RedEnemyTurret" parent="." instance=ExtResource("9_y2y8l")]
+position = Vector2(-36, -200)

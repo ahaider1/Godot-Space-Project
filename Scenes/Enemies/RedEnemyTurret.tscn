@@ -1,0 +1,77 @@
+[gd_scene load_steps=13 format=3 uid="uid://crci032yq4fo6"]
+
+[ext_resource type="Script" path="res://Scripts/RedEnemyTurret.gd" id="1_nv66g"]
+[ext_resource type="Texture2D" uid="uid://qqy4fa7i4p7d" path="res://Sprites/Enemy/Enemy Turret Damaged.png" id="2_4d07g"]
+[ext_resource type="Texture2D" uid="uid://dhhwva76fk8cg" path="res://Sprites/Enemy/Enemy Turret.png" id="3_ynsk7"]
+[ext_resource type="PackedScene" uid="uid://jtvlcehy0nfl" path="res://Scenes/Components/HealthComponent.tscn" id="4_uj8me"]
+[ext_resource type="PackedScene" uid="uid://1supvjtsm3dy" path="res://Scenes/Components/HitboxComponent.tscn" id="5_lcm4n"]
+[ext_resource type="PackedScene" uid="uid://q70mr8ml54qa" path="res://Scenes/Components/MovementComponent.tscn" id="6_uolcw"]
+[ext_resource type="PackedScene" uid="uid://b72r5cu2ik1sv" path="res://Scenes/Components/SightComponent.tscn" id="7_olqud"]
+[ext_resource type="PackedScene" uid="uid://csswrn8fq4e5o" path="res://Scenes/Weapons/WeaponSlot.tscn" id="8_oi0v7"]
+[ext_resource type="PackedScene" uid="uid://bm2uvcvn5etk1" path="res://Scenes/Weapons/TestWeapon.tscn" id="9_jijn1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gr7vl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4d07g")
+}],
+"loop": false,
+"name": &"Damaged",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ynsk7")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0eljp"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tx4sk"]
+radius = 7.0
+
+[node name="RedEnemyTurret" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 11
+script = ExtResource("1_nv66g")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_gr7vl")
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0eljp")
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_uj8me")]
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("collision_shape", "health_component") instance=ExtResource("5_lcm4n")]
+collision_layer = 8
+collision_mask = 5
+collision_shape = NodePath("CollisionShape2D")
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_tx4sk")
+
+[node name="MovementComponent" parent="." instance=ExtResource("6_uolcw")]
+max_speed = 0
+acceleration = 0
+max_rotation_speed = 5
+rotation_accel = 25
+rotation_frict = 10
+
+[node name="SightComponent" parent="." instance=ExtResource("7_olqud")]
+
+[node name="WeaponSlot" parent="." node_paths=PackedStringArray("weapon") instance=ExtResource("8_oi0v7")]
+position = Vector2(8, 0)
+weapon = NodePath("TestWeapon")
+
+[node name="TestWeapon" parent="WeaponSlot" instance=ExtResource("9_jijn1")]
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
