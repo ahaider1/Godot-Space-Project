@@ -9,14 +9,13 @@ class_name WeaponSlot
 
 
 
-
-
 ######### Godot functions #########
 
 func _ready():
 	# whenever parent node emits a is_firing signal, 
 	# we fire the weapon in this slot
 	get_parent().connect("is_firing", _on_fire)
+
 
 
 

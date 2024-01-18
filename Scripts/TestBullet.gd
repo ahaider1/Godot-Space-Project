@@ -10,10 +10,33 @@ class_name Projectile
 # bullet stats
 @export var bullet_speed = 250
 @export var bullet_damage = 30
+# after 3 seconds, bullet will vanish
+@export var bullet_lifetime = 1
 
 var bullet_direction = Vector2.ZERO
 
+var belongs_to_player: bool
 
+var is_vanishing: bool = false
+
+# init mask settings
+var player_layer: int = 1 << 0
+var walls_layer: int = 1 << 1
+var player_proj_layer: int = 1 << 2
+var enemy_layer: int = 1 << 3
+var enemy_proj_layer: int = 1 << 4
+
+# what collision layer the bullet will belong to if it is a:
+# player bullet
+var player_proj_collision_layer: int = player_proj_layer
+# enemy bullet
+var enemy_proj_collision_layer: int = enemy_proj_layer
+
+# what collision layer the bullet scans collisions for if it is a:
+# player bullet
+var player_proj_collision_mask: int = walls_layer | enemy_layer
+# enemy bullet
+var enemy_proj_collision_mask: int = walls_layer | player_layer
 
 
 ######### my functions #########
@@ -36,11 +59,34 @@ func explode():
 	# delete current bullet
 	queue_free()
 
+func increaseTransparency(delta):
+	# decrease alpha value 
+	modulate.a -= 10 * delta
+	if modulate.a <= 0:
+		queue_free()
+
 
 ######### Godot functions #########
 
 func _ready():
-	pass
+	if belongs_to_player:
+		collision_layer = player_proj_collision_layer
+		collision_mask = player_proj_collision_mask
+	else: 
+		# it belongs to enemy
+		collision_layer = enemy_proj_collision_layer
+		collision_mask = enemy_proj_collision_mask
+
+	# asynchronous wait
+
+	await get_tree().create_timer(bullet_lifetime).timeout
+	is_vanishing = true
+
+
+func _process(delta):
+	if is_vanishing:
+		increaseTransparency(delta)
+
 
 # sometimes this can cause tunnelling 
 # if bullet is too fast
@@ -50,15 +96,13 @@ func _physics_process(delta):
 
 ######### Godot signal functions #########
 
-## on collision with a physics body
+# on collision with a physics body
 func _on_body_entered(body):
-#
 	explode()
 
 
 
 func _on_area_entered(area):
-	
 	# check if the area we have entered is a HitboxComponent
 	if area is HitboxComponent:
 		area.takeDamage(bullet_damage)

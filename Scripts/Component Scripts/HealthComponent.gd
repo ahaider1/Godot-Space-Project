@@ -18,6 +18,7 @@ func takeDamage(amount):
 	health -= amount
 	
 	if (health <= 0):
+		health = 0
 		die()
 
 # heal HP
@@ -32,4 +33,3 @@ func healHealth(amount):
 func die():
 	# emit the died signal
 	died.emit()
-	get_parent().queue_free()

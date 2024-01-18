@@ -9,7 +9,6 @@ extends MyCharacterBody
 @onready var anim = $AnimatedSprite2D
 
 # init other
-signal is_firing
 
 # init components
 @onready var health_component = $HealthComponent
@@ -20,19 +19,28 @@ signal is_firing
 @onready var move_component = $MovementComponent
 
 # IMPORTANT: current direction that entity wants to rotate towards
-var rotation_direction = 0
+var rotation_direction: int = 0
 
 # IMPORTANT: current direction that entity is facing
 var face_dir = Vector2.ZERO
 
+var forward_backward: int = 0
 
 
 ######### my functions #########
 
 # input
 func getInput():
+	if Manager.player_is_dead:
+		forward_backward = 0
+		rotation_direction = 0
+		return
+	
 	# set current direction player is facing
-	face_dir = Vector2.from_angle(rotation) * Input.get_axis("down", "up")
+	face_dir = Vector2.from_angle(rotation)
+	
+	# is player going forwards or backwards
+	forward_backward = Input.get_axis("down", "up")
 
 	# set current direction player wants to rotate 
 	# (clockwise or counterclockwise)
@@ -53,7 +61,7 @@ func calcRotation(delta):
 # calculate velocity vector
 func calcVelocity(delta): 
 	# set velocity
-	velocity += face_dir * move_component.acceleration * delta
+	velocity += face_dir * forward_backward * move_component.acceleration * delta
 
 
 ######### Godot functions #########
@@ -61,12 +69,20 @@ func calcVelocity(delta):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	anim.play("Idle")
+	
+	# signal connection
+	health_component.connect("died", onPlayerDie)
+	health_component.connect("took_damage", onPlayerHurt)
 
 # normal processing
 # use for non physics related things
 func _process(delta):
 	# get input
 	getInput()
+	
+	# make player disappear
+	if Manager.player_is_dead:
+		increaseTransparency(delta)
 
 # physics processing
 func _physics_process(delta):
@@ -96,3 +112,13 @@ func _physics_process(delta):
 	# actually move the player
 	move_and_slide()
 
+######### Godot signal functions #########
+
+func onPlayerDie():
+	Manager.player_is_dead = true
+
+func onPlayerHurt():
+	anim.play("Damaged")
+
+func _on_animated_sprite_2d_animation_finished():
+	anim.play("Idle")

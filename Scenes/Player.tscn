@@ -21,9 +21,9 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_ku120")
 }],
-"loop": true,
+"loop": false,
 "name": &"Damaged",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -38,7 +38,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("7_kbre2")
 }],
-"loop": true,
+"loop": false,
 "name": &"Die",
 "speed": 10.0
 }, {
@@ -48,7 +48,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hadoe"]
@@ -66,7 +66,7 @@ shape = SubResource("CircleShape2D_hk31r")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_1d0r3")
-animation = &"Idle"
+animation = &"Die"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5.009, 5.009)
@@ -100,3 +100,5 @@ position = Vector2(5, 0)
 weapon = NodePath("TestWeapon")
 
 [node name="TestWeapon" parent="WeaponSlot3" instance=ExtResource("9_g2cb6")]
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

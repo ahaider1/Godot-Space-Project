@@ -3,6 +3,8 @@ extends Node
 
 ######### initialise variables #########
 
+var player_is_dead: bool = false
+
 
 
 

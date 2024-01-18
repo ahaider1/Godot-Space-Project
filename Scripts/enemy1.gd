@@ -2,8 +2,6 @@ extends MyCharacterBody
 
 ######### initialise variables #########
 
-signal is_firing
-
 @onready var anim = $AnimatedSprite2D
 
 # reference to player
@@ -19,30 +17,37 @@ var forward_backward: int = 0
 
 # AI stuff
 var has_seen_player: bool = false
-var player_in_range: bool = false
-var aim_and_shoot: bool = false
+var is_dead: bool = false
 
 # get reference to components
 @onready var pathfind_component = $PathfindComponent
 @onready var move_component = $MovementComponent
 @onready var sight_component = $SightComponent
+@onready var health_component = $HealthComponent
+@onready var hitbox_component = $HitboxComponent
 
 ######### my functions #########
 
 # core AI movement design
 func decideMovement():
+	if is_dead || Manager.player_is_dead:
+		stopMoving()
+		return
+
 	# set face dir
 	face_dir = Vector2.from_angle(rotation)
 	
-	# for now, only target the player
-	# if they exist
+	# if player exists and we have seen them
 	if player != null && has_seen_player:
+		# if we can rotate such that 
+		# we have line of sight on player
 		if sight_component.player_in_raycircle:
+			# then rotate and shoot at the player
 			stopAndShoot(player.global_position)
+
+		# otherwise, move to the player's position
 		else: 
 			moveTo(player.global_position)
-		
-		aim_and_shoot = false
 
 
 # set the enemy to pathfind to a position
@@ -71,10 +76,16 @@ func stopAndShoot(pos: Vector2):
 		# shoot 
 		is_firing.emit()
 
-# rotate towards a position
-func rotateToward(pos: Vector2):
+# stop moving entirely
+func stopMoving():
+	forward_backward = 0
+	rotation_direction = 0
+
+
+# rotate towards a direction vector
+func rotateToward(direction: Vector2):
 	# find which way to rotate 
-	var angle: float = rad_to_deg(face_dir.angle_to(pos))
+	var angle: float = rad_to_deg(face_dir.angle_to(direction))
 	
 	# decide whether we need to rotate or not
 	# if angle between desired vector and current dir vector is > 10 degrees
@@ -100,6 +111,11 @@ func calcVelocity(delta):
 	# set velocity
 	velocity += face_dir * forward_backward * move_component.acceleration * delta
 
+# die process
+func die(delta):
+	increaseTransparency(delta)
+	if modulate.a <= 0:
+		queue_free()
 
 ######### Godot functions #########
 
@@ -109,10 +125,14 @@ func _ready():
 	
 	# connect signals
 	sight_component.connect("can_see_player", on_can_see_player)
+	health_component.connect("took_damage", onHurt)
+	health_component.connect("died", onDeath)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if is_dead:
+		# die
+		die(delta)
 
 func _physics_process(delta):
 	# get AI input
@@ -153,16 +173,18 @@ func _physics_process(delta):
 func on_can_see_player():
 	has_seen_player = true
 
+# death
+func onDeath():
+	is_dead = true
+	
+	# remove colliders
+	$CollisionShape2D.queue_free()
+	hitbox_component.queue_free()
 
 
+# animation
+func onHurt():
+	anim.play("Damaged")
 
-# when player enters the shoot range
-func _on_shoot_area_body_entered(body):
-	if body.is_in_group("player"):
-		player_in_range = true
-
-
-# when player exits shoot range
-func _on_shoot_area_body_exited(body):
-	if body.is_in_group("player"):
-		player_in_range = false
+func _on_animated_sprite_2d_animation_finished():
+	anim.play("Idle")

@@ -1,28 +1,67 @@
-[gd_scene load_steps=6 format=3 uid="uid://bm2uvcvn5etk1"]
+[gd_scene load_steps=11 format=3 uid="uid://bm2uvcvn5etk1"]
 
 [ext_resource type="Script" path="res://Scripts/Weapon Scripts/TestWeapon.gd" id="1_6lj4l"]
 [ext_resource type="Texture2D" uid="uid://ds57uii8q2hr6" path="res://Sprites/Weapons/test weapon.png" id="1_kwfm3"]
 [ext_resource type="PackedScene" uid="uid://bjrgoe3hux3j3" path="res://Scenes/Components/WeaponComponent.tscn" id="2_pn5y3"]
+[ext_resource type="Texture2D" uid="uid://tydft5li0piu" path="res://Sprites/Weapons/test weapon fire1.png" id="2_u1ga1"]
 [ext_resource type="PackedScene" uid="uid://no5e8ew0x1vw" path="res://Scenes/TestBullet.tscn" id="3_l0gb8"]
+[ext_resource type="Texture2D" uid="uid://bqufb33a2i8dw" path="res://Sprites/Weapons/test weapon fire2.png" id="3_rbnme"]
+[ext_resource type="Texture2D" uid="uid://6keop8eu48g1" path="res://Sprites/Weapons/test weapon fire3.png" id="4_yf1sj"]
+[ext_resource type="Texture2D" uid="uid://cbxxqgkoj1o0u" path="res://Sprites/Weapons/test weapon fire4.png" id="5_usrfj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_44dll"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_u1ga1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rbnme")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yf1sj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_usrfj")
+}],
+"loop": false,
+"name": &"fire",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_kwfm3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k2i2o"]
 size = Vector2(4, 8)
 
 [node name="TestWeapon" type="Area2D"]
 rotation = 1.5708
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_6lj4l")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_44dll")
+animation = &"idle"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_k2i2o")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_kwfm3")
-
-[node name="WeaponComponent" parent="." node_paths=PackedStringArray("proj_spawnpoint") instance=ExtResource("2_pn5y3")]
+[node name="WeaponComponent" parent="." node_paths=PackedStringArray("proj_spawnpoint", "anim") instance=ExtResource("2_pn5y3")]
 fire_rate = 0.2
 projectile_tscn = ExtResource("3_l0gb8")
 proj_spawnpoint = NodePath("ProjSpawnPt")
+anim = NodePath("../AnimatedSprite2D")
 
 [node name="ProjSpawnPt" type="Marker2D" parent="WeaponComponent"]
 position = Vector2(0, -6)
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -10,3 +10,18 @@ class_name MyCharacterBody
 # this is like the velocity variable for CharacterBody2D and Rigidbody2D
 var rotation_speed = 0
 
+# all characters need to have ability to fire
+signal is_firing
+
+
+
+
+# universal death animation 
+func increaseTransparency(delta):
+	# decrease alpha value 
+	modulate.a -= 1 * delta
+	modulate.a = max(0, modulate.a)
+
+
+
+

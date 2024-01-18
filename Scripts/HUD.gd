@@ -56,9 +56,9 @@ func getInput():
 			resumeGame()
 
 # update health bar
-# Want healthbar to be updated in game logic, or in UI ideally
 func updateHealthbar():
 	healthbar.value = player.health_component.health
+	
 
 
 

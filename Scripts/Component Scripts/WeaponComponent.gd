@@ -2,6 +2,8 @@ extends Node2D
 
 class_name WeaponComponent
 
+######### initialise variables #########
+
 # all weapons should have the following properties
 # how fast it shoots, will shoot once every fire_rate seconds
 @export var fire_rate: float
@@ -12,11 +14,15 @@ class_name WeaponComponent
 # where the projectile will spawn from
 @export var proj_spawnpoint: Marker2D
 
+# the weapon sprite animator 
+@export var anim: AnimatedSprite2D
+
 # init the nodes that this component belongs to
 @onready var weapon: Weapon = get_parent()
 @onready var weapon_slot: WeaponSlot = weapon.get_parent()
+
 # entity could be a player or enemy
-@onready var entity: Node2D = weapon_slot.get_parent()
+@onready var entity: MyCharacterBody = weapon_slot.get_parent()
 
 # if an entity wants to have a weapon it needs to have a:
 # WeaponSlot -> Weapon -> WeaponComponent
@@ -28,16 +34,26 @@ class_name WeaponComponent
 var can_fire: bool = true
 
 
+######### my functions #########
+
 # fire a shot
 func fire():
 	if can_fire:
+		# play the animation
+		anim.play("fire")
+		
 		# instantiate the bullet
 		var proj_instance = projectile_tscn.instantiate()
 
 		# set its position and direction
 		proj_instance.position = proj_spawnpoint.get_global_position()
-		
 		proj_instance.setDirection(entity.rotation)
+		
+		# figure out if it shoots a player or enemy projectile
+		if entity.is_in_group("player"):
+			proj_instance.belongs_to_player = true
+		else:
+			proj_instance.belongs_to_player = false
 
 		# add the bullet to the scene
 		curr_level.add_child(proj_instance)
@@ -47,3 +63,15 @@ func fire():
 		await get_tree().create_timer(fire_rate).timeout
 		can_fire = true
 
+
+######### Godot functions #########
+
+func _ready():
+	anim.play("idle")
+	anim.connect("animation_finished", _on_animated_sprite_2d_animation_finished)
+
+
+######### Godot signal functions #########
+
+func _on_animated_sprite_2d_animation_finished():
+	anim.play("idle")

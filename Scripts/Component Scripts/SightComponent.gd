@@ -87,10 +87,14 @@ func _ready():
 
 
 func _physics_process(delta):
+	if Manager.player_is_dead:
+		return
+	
 	checkForPlayer()
 	
 	if player_within_radius:
 		sweepForPlayer()
+
 
 
 
