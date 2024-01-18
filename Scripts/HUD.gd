@@ -46,6 +46,10 @@ func resumeGame():
 
 # get user input
 func getInput():
+	
+	if Manager.player_is_dead:
+		get_tree().change_scene_to_file("res://Scenes/death_scene.tscn")
+	
 	# if user hits escape
 	if Input.is_action_just_pressed("escape"):
 		# if we are not in the pause screen

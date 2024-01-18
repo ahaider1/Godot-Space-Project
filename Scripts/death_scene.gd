@@ -20,4 +20,4 @@ func _on_main_menu_pressed():
 
 
 func _on_try_again_pressed():
-	get_tree().change_scene_to_file("res://Scenes/Level_2.tscn")
+	get_tree().change_scene_to_file("res://Scenes/death_scene.tscn")

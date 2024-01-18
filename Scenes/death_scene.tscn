@@ -28,10 +28,4 @@ layout_mode = 2
 layout_mode = 2
 text = "Main Menu"
 
-[node name="Try Again" type="Button" parent="CenterContainer/Vertical Alignment/HBoxContainer"]
-layout_mode = 2
-text = "Try Again?
-"
-
 [connection signal="pressed" from="CenterContainer/Vertical Alignment/HBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]
-[connection signal="pressed" from="CenterContainer/Vertical Alignment/HBoxContainer/Try Again" to="." method="_on_try_again_pressed"]
