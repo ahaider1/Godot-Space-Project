@@ -2,7 +2,6 @@ extends Node
 
 @onready var level_obj = $LevelObjective
 
-@onready var player = get_node("../Player")
 
 
 # Called when the node enters the scene tree for the first time.

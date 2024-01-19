@@ -75,7 +75,8 @@ func getRandomItem():
 		else:
 			dblist.append(i)
 	
-	
+	if dblist.size() < 1:
+		return
 	var randomItem=dblist.pick_random()
 	offered_upgrades.append(randomItem)
 	return randomItem
