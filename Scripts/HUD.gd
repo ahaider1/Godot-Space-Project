@@ -70,6 +70,7 @@ func getInput():
 	if Manager.next_level:
 		get_tree().paused=true
 		create_upgrade()
+		
 	# if user hits escape
 	if Input.is_action_just_pressed("escape"):
 		# if we are not in the pause screen

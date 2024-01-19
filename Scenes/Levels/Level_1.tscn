@@ -61,4 +61,5 @@ position = Vector2(38, -75)
 [node name="RedEnemyTurret" parent="." instance=ExtResource("8_m7yfc")]
 position = Vector2(-36, -200)
 
+[connection signal="next_level" from="Player" to="." method="_on_player_next_level"]
 [connection signal="next_level" from="LevelObjective" to="Player" method="_on_level_objective_next_level"]

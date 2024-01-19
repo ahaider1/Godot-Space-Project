@@ -4,7 +4,7 @@ extends ColorRect
 @onready var upgradeDescription = $ColorRect/Upgr_Desc
 @onready var player=get_tree().get_first_node_in_group("player")
 
-
+signal next_level
 
 var mouse_over=false
 
@@ -28,7 +28,7 @@ func _ready():
 func _process(delta):
 	pass
 
-
+#Used to select upgrade
 func _input(event):
 	if event.is_action("click"):
 		
@@ -36,12 +36,14 @@ func _input(event):
 			#print("upgraded")
 			emit_signal("selected_upgrade", item)
 			
+			
+			
 	
 	
 			
 
 ######signal functions
-
+##Check if click in corrrect range 
 func _on_mouse_entered():
 	mouse_over=true
 
@@ -49,6 +51,3 @@ func _on_mouse_entered():
 func _on_mouse_exited():
 	mouse_over=false # Replace with function body.
 
-
-func _on_selected_upgrade(upgrade):
-	pass # Replace with function body.

@@ -26,3 +26,5 @@ position = Vector2(27, 69)
 
 [node name="Player" parent="." instance=ExtResource("6_nh7mn")]
 position = Vector2(-35, 34)
+
+[connection signal="next_level" from="Player" to="." method="_on_player_next_level"]

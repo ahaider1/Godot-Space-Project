@@ -9,7 +9,7 @@ var walls_layer: int = 1 << 1
 var player_proj_layer: int = 1 << 2
 var enemy_layer: int = 1 << 3
 var enemy_proj_layer: int = 1 << 4
-var upgrade_selected=false
+
 
 ######### my functions #########
 

@@ -31,3 +31,7 @@ func _ready():
 ######### Godot signal functions #########
 
 
+
+
+func _on_player_next_level():
+	Manager.nextLevel()

@@ -9,7 +9,7 @@ extends MyCharacterBody
 @onready var anim = $AnimatedSprite2D
 
 # init other
-
+signal next_level
 # init components
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var hitbox_component: HitboxComponent = $HitboxComponent
@@ -60,6 +60,10 @@ func _process(delta):
 #functionality function for character upgrading
 func upgradeCharacter(upgrade):
 	print("character_upgraded")
+
+	next_level.emit()
+
+
 
 ######### Godot signal functions #########
 
