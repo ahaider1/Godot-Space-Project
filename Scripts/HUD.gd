@@ -3,22 +3,25 @@ extends CanvasLayer
 ######### initialise variables #########
 
 # init pause screen variable
-@onready var pause_screen = $Control/PausedScreen
+@onready var pause_screen = $GUI/PausedScreen
 var is_paused = false
 
-#Ideally remove healthbar from HUD, because it handle pause, go to main screen, 
-#and other operations like it. 
-#Ideally we would have a proper UI scene that does this for us
+#init upgrade window
+@onready var upgradeOptions=preload("res://Scenes/upgrade_options.tscn")
+
+#init window within upgrade that display options
+@onready var options=get_node("GUI/Upgrade/upgradeOptions")
 
 # init healthbar variable
-@onready var healthbar = $Control/Healthbar
+@onready var healthbar = $GUI/Healthbar
 
 # init reference to player
 @onready var player = get_node("../Player")
 
-
-
+#init level window
+@onready var upgrade=$GUI/Upgrade
 ######### my functions #########
+
 
 # pause game
 func pauseGame():
@@ -38,18 +41,35 @@ func pauseGame():
 func resumeGame():
 	# if we resume the game, we hide the pause screen
 	pause_screen.hide()
-	
+	#hide upgrades until necessary
+	upgrade.hide()
 	# actually resume the game
 	get_tree().paused = false
 	
 	is_paused = false
 
+#create upgrade panel
+func create_upgrade():
+	upgrade.show()
+	var option=0;
+	var max_option=3
+	
+	while option < max_option:
+		var option_choice=upgradeOptions.instantiate()
+		options.add_child(option_choice)
+		option+=1
+		
 # get user input
 func getInput():
-	
+	#if player dies
 	if Manager.player_is_dead:
 		get_tree().change_scene_to_file("res://Scenes/Levels/death_scene.tscn")
-	
+		
+		
+	#if player levels
+	if Manager.next_level:
+		get_tree().paused=true
+		create_upgrade()
 	# if user hits escape
 	if Input.is_action_just_pressed("escape"):
 		# if we are not in the pause screen

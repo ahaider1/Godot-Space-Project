@@ -1,5 +1,8 @@
 extends Area2D
 
+
+
+
 # we will emit signal instead to decouple
 signal next_level
 
@@ -20,8 +23,13 @@ func _on_Hitbox_area_entered(area:Area2D)-> void:
 
 
 
+
+	
+
+
 func _on_body_entered(body):
 	if body.is_in_group("player"):
+		
 		next_level.emit()
 		
 		#Testing victory screen functionality

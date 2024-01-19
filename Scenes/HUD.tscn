@@ -69,10 +69,10 @@ text = "Main Menu"
 [node name="Upgrade" type="Panel" parent="GUI"]
 custom_minimum_size = Vector2(200, 250)
 layout_mode = 0
-offset_left = 200.0
-offset_top = 99.0
-offset_right = 400.0
-offset_bottom = 349.0
+offset_left = 872.0
+offset_top = 405.0
+offset_right = 1072.0
+offset_bottom = 655.0
 
 [node name="Label" type="Label" parent="GUI/Upgrade"]
 layout_mode = 0
@@ -82,12 +82,12 @@ offset_right = 133.0
 offset_bottom = 27.0
 text = "Upgrade"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Upgrade"]
+[node name="upgradeOptions" type="VBoxContainer" parent="GUI/Upgrade"]
 layout_mode = 0
-offset_left = 23.0
-offset_top = 32.0
-offset_right = 182.0
-offset_bottom = 227.0
+offset_left = 25.0
+offset_top = 39.0
+offset_right = 184.0
+offset_bottom = 234.0
 
 [connection signal="pressed" from="GUI/PausedScreen/GridContainer/ResumeButtom" to="." method="_on_resume_buttom_pressed"]
 [connection signal="pressed" from="GUI/PausedScreen/GridContainer/MenuButton" to="." method="_on_menu_button_pressed"]

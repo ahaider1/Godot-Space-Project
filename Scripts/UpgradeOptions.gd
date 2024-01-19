@@ -1,14 +1,14 @@
 extends ColorRect
 
-@onready var upgradeName = $Upgr_Name
-@onready var upgradeDescription = $Upgr_Desc
+@onready var upgradeName = $ColorRect/Upgr_Desc
+@onready var upgradeDescription = $ColorRect/Upgr_Desc
 
 #upgrade we choose
 var item=null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if item == "null":
+	if item == null:
 		item="upgrade1"
 		
 	upgradeName.text=Database.UPGRADES[item]["displayname"]
