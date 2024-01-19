@@ -63,7 +63,7 @@ func upgradeCharacter(upgrade):
 	
 	
 			
-
+	Player_Data.collected_upgrades.append(upgrade)
 
 	next_level.emit()
 

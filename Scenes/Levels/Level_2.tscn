@@ -22,9 +22,9 @@ position = Vector2(34, -29)
 [node name="LevelObjective" parent="." instance=ExtResource("4_n7u6j")]
 position = Vector2(27, 69)
 
-[node name="HUD" parent="." instance=ExtResource("5_glcbc")]
-
 [node name="Player" parent="." instance=ExtResource("6_nh7mn")]
 position = Vector2(-35, 34)
+
+[node name="HUD" parent="." instance=ExtResource("5_glcbc")]
 
 [connection signal="next_level" from="Player" to="." method="_on_player_next_level"]
