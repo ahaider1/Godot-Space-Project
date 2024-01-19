@@ -9,7 +9,7 @@
 process_mode = 3
 script = ExtResource("1_le6ac")
 
-[node name="Control" type="Control" parent="."]
+[node name="GUI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,7 +19,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("2_mqy5o")
 
-[node name="Healthbar" type="TextureProgressBar" parent="Control"]
+[node name="Healthbar" type="TextureProgressBar" parent="GUI"]
 layout_mode = 0
 offset_left = 54.0
 offset_top = -48.0
@@ -31,7 +31,7 @@ nine_patch_stretch = true
 texture_under = ExtResource("1_q7lyp")
 texture_progress = ExtResource("2_mitvj")
 
-[node name="PausedScreen" type="ColorRect" parent="Control"]
+[node name="PausedScreen" type="ColorRect" parent="GUI"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -41,7 +41,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.470588)
 
-[node name="GridContainer" type="GridContainer" parent="Control/PausedScreen"]
+[node name="GridContainer" type="GridContainer" parent="GUI/PausedScreen"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -56,15 +56,38 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/v_separation = 30
 
-[node name="ResumeButtom" type="Button" parent="Control/PausedScreen/GridContainer"]
+[node name="ResumeButtom" type="Button" parent="GUI/PausedScreen/GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "Resume"
 
-[node name="MenuButton" type="Button" parent="Control/PausedScreen/GridContainer"]
+[node name="MenuButton" type="Button" parent="GUI/PausedScreen/GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "Main Menu"
 
-[connection signal="pressed" from="Control/PausedScreen/GridContainer/ResumeButtom" to="." method="_on_resume_buttom_pressed"]
-[connection signal="pressed" from="Control/PausedScreen/GridContainer/MenuButton" to="." method="_on_menu_button_pressed"]
+[node name="Upgrade" type="Panel" parent="GUI"]
+custom_minimum_size = Vector2(200, 250)
+layout_mode = 0
+offset_left = 200.0
+offset_top = 99.0
+offset_right = 400.0
+offset_bottom = 349.0
+
+[node name="Label" type="Label" parent="GUI/Upgrade"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 4.0
+offset_right = 133.0
+offset_bottom = 27.0
+text = "Upgrade"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Upgrade"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 32.0
+offset_right = 182.0
+offset_bottom = 227.0
+
+[connection signal="pressed" from="GUI/PausedScreen/GridContainer/ResumeButtom" to="." method="_on_resume_buttom_pressed"]
+[connection signal="pressed" from="GUI/PausedScreen/GridContainer/MenuButton" to="." method="_on_menu_button_pressed"]
