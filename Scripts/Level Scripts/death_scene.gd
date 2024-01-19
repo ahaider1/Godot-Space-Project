@@ -15,9 +15,4 @@ func _process(delta):
 
 ##############Signal Functions
 func _on_main_menu_pressed():
-	get_tree().change_scene_to_file("res://Scenes/main_scene.tscn")
-
-
-
-func _on_try_again_pressed():
-	get_tree().change_scene_to_file("res://Scenes/death_scene.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Levels/main_scene.tscn")

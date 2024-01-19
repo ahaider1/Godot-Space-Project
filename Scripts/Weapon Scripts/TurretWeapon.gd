@@ -8,7 +8,3 @@ extends Weapon
 
 func fire():
 	weapon_component.fire()
-
-
-
-

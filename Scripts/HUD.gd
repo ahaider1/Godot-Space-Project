@@ -48,7 +48,7 @@ func resumeGame():
 func getInput():
 	
 	if Manager.player_is_dead:
-		get_tree().change_scene_to_file("res://Scenes/death_scene.tscn")
+		get_tree().change_scene_to_file("res://Scenes/Levels/death_scene.tscn")
 	
 	# if user hits escape
 	if Input.is_action_just_pressed("escape"):
@@ -88,7 +88,7 @@ func _on_menu_button_pressed():
 	
 	# change scene to main menu scene
 	
-	get_tree().change_scene_to_file("res://Scenes/main_scene.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Levels/main_scene.tscn")
 
 # Called when resume button pressed
 func _on_resume_buttom_pressed():

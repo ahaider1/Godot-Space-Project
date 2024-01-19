@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://b8h064xd04ley"]
+[gd_scene load_steps=13 format=3 uid="uid://b8h064xd04ley"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_rohca"]
 [ext_resource type="Texture2D" uid="uid://bjn8gj6krihfa" path="res://Sprites/Player/PlayerDamaged.png" id="3_ku120"]
 [ext_resource type="Texture2D" uid="uid://c6gixve6sf1o" path="res://Sprites/Player/Player.png" id="3_rud1o"]
 [ext_resource type="PackedScene" uid="uid://csswrn8fq4e5o" path="res://Scenes/Weapons/WeaponSlot.tscn" id="8_3ekoj"]
 [ext_resource type="PackedScene" uid="uid://bm2uvcvn5etk1" path="res://Scenes/Weapons/TestWeapon.tscn" id="9_g2cb6"]
+[ext_resource type="PackedScene" uid="uid://v6n5q2bg4ux6" path="res://Scenes/Weapons/TurretWeapon.tscn" id="9_tag6t"]
 [ext_resource type="PackedScene" uid="uid://q70mr8ml54qa" path="res://Scenes/Components/MovementComponent.tscn" id="10_p5vso"]
 [ext_resource type="PackedScene" uid="uid://jtvlcehy0nfl" path="res://Scenes/Components/HealthComponent.tscn" id="10_u55m1"]
 [ext_resource type="PackedScene" uid="uid://1supvjtsm3dy" path="res://Scenes/Components/HitboxComponent.tscn" id="11_18h0j"]
@@ -51,6 +52,7 @@ animation = &"Idle"
 zoom = Vector2(5.009, 5.009)
 
 [node name="HealthComponent" parent="." instance=ExtResource("10_u55m1")]
+health = 1000
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("collision_shape", "health_component") instance=ExtResource("11_18h0j")]
 collision_mask = 0
@@ -76,8 +78,8 @@ weapon = NodePath("TestWeapon")
 
 [node name="WeaponSlot3" parent="." node_paths=PackedStringArray("weapon") instance=ExtResource("8_3ekoj")]
 position = Vector2(5, 0)
-weapon = NodePath("TestWeapon")
+weapon = NodePath("TurretWeapon")
 
-[node name="TestWeapon" parent="WeaponSlot3" instance=ExtResource("9_g2cb6")]
+[node name="TurretWeapon" parent="WeaponSlot3" instance=ExtResource("9_tag6t")]
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

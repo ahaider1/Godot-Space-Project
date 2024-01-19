@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://no5e8ew0x1vw"]
 
-[ext_resource type="Script" path="res://Scripts/TestBullet.gd" id="1_2rhsc"]
-[ext_resource type="PackedScene" uid="uid://doxqg8fmjjfa4" path="res://Scenes/test_explosion.tscn" id="2_g5qhj"]
+[ext_resource type="Script" path="res://Scripts/Projectile Scripts/TestBullet.gd" id="1_2rhsc"]
+[ext_resource type="PackedScene" uid="uid://doxqg8fmjjfa4" path="res://Scenes/Projectiles/test_explosion.tscn" id="2_g5qhj"]
 [ext_resource type="Texture2D" uid="uid://b10nljbdeikuk" path="res://Sprites/Projectiles/Bullet.png" id="2_vybxe"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_btndo"]

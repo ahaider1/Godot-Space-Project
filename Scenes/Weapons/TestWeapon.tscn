@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ds57uii8q2hr6" path="res://Sprites/Weapons/test weapon.png" id="1_kwfm3"]
 [ext_resource type="PackedScene" uid="uid://bjrgoe3hux3j3" path="res://Scenes/Components/WeaponComponent.tscn" id="2_pn5y3"]
 [ext_resource type="Texture2D" uid="uid://tydft5li0piu" path="res://Sprites/Weapons/test weapon fire1.png" id="2_u1ga1"]
-[ext_resource type="PackedScene" uid="uid://no5e8ew0x1vw" path="res://Scenes/TestBullet.tscn" id="3_l0gb8"]
+[ext_resource type="PackedScene" uid="uid://no5e8ew0x1vw" path="res://Scenes/Projectiles/TestBullet.tscn" id="3_l0gb8"]
 [ext_resource type="Texture2D" uid="uid://bqufb33a2i8dw" path="res://Sprites/Weapons/test weapon fire2.png" id="3_rbnme"]
 [ext_resource type="Texture2D" uid="uid://6keop8eu48g1" path="res://Sprites/Weapons/test weapon fire3.png" id="4_yf1sj"]
 [ext_resource type="Texture2D" uid="uid://cbxxqgkoj1o0u" path="res://Sprites/Weapons/test weapon fire4.png" id="5_usrfj"]
@@ -63,5 +63,3 @@ anim = NodePath("../AnimatedSprite2D")
 
 [node name="ProjSpawnPt" type="Marker2D" parent="WeaponComponent"]
 position = Vector2(0, -6)
-
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

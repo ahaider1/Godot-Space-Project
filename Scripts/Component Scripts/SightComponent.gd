@@ -15,14 +15,19 @@ signal can_see_player
 
 @export var vision_cone_angle: float = 30
 @export var angle_between_rays: float = 10
-@export var view_distance: float = 300
+
+# what max distance can the enemy see? 
+@export var view_distance: float = 150
+
+# what max distance will enemy start shooting at?
+@export var shoot_distance: float = 70
 
 # raycast circle
 # like a bucket fill in a circle shape
 # basically a collision circle that cant go through walls
 @onready var raycast_circle: RayCast2D = $CircleSweeper
-@onready var raycircle_radius: float = raycast_circle.target_position.length()
-@export var player_in_raycircle = false
+
+var player_in_raycircle = false
 var player_within_radius = false
 
 
@@ -31,6 +36,7 @@ var player_within_radius = false
 
 # create the rays
 func createRaycasts():
+
 	vision_cone_angle = deg_to_rad(vision_cone_angle)
 	angle_between_rays = deg_to_rad(angle_between_rays)
 	
@@ -48,6 +54,16 @@ func createRaycasts():
 		
 		ray.enabled = true
 
+# create the raycircle
+func createRaycircle():
+	# set circle sweeper radius
+	raycast_circle.target_position = Vector2(0, shoot_distance)
+	
+	# set the circle collision radius same as circle sweeper radius
+	var raycircle_collider: CollisionShape2D = $OptimiseRaycircle/RaycircleShape
+	raycircle_collider.shape.radius = shoot_distance
+
+
 # check if player is in enemy's line of sight
 # we are gonna use raycasting to check if it can see 
 func checkForPlayer():
@@ -62,7 +78,7 @@ func sweepForPlayer():
 	
 	for index in cast_count:
 		var cast_vector = (
-			raycircle_radius * 
+			shoot_distance * 
 			Vector2(0,1).rotated(angle_between_rays * (index - cast_count / 2.0))
 		)
 		
@@ -80,10 +96,10 @@ func sweepForPlayer():
 func _ready():
 	# make all the rays
 	createRaycasts()
+
+	# make the raycircle
+	createRaycircle()
 	
-	# set the circle collision radius same as circle sweeper radius
-	var raycircle_collider: CollisionShape2D = $OptimiseRaycircle/RaycircleShape
-	raycircle_collider.shape.radius = raycircle_radius
 
 
 func _physics_process(delta):
