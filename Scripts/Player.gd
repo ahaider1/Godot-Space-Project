@@ -19,6 +19,7 @@ extends MyCharacterBody
 
 # input
 func getInput():
+	
 	if Manager.player_is_dead:
 		# stop the player
 		move_component.forward_backward = 0
@@ -56,6 +57,9 @@ func _process(delta):
 	if Manager.player_is_dead:
 		increaseTransparency(delta)
 
+#functionality function for character upgrading
+func upgradeCharacter(upgrade):
+	print("character_upgraded")
 
 ######### Godot signal functions #########
 

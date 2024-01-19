@@ -36,3 +36,7 @@ offset_top = 56.0
 offset_right = 267.0
 offset_bottom = 109.0
 text = "Description"
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="selected_upgrade" from="." to="." method="_on_selected_upgrade"]
