@@ -21,6 +21,7 @@ Interface="*res://Scripts/Global Scripts/Interface.gd"
 Player_Data="*res://Scripts/Global Scripts/Player_Data.gd"
 EnemyManager="*res://Scripts/Global Scripts/EnemyManager.gd"
 Manager="*res://Scripts/Global Scripts/Manager.gd"
+Database="*res://Scripts/Global Scripts/upgrade_database.gd"
 
 [display]
 
