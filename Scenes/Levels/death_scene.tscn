@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://dv1iftxubovmn"]
 
-[ext_resource type="Script" path="res://Scripts/death_scene.gd" id="1_8j07a"]
+[ext_resource type="Script" path="res://Scripts/Level Scripts/death_scene.gd" id="1_jnf35"]
 
 [node name="Death Scene" type="Node"]
-script = ExtResource("1_8j07a")
+script = ExtResource("1_jnf35")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchors_preset = 15

@@ -12,11 +12,10 @@ var has_seen_player: bool = false
 var is_dead: bool = false
 
 # get reference to components
-@onready var pathfind_component: PathfindComponent = $PathfindComponent
 @onready var move_component: MovementComponent = $MovementComponent
-@onready var sight_component: SightComponent = $SightComponent
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var hitbox_component: HitboxComponent = $HitboxComponent
+@onready var sight_component: SightComponent = $SightComponent
 
 ######### my functions #########
 
@@ -25,19 +24,16 @@ func decideInput():
 	if is_dead || Manager.player_is_dead:
 		stopMoving(move_component)
 		return
-
-	# if player exists and we have seen them
-	if player != null && has_seen_player:
+	
+	# if enemy has been aggroed
+	if has_seen_player:
 		# if we can rotate such that 
 		# we have line of sight on player
 		if sight_component.player_in_raycircle:
 			# then rotate and shoot at the player
 			stopAndShoot(player.global_position, move_component)
-
-		# otherwise, move to the player's position
-		else: 
-			moveTo(player.global_position, pathfind_component, move_component)
-
+		else:
+			stopMoving(move_component)
 
 
 
@@ -52,6 +48,7 @@ func _ready():
 	health_component.connect("took_damage", onHurt)
 	health_component.connect("died", onDeath)
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if is_dead:
@@ -61,7 +58,6 @@ func _process(delta):
 func _physics_process(delta):
 	# get AI input
 	decideInput()
-
 
 
 ######### Godot signal functions #########
@@ -78,10 +74,18 @@ func onDeath():
 	$CollisionShape2D.queue_free()
 	hitbox_component.queue_free()
 
-# animation
+
 func onHurt():
+	# animation
 	anim.play("Damaged")
+	
+	# enemy will agro if u shoot them 
+	# even if they cant see u
+	has_seen_player = true
 
 # all animations upon finishing will transition back to idle
 func _on_animated_sprite_2d_animation_finished():
 	anim.play("Idle")
+
+
+

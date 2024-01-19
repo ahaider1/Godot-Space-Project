@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://crci032yq4fo6"]
 
-[ext_resource type="Script" path="res://Scripts/RedEnemyTurret.gd" id="1_nv66g"]
+[ext_resource type="Script" path="res://Scripts/Enemy Scripts/RedEnemyTurret.gd" id="1_nv66g"]
 [ext_resource type="Texture2D" uid="uid://qqy4fa7i4p7d" path="res://Sprites/Enemy/Enemy Turret Damaged.png" id="2_4d07g"]
 [ext_resource type="Texture2D" uid="uid://dhhwva76fk8cg" path="res://Sprites/Enemy/Enemy Turret.png" id="3_ynsk7"]
 [ext_resource type="PackedScene" uid="uid://jtvlcehy0nfl" path="res://Scenes/Components/HealthComponent.tscn" id="4_uj8me"]
@@ -67,6 +67,7 @@ rotation_accel = 25
 rotation_frict = 10
 
 [node name="SightComponent" parent="." instance=ExtResource("7_olqud")]
+shoot_distance = 150.0
 
 [node name="WeaponSlot" parent="." node_paths=PackedStringArray("weapon") instance=ExtResource("8_oi0v7")]
 position = Vector2(8, 0)

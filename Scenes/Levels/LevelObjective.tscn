@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://qpmoiutjx3ki"]
 
-[ext_resource type="Script" path="res://Scripts/LevelObjective.gd" id="1_lxc2p"]
+[ext_resource type="Script" path="res://Scripts/Level Scripts/LevelObjective.gd" id="1_lxc2p"]
 [ext_resource type="Texture2D" uid="uid://j5nlybhx4yi5" path="res://Sprites/Projectiles/test_explosion4.png" id="2_8qe5o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tvgpv"]

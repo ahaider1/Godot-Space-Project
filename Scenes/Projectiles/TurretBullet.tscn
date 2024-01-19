@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://hxwwa3tx0fav"]
 
-[ext_resource type="Script" path="res://Scripts/TurretBullet.gd" id="1_1xyud"]
+[ext_resource type="Script" path="res://Scripts/Projectile Scripts/TurretBullet.gd" id="1_1xyud"]
 [ext_resource type="Texture2D" uid="uid://by1o2lrtcr8k0" path="res://Sprites/Projectiles/Turret Bullet.png" id="2_df6sw"]
-[ext_resource type="PackedScene" uid="uid://doxqg8fmjjfa4" path="res://Scenes/test_explosion.tscn" id="2_yaqb4"]
+[ext_resource type="PackedScene" uid="uid://doxqg8fmjjfa4" path="res://Scenes/Projectiles/test_explosion.tscn" id="2_yaqb4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x66ru"]
 radius = 2.0

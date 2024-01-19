@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://tuxo1cag8dn2"]
+[gd_scene load_steps=2 format=3 uid="uid://drmrtllhnsexc"]
 
 [ext_resource type="Script" path="res://Scripts/UpgradeOptions.gd" id="1_sglhu"]
 

@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cwnav8d631vl4" path="res://Sprites/Weapons/Turret Weapon Fire3.png" id="4_lkcaq"]
 [ext_resource type="Texture2D" uid="uid://dw4vou44a362" path="res://Sprites/Weapons/Turret Weapon Fire4.png" id="5_ill2j"]
 [ext_resource type="PackedScene" uid="uid://bjrgoe3hux3j3" path="res://Scenes/Components/WeaponComponent.tscn" id="7_30fpo"]
-[ext_resource type="PackedScene" uid="uid://hxwwa3tx0fav" path="res://Scenes/TurretBullet.tscn" id="8_rjo3a"]
+[ext_resource type="PackedScene" uid="uid://hxwwa3tx0fav" path="res://Scenes/Projectiles/TurretBullet.tscn" id="8_rjo3a"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gyu3a"]
 animations = [{
