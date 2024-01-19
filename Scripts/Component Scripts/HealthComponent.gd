@@ -21,12 +21,12 @@ func takeDamage(amount):
 		health = 0
 		die()
 
-# heal HP
+# heal HP, no overhealing
 func healHealth(amount):
-	health += amount
 	
-	if (health > max_health):
-		health = max_health
+	if (health < max_health):
+		health += amount
+		health = min(health, max_health)
 
 # die
 # planning to die after death animation finishes

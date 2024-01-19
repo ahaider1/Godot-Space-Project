@@ -28,6 +28,10 @@ var face_dir: Vector2
 # it should be a MyCharacterBody
 @onready var entity_node: MyCharacterBody = get_parent()
 
+# by default, enemies will shoot at player 
+# if they are within 10 degrees cone
+# you can override this if u want different behaviour
+@export var aim_accuracy_angle = 10
 
 
 ######### my functions #########

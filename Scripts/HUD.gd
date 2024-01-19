@@ -88,7 +88,7 @@ func _on_menu_button_pressed():
 	
 	# change scene to main menu scene
 	
-	get_tree().change_scene_to_file("res://Scenes/main_scene.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Levels/main_scene.tscn")
 
 # Called when resume button pressed
 func _on_resume_buttom_pressed():

@@ -65,6 +65,7 @@ acceleration = 0
 max_rotation_speed = 5
 rotation_accel = 25
 rotation_frict = 10
+aim_accuracy_angle = 1
 
 [node name="SightComponent" parent="." instance=ExtResource("7_olqud")]
 shoot_distance = 150.0

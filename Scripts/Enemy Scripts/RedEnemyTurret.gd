@@ -17,6 +17,9 @@ var is_dead: bool = false
 @onready var hitbox_component: HitboxComponent = $HitboxComponent
 @onready var sight_component: SightComponent = $SightComponent
 
+
+
+
 ######### my functions #########
 
 # core AI design

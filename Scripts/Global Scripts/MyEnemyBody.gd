@@ -1,9 +1,12 @@
 extends MyCharacterBody
 
-class_name MyEnemyBody
-
 # inherits from MyCharacterBody and will have functions for   
 # Enemy AI and other things enemies exclusively share
+class_name MyEnemyBody
+
+######### initialise variables #########
+
+
 
 ######### my functions #########
 
@@ -39,8 +42,8 @@ func stopAndShoot(pos: Vector2, move_component: MovementComponent):
 	var angle: float = rad_to_deg(move_component.face_dir.angle_to(direction))
 	
 	# if the angle is less than 10 degrees, 
-	# then we have successfully aimed
-	if abs(angle) < 10:
+	# then we have successfully aimed, and will start shooting
+	if abs(angle) < move_component.aim_accuracy_angle:
 		# shoot 
 		is_firing.emit()
 
@@ -55,9 +58,10 @@ func rotateToward(direction: Vector2, move_component: MovementComponent):
 	var angle: float = rad_to_deg(move_component.face_dir.angle_to(direction))
 	
 	# decide whether we need to rotate or not
-	# if angle between desired vector and current dir vector is > 10 degrees
+	# if angle between desired vector and current dir vector 
+	# is > aim_accuracy_angle degrees
 	# then we need to rotate
-	if abs(angle) > 10:
+	if abs(angle) > move_component.aim_accuracy_angle:
 		if angle < 0:
 			# Counterclockwise rotation is faster
 			move_component.rotation_direction = -1
