@@ -2,19 +2,22 @@ extends Node
 # Properties to store player data
 var player_health
 var player_damage
+var collected_upgrades= []
 
 
 
 # Function to set player data
-func setPlayerData(health: int, damage: int):
+func setPlayerData(health: int, damage: int, upgrade: String):
 	player_health = health
 	player_damage = damage
+	collected_upgrades.append(upgrade)
 
 # Function to get player data
 func getPlayerData() -> Dictionary:
 	return {
 		"health": player_health,
-		"damage": player_damage
+		"damage": player_damage,
+		"upgrades": collected_upgrades
 	}
 
 

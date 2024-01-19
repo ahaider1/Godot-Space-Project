@@ -14,16 +14,16 @@ const UPGRADES = {
 	
 	"upgrade2": {
 		
-		"displayname": "upgrade name",
-		"details" : "does xy to character",
+		"displayname": "upgrade2",
+		"details" : "super cool",
 		#If we want upgrade to follow on from each other, use this
 		"prerequisites": []
 	},
 	
 	"upgrade3": {
 		
-		"displayname": "upgrade name",
-		"details" : "does xy to character",
+		"displayname": "upgrade3",
+		"details" : "does yz to character",
 		#If we want upgrade to follow on from each other, use this
 		"prerequisites": []
 	}

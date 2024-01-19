@@ -22,6 +22,7 @@ var is_paused = false
 @onready var upgrade=$GUI/Upgrade
 ######### my functions #########
 
+var offered_upgrades = []
 
 # pause game
 func pauseGame():
@@ -56,8 +57,30 @@ func create_upgrade():
 	
 	while option < max_option:
 		var option_choice=upgradeOptions.instantiate()
+		option_choice.item=getRandomItem()
 		options.add_child(option_choice)
 		option+=1
+		print(option)
+		
+		
+# get a random item from the database
+func getRandomItem():
+	var dblist= []
+	#check database
+	for i in Database.UPGRADES:
+		if i in Player_Data.collected_upgrades: #check if already have
+			pass
+		elif i in offered_upgrades:
+			pass
+		else:
+			dblist.append(i)
+	
+	
+	var randomItem=dblist.pick_random()
+	offered_upgrades.append(randomItem)
+	return randomItem
+			
+
 		
 # get user input
 func getInput():
@@ -69,6 +92,7 @@ func getInput():
 	#if player levels
 	if Manager.next_level:
 		get_tree().paused=true
+		Manager.next_level=false
 		create_upgrade()
 		
 	# if user hits escape

@@ -15,8 +15,7 @@ var enemy_proj_layer: int = 1 << 4
 
 # call deferred, because otherwise godot 4.2 complains
 func nextLevel():
-	next_level=true
-	print(next_level)
+	
 	call_deferred("nextLevelDeferred")
 
 

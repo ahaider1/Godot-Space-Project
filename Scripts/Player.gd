@@ -60,9 +60,12 @@ func _process(delta):
 #functionality function for character upgrading
 func upgradeCharacter(upgrade):
 	print("character_upgraded")
+	
+	
+			
+
 
 	next_level.emit()
-
 
 
 ######### Godot signal functions #########

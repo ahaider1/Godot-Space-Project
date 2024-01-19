@@ -1,6 +1,6 @@
 extends ColorRect
 
-@onready var upgradeName = $ColorRect/Upgr_Desc
+@onready var upgradeName = $ColorRect/Upgr_Name
 @onready var upgradeDescription = $ColorRect/Upgr_Desc
 @onready var player=get_tree().get_first_node_in_group("player")
 
