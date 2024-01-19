@@ -28,7 +28,7 @@ func _ready():
 	EnemyManager.connect("pathfind_signal", _on_pathfind)
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# every physics frame, get the direction that nav_agent points to
 	var processed_dir: Vector2
 	processed_dir = nav_agent.get_next_path_position() - global_position

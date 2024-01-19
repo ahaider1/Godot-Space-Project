@@ -58,7 +58,7 @@ func _process(delta):
 		# die
 		die(delta)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# get AI input
 	decideInput()
 

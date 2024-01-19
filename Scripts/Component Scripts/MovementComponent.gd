@@ -78,7 +78,7 @@ func calcVelocity(delta):
 
 ######### Godot functions #########
 
-func _process(delta):
+func _process(_delta):
 	face_dir = Vector2.from_angle(entity_node.rotation)
 
 func _physics_process(delta):
