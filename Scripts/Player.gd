@@ -77,7 +77,7 @@ func apply_upgrades():
 				weapon_slot2.weapon=upgrade_weapon
 				
 			"upgrade 5":
-				move_component.max_speed=150
+				move_component.max_speed=move_component.max_speed*1.5
 				move_component.acceleration=move_component.acceleration*1.5
 			
 		
