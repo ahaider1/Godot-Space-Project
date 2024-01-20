@@ -26,6 +26,19 @@ const UPGRADES = {
 		for a slower one that deals more damage",
 		#If we want upgrade to follow on from each other, use this
 		"prerequisites": []
+		
+	
+	},
+	
+	"upgrade 4": {
+		"displayname": "Hip Gun",
+		"details" : "Add a fast firing weapon to the left side of your spaceship"
+		
+	},
+	
+	"upgrade 5": {
+		"displayname": "Movement Speed Up",
+		"details" : "Increase your movement speed by 1.5"
 	}
 	
 	

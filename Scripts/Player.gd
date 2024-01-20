@@ -7,14 +7,17 @@ extends MyCharacterBody
 # (since we cant use get_node() or $Node before runtime)
 # we have to do it in the ready function or @onready (they are same)
 @onready var anim = $AnimatedSprite2D
-@onready var weapon_slot1=$WeaponSlot
-# init other
 
+# init other
+@onready var turret_weapon= preload("res://Scenes/Weapons/TurretWeapon.tscn")
+@onready var test_weapon= preload("res://Scenes/Weapons/TestWeapon.tscn")
+@onready var weapon_slot1=$WeaponSlot
+@onready var weapon_slot2=$WeaponSlot2
 # init components
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var hitbox_component: HitboxComponent = $HitboxComponent
 @onready var move_component: MovementComponent = $MovementComponent
-@onready var test_weapon= preload("res://Scenes/Weapons/TurretWeapon.tscn")
+
 ######### my functions #########
 
 # input
@@ -43,7 +46,8 @@ func apply_upgrades():
 	if Player_Data.collected_upgrades.size() < 1:
 		return 
 	
-	if get_tree().current_scene.name == "Level 1":
+	print(get_tree().current_scene.name)
+	if get_tree().current_scene.name == "Level_1":
 		Player_Data.collected_upgrades.clear()
 		return
 	
@@ -58,7 +62,7 @@ func apply_upgrades():
 				
 			"upgrade 3":
 				weapon_slot1.weapon=null
-				var upgrade_weapon=test_weapon.instantiate()
+				var upgrade_weapon=turret_weapon.instantiate()
 				weapon_slot1.add_child(upgrade_weapon)
 				weapon_slot1.weapon=upgrade_weapon
 				
@@ -67,10 +71,14 @@ func apply_upgrades():
 				weapon_slot1.weapon.weapon_component.fire_rate=weapon_slot1.weapon.weapon_component.fire_rate/2
 			
 				
-			#"upgrade 3":
+			"upgrade 4":
+				var upgrade_weapon=test_weapon.instantiate()
+				weapon_slot2.add_child(upgrade_weapon)
+				weapon_slot2.weapon=upgrade_weapon
 				
-				
-				
+			"upgrade 5":
+				move_component.max_speed=150
+				move_component.acceleration=move_component.acceleration*1.5
 			
 		
 
