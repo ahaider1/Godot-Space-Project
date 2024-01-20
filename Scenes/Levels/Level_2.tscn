@@ -26,5 +26,3 @@ position = Vector2(27, 69)
 position = Vector2(-35, 34)
 
 [node name="HUD" parent="." instance=ExtResource("5_glcbc")]
-
-[connection signal="next_level" from="Player" to="." method="_on_player_next_level"]

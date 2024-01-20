@@ -39,6 +39,19 @@ func getInput():
 
 ######### Godot functions #########
 
+func apply_upgrades():
+	if Player_Data.collected_upgrades.size() < 1:
+		return null
+	
+	for i in Player_Data.collected_upgrades:
+		print(i)
+		match i:
+			"upgrade 1":
+				health_component.max_health=10
+				health_component.health=10
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	anim.play("Idle")
@@ -46,6 +59,10 @@ func _ready():
 	# signal connection
 	health_component.connect("died", onPlayerDie)
 	health_component.connect("took_damage", onPlayerHurt)
+	
+	
+	apply_upgrades()
+	
 
 # normal processing
 # use for non physics related things
@@ -59,7 +76,7 @@ func _process(delta):
 
 #functionality function for character upgrading
 func upgradeCharacter(upgrade):
-	print("character_upgraded")
+	print(upgrade)
 	
 	
 			

@@ -1,24 +1,14 @@
 extends Node
 # Properties to store player data
-var player_health=10
+
 
 var collected_upgrades= []
 
 
 
-# Function to set player data
-func setPlayerData(health: int, damage: int):
-	player_health = health
 
 	
-
-# Function to get player data
-func getPlayerData() -> Dictionary:
-	return {
-		"health": player_health,
-		"upgrades": collected_upgrades
-	}
-
+	
 
 # This is just a script that you can add variables to store data across scenes
 # Simply use set in a particular scene to initialize player at the beginning of
