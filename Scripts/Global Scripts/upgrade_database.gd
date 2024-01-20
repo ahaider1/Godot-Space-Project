@@ -11,18 +11,19 @@ const UPGRADES = {
 		#If we want upgrade to follow on from each other, use this
 	},
 	
-	"upgrade2": {
+	"upgrade 2": {
 		
-		"displayname": "upgrade2",
-		"details" : "super cool",
+		"displayname": " Main Weapon Fire Rate Up",
+		"details" : "Doubles the fire rate of your main weapon",
 		#If we want upgrade to follow on from each other, use this
 		"prerequisites": []
 	},
 	
-	"upgrade3": {
+	"upgrade 3": {
 		
-		"displayname": "upgrade3",
-		"details" : "does yz to character",
+		"displayname": "Equip Turret Weapon",
+		"details" : "Changes your fast firing weapon 
+		for a slower one that deals more damage",
 		#If we want upgrade to follow on from each other, use this
 		"prerequisites": []
 	}

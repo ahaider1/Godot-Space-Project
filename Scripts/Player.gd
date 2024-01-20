@@ -7,14 +7,14 @@ extends MyCharacterBody
 # (since we cant use get_node() or $Node before runtime)
 # we have to do it in the ready function or @onready (they are same)
 @onready var anim = $AnimatedSprite2D
-
+@onready var weapon_slot1=$WeaponSlot
 # init other
 
 # init components
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var hitbox_component: HitboxComponent = $HitboxComponent
 @onready var move_component: MovementComponent = $MovementComponent
-
+@onready var test_weapon= preload("res://Scenes/Weapons/TurretWeapon.tscn")
 ######### my functions #########
 
 # input
@@ -41,14 +41,38 @@ func getInput():
 
 func apply_upgrades():
 	if Player_Data.collected_upgrades.size() < 1:
-		return null
+		return 
+	
+	if get_tree().current_scene.name == "Level 1":
+		Player_Data.collected_upgrades.clear()
+		return
+	
 	
 	for i in Player_Data.collected_upgrades:
-		print(i)
+		
 		match i:
 			"upgrade 1":
-				health_component.max_health=10
-				health_component.health=10
+				health_component.max_health=200
+				health_component.health=200
+			
+				
+			"upgrade 3":
+				weapon_slot1.weapon=null
+				var upgrade_weapon=test_weapon.instantiate()
+				weapon_slot1.add_child(upgrade_weapon)
+				weapon_slot1.weapon=upgrade_weapon
+				
+				
+			"upgrade 2":
+				weapon_slot1.weapon.weapon_component.fire_rate=weapon_slot1.weapon.weapon_component.fire_rate/2
+			
+				
+			#"upgrade 3":
+				
+				
+				
+			
+		
 
 
 

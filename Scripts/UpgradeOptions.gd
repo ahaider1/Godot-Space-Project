@@ -18,7 +18,7 @@ func _ready():
 	connect("selected_upgrade", Callable(player, "upgradeCharacter"))
 	
 	if item == null:
-		item="upgrade1"
+		item="upgrade 1"
 		
 	upgradeName.text=Database.UPGRADES[item]["displayname"]
 	upgradeDescription.text=Database.UPGRADES[item]["details"]
