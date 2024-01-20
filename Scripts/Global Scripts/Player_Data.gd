@@ -1,7 +1,7 @@
 extends Node
 # Properties to store player data
 var player_health=10
-var player_damage
+
 var collected_upgrades= []
 
 
@@ -9,14 +9,13 @@ var collected_upgrades= []
 # Function to set player data
 func setPlayerData(health: int, damage: int):
 	player_health = health
-	player_damage = damage
+
 	
 
 # Function to get player data
 func getPlayerData() -> Dictionary:
 	return {
 		"health": player_health,
-		"damage": player_damage,
 		"upgrades": collected_upgrades
 	}
 

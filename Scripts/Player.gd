@@ -9,7 +9,7 @@ extends MyCharacterBody
 @onready var anim = $AnimatedSprite2D
 
 # init other
-signal next_level
+
 # init components
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var hitbox_component: HitboxComponent = $HitboxComponent
@@ -65,7 +65,7 @@ func upgradeCharacter(upgrade):
 			
 	Player_Data.collected_upgrades.append(upgrade)
 
-	next_level.emit()
+	Manager.nextLevel()
 
 
 ######### Godot signal functions #########

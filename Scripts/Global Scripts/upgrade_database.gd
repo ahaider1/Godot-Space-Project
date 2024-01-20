@@ -4,12 +4,11 @@ extends Node
 
 
 const UPGRADES = {
-	"upgrade1": {
+	"upgrade 1": {
 		
-		"displayname": "upgrade name",
-		"details" : "does xy to character",
+		"displayname": "Max Health Up",
+		"details" : "Increase Max Health by 100",
 		#If we want upgrade to follow on from each other, use this
-		"prerequisites": []
 	},
 	
 	"upgrade2": {
