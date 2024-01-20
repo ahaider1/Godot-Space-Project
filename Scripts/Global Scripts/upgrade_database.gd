@@ -39,9 +39,11 @@ const UPGRADES = {
 	"upgrade 5": {
 		"displayname": "Movement Speed Up",
 		"details" : "Increase your movement speed by 1.5"
-	}
+	},
 	
-	
-	
-	
+	"upgrade 6": {
+		"displayname": "Bulking Season",
+		"details": "Reduce movement speed significantly, but greatly increase fire rate of all weapons"
+		}
+
 }

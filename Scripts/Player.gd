@@ -79,6 +79,16 @@ func apply_upgrades():
 			"upgrade 5":
 				move_component.max_speed=move_component.max_speed*1.5
 				move_component.acceleration=move_component.acceleration*1.5
+				
+			"upgrade 6":
+				move_component.max_speed=move_component.max_speed/5
+				move_component.acceleration=move_component.acceleration/5
+				weapon_slot1.weapon.weapon_component.fire_rate=0.05
+				
+				
+				if weapon_slot2.weapon != null:
+					weapon_slot2.weapon.weapon_component.fire_rate=0.05
+					
 			
 		
 

@@ -56,7 +56,7 @@ position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_k2i2o")
 
 [node name="WeaponComponent" parent="." node_paths=PackedStringArray("proj_spawnpoint", "anim") instance=ExtResource("2_pn5y3")]
-fire_rate = 0.2
+fire_rate = 0.3
 projectile_tscn = ExtResource("3_l0gb8")
 proj_spawnpoint = NodePath("ProjSpawnPt")
 anim = NodePath("../AnimatedSprite2D")
