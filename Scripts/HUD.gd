@@ -20,49 +20,69 @@ var is_paused = false
 
 #init level window
 @onready var upgrade=$GUI/Upgrade
+
+# inite reference to level objective
+@onready var level_objective = get_node("../LevelObjective")
+
+
 ######### my functions #########
 
 var offered_upgrades = []
 
+# toggle pause screen
+func togglePauseScreen():
+	# if pause screen is on
+	if pause_screen.visible:
+		# we hide the pause screen
+		pause_screen.hide()
+		resumeGame()
+
+	# otherwise, pause screen is off
+	else:
+		# we show the pause screen
+		pause_screen.show()
+		pauseGame()
+
 # pause game
 func pauseGame():
-	# we show the pause screen
-	pause_screen.show()
-	
 	# actually pause the game
 	# the root node of scene and all children that inherit will be paused
 	# a node can specially be configured under the Process tab to not pause 
 	# when the root node is paused, the HUD scene for example will not be paused 
 	# because we specially configured it in under the Process tab
 	get_tree().paused = true
-	
 	is_paused = true
 
 # resume game
 func resumeGame():
-	# if we resume the game, we hide the pause screen
-	pause_screen.hide()
-	#hide upgrades until necessary
-	upgrade.hide()
 	# actually resume the game
 	get_tree().paused = false
-	
 	is_paused = false
 
-#create upgrade panel
-func create_upgrade():
-	upgrade.show()
-	var option=0;
-	var max_option=3
+# toggle upgrade panel
+func toggleUpgradePanel():
 	
-	while option < max_option:
-		var option_choice=upgradeOptions.instantiate()
-		option_choice.item=getRandomItem()
-		options.add_child(option_choice)
-		option+=1
-		print(option)
+	# upgrade screen is already visible
+	if upgrade.visible:
+		upgrade.hide()
+		resumeGame()
+	
+	# otherwise, show upgrade screen and pause
+	else:
+		upgrade.show()
+		pauseGame()
+
+		var option=0;
+		var max_option=3
 		
-		
+		while option < max_option:
+			var option_choice=upgradeOptions.instantiate()
+			option_choice.item=getRandomItem()
+			options.add_child(option_choice)
+			option += 1
+			print(option)
+
+
 # get a random item from the database
 func getRandomItem():
 	var dblist= []
@@ -80,35 +100,31 @@ func getRandomItem():
 	var randomItem=dblist.pick_random()
 	offered_upgrades.append(randomItem)
 	return randomItem
-			
 
-		
+
 # get user input
 func getInput():
-	#if player dies
+	# if player dies
+	# lets bring up a pausedScreen-like overlay 
+	# instead of transitioning scenes
 	if Manager.player_is_dead:
 		get_tree().change_scene_to_file("res://Scenes/Levels/death_scene.tscn")
-		
-		
-	#if player levels
-	if Manager.next_level:
-		get_tree().paused=true
-		Manager.next_level=false
-		create_upgrade()
-		
+
 	# if user hits escape
 	if Input.is_action_just_pressed("escape"):
-		# if we are not in the pause screen
-		if !is_paused:
-			pauseGame()
-		# otherwise we are in the pause screen
+		
+		
+		# exit the upgrade panel if it is shown
+		if upgrade.visible:
+			toggleUpgradePanel()
 		else:
-			resumeGame()
+			togglePauseScreen()
+
 
 # update health bar
 func updateHealthbar():
 	healthbar.value = player.health_component.health
-	
+
 
 
 
@@ -117,8 +133,11 @@ func updateHealthbar():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	resumeGame()
-
 	
+	# connect signal
+	if level_objective:
+		level_objective.connect("show_upgrades", _on_show_upgrades)
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -140,8 +159,11 @@ func _on_menu_button_pressed():
 
 # Called when resume button pressed
 func _on_resume_buttom_pressed():
-	
-	# resume the game
-	resumeGame()
+	# toggle off the pause screen
+	togglePauseScreen()
 
+# Called when player enters level objective
+func _on_show_upgrades():
+	# show the upgrade panel
+	toggleUpgradePanel()
 

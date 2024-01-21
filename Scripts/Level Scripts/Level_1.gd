@@ -24,8 +24,7 @@ extends Node
 ######### Godot functions #########
 
 func _ready():
-	
-	level_obj.connect("next_level", Manager.nextLevel)
+	pass
 
 
 
@@ -35,4 +34,4 @@ func _ready():
 
 
 func _on_player_next_level():
-	Manager.nextLevel()
+	pass
