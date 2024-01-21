@@ -1,4 +1,4 @@
-extends ColorRect
+extends TextureRect
 
 @onready var upgradeName = $ColorRect/Upgr_Name
 @onready var upgradeDescription = $ColorRect/Upgr_Desc

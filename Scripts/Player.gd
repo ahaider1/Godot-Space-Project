@@ -10,7 +10,7 @@ extends MyCharacterBody
 
 # init other
 @onready var turret_weapon= preload("res://Scenes/Weapons/TurretWeapon.tscn")
-@onready var sniper_weapon= preload("res://Scenes/Weapons/SniperWeapon.tscn")
+
 @onready var test_weapon= preload("res://Scenes/Weapons/TestWeapon.tscn")
 @onready var weapon_slot1=$WeaponSlot
 @onready var weapon_slot2=$WeaponSlot2
@@ -90,11 +90,7 @@ func apply_upgrades():
 				if weapon_slot2.weapon != null:
 					weapon_slot2.weapon.weapon_component.fire_rate=0.05
 					
-			"upgrade 7":
-				var upgrade_weapon=sniper_weapon.instantiate()
-				weapon_slot3.add_child(upgrade_weapon)
-				weapon_slot3.weapon=upgrade_weapon
-				
+			
 					
 			
 		

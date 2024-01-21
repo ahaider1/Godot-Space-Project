@@ -32,7 +32,8 @@ const UPGRADES = {
 	
 	"upgrade 4": {
 		"displayname": "Hip Fire",
-		"details" : "Add a fast firing weapon to the left side of your spaceship"
+		"details" : "Add a fast firing weapon to
+		 the left side of your spaceship"
 		
 	},
 	
@@ -43,12 +44,7 @@ const UPGRADES = {
 	
 	"upgrade 6": {
 		"displayname": "Bulking Season",
-		"details": "Reduce movement speed significantly, but greatly increase fire rate of all weapons"
-		}, 
-		
-	"upgrade 7": {
-		"displayname": "Hip Sniper",
-		"details": "equip a slow firing, high damage weapon that shoots through walls"
-	}
-
+		"details": "Reduce movement speed significantly, 
+		but greatly increase fire rate of all weapons"
+		}
 }
