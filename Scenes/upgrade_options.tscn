@@ -2,74 +2,71 @@
 
 [ext_resource type="Theme" uid="uid://cg51xn2o6bhqx" path="res://Themes/new_theme.tres" id="1_ajb1s"]
 [ext_resource type="Script" path="res://Scripts/UpgradeOptions.gd" id="1_sglhu"]
-[ext_resource type="Texture2D" uid="uid://brx7x4qfo2ela" path="res://Sprites/Upgrade_Options.png" id="2_kmoa3"]
 [ext_resource type="FontFile" uid="uid://bun53tt5c6irt" path="res://Themes/Fonts/Pixeled.ttf" id="3_sp8d2"]
+[ext_resource type="Texture2D" uid="uid://qceq1n3ts7hk" path="res://Sprites/Weapons/Turret Weapon.png" id="4_bolht"]
 
-[node name="UpgradeOptions" type="TextureRect"]
-custom_minimum_size = Vector2(600, 250)
-anchors_preset = 6
-anchor_left = 1.0
+[node name="UpgradeOptions" type="Button"]
+custom_minimum_size = Vector2(200, 350)
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -600.0
-offset_top = -125.0
-offset_bottom = 125.0
-grow_horizontal = 0
+offset_left = -100.0
+offset_top = -175.0
+offset_right = 100.0
+offset_bottom = 175.0
+grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = ExtResource("1_ajb1s")
-texture = ExtResource("2_kmoa3")
+toggle_mode = true
 script = ExtResource("1_sglhu")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-custom_minimum_size = Vector2(500, 100)
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 7
 anchor_left = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-offset_left = -144.0
-offset_right = 144.0
-offset_bottom = 125.0
+anchor_bottom = 1.0
+offset_left = -99.5
+offset_top = -132.0
+offset_right = 99.5
 grow_horizontal = 2
-color = Color(0.203922, 0.423529, 0.580392, 1)
+grow_vertical = 0
+size_flags_vertical = 8
 
-[node name="Upgr_Name" type="Label" parent="ColorRect"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 9.0
-offset_top = -43.5
-offset_right = 9.0
-offset_bottom = -20.5
-grow_horizontal = 2
-grow_vertical = 2
+[node name="UpgradeName" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
 theme = ExtResource("1_ajb1s")
 theme_override_fonts/font = ExtResource("3_sp8d2")
 text = "Name"
 horizontal_alignment = 1
+autowrap_mode = 3
 
-[node name="Upgr_Desc" type="Label" parent="ColorRect"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -98.0
-offset_top = -5.5
-offset_right = 105.0
-offset_bottom = 47.5
-grow_horizontal = 2
-grow_vertical = 2
+[node name="UpgradeDesc" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
 theme = ExtResource("1_ajb1s")
 theme_override_fonts/font = ExtResource("3_sp8d2")
 theme_override_font_sizes/font_size = 10
 text = "Description"
 horizontal_alignment = 1
+autowrap_mode = 3
 
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[node name="UpgradeIcon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.5
+offset_right = 100.5
+offset_bottom = 226.0
+grow_horizontal = 2
+texture = ExtResource("4_bolht")
+stretch_mode = 5
