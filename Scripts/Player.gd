@@ -1,5 +1,7 @@
 extends MyCharacterBody
 
+class_name Player
+
 ######### initialise variables #########
 
 # animation
@@ -11,8 +13,10 @@ extends MyCharacterBody
 # init other
 @onready var turret_weapon= preload("res://Scenes/Weapons/TurretWeapon.tscn")
 @onready var test_weapon= preload("res://Scenes/Weapons/TestWeapon.tscn")
+
 @onready var weapon_slot1=$WeaponSlot
 @onready var weapon_slot2=$WeaponSlot2
+@onready var weapon_slot3=$WeaponSlot3
 # init components
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var hitbox_component: HitboxComponent = $HitboxComponent
@@ -39,9 +43,11 @@ func getInput():
 	if Input.is_action_pressed("fire"):
 		is_firing.emit()
 
+# functionality function for character upgrading
+func upgradeCharacter(upgrade):
+	Player_Data.collected_upgrades.append(upgrade)
 
-######### Godot functions #########
-
+# apply upgrades to player
 func apply_upgrades():
 	if Player_Data.collected_upgrades.size() < 1:
 		return 
@@ -79,8 +85,19 @@ func apply_upgrades():
 			"upgrade 5":
 				move_component.max_speed=move_component.max_speed*1.5
 				move_component.acceleration=move_component.acceleration*1.5
-			
-		
+				
+			"upgrade 6":
+				move_component.max_speed=move_component.max_speed/5
+				move_component.acceleration=move_component.acceleration/5
+				weapon_slot1.weapon.weapon_component.fire_rate=0.05
+				
+				if weapon_slot2.weapon != null:
+					weapon_slot2.weapon.weapon_component.fire_rate=0.05
+
+######### Godot functions #########
+
+
+
 
 
 
@@ -91,10 +108,9 @@ func _ready():
 	# signal connection
 	health_component.connect("died", onPlayerDie)
 	health_component.connect("took_damage", onPlayerHurt)
-	
-	
+
 	apply_upgrades()
-	
+
 
 # normal processing
 # use for non physics related things
@@ -105,16 +121,6 @@ func _process(delta):
 	# make player disappear
 	if Manager.player_is_dead:
 		increaseTransparency(delta)
-
-#functionality function for character upgrading
-func upgradeCharacter(upgrade):
-	print(upgrade)
-	
-	
-			
-	Player_Data.collected_upgrades.append(upgrade)
-
-	Manager.nextLevel()
 
 
 ######### Godot signal functions #########
@@ -128,5 +134,3 @@ func onPlayerHurt():
 func _on_animated_sprite_2d_animation_finished():
 	anim.play("Idle")
 
-
-	

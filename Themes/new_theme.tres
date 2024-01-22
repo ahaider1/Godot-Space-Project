@@ -5,3 +5,10 @@
 [resource]
 Button/font_sizes/font_size = 10
 Button/fonts/font = ExtResource("1_qyavs")
+HBoxContainer/constants/separation = 20
+Label/fonts/font = ExtResource("1_qyavs")
+MarginContainer/constants/margin_bottom = 20
+MarginContainer/constants/margin_left = 20
+MarginContainer/constants/margin_right = 20
+MarginContainer/constants/margin_top = 20
+VBoxContainer/constants/separation = 20

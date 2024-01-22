@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dlu086iuonjm7"]
+[gd_scene load_steps=7 format=3 uid="uid://dlu086iuonjm7"]
 
 [ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_le6ac"]
 [ext_resource type="Texture2D" uid="uid://ipmhr83c38uf" path="res://Sprites/Healthbar.png" id="1_q7lyp"]
 [ext_resource type="Texture2D" uid="uid://bjmje8nyb6gkl" path="res://Sprites/Healthbar2.png" id="2_mitvj"]
 [ext_resource type="Theme" uid="uid://cg51xn2o6bhqx" path="res://Themes/new_theme.tres" id="2_mqy5o"]
+[ext_resource type="FontFile" uid="uid://bun53tt5c6irt" path="res://Themes/Fonts/Pixeled.ttf" id="5_el2b8"]
+[ext_resource type="PackedScene" uid="uid://0iim021blvjp" path="res://Scenes/upgrade_options.tscn" id="6_ra3gs"]
 
 [node name="HUD" type="CanvasLayer"]
 process_mode = 3
@@ -68,20 +70,35 @@ text = "Main Menu"
 
 [node name="Upgrade" type="Panel" parent="GUI"]
 visible = false
-custom_minimum_size = Vector2(200, 250)
-layout_mode = 0
-offset_left = 872.0
-offset_top = 405.0
-offset_right = 1072.0
-offset_bottom = 655.0
+custom_minimum_size = Vector2(650, 800)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -325.0
+offset_top = -400.0
+offset_right = 325.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Label" type="Label" parent="GUI/Upgrade"]
-layout_mode = 0
-offset_left = 66.0
-offset_top = 4.0
-offset_right = 133.0
-offset_bottom = 27.0
-text = "Upgrade"
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -126.0
+offset_top = -13.0
+offset_right = 127.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme = ExtResource("2_mqy5o")
+theme_override_fonts/font = ExtResource("5_el2b8")
+text = "Choose an Upgrade"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="upgradeOptions" type="VBoxContainer" parent="GUI/Upgrade"]
 layout_mode = 0
@@ -90,5 +107,78 @@ offset_top = 39.0
 offset_right = 184.0
 offset_bottom = 234.0
 
+[node name="Button" type="Button" parent="GUI/Upgrade"]
+layout_mode = 2
+offset_left = 80.0
+offset_top = 218.0
+offset_right = 260.0
+offset_bottom = 399.0
+
+[node name="UpgradesContainer" type="GridContainer" parent="GUI/Upgrade"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -503.5
+offset_top = -188.0
+offset_right = 503.5
+offset_bottom = 188.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="TextureRect" type="TextureRect" parent="GUI/Upgrade/UpgradesContainer"]
+layout_mode = 2
+
+[node name="UpgradeMenu" type="PanelContainer" parent="GUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="GUI/UpgradeMenu"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/UpgradeMenu/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/UpgradeMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 36
+text = "Select an upgrade"
+
+[node name="UpgradeContainer" type="HBoxContainer" parent="GUI/UpgradeMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="UpgradeOptions" parent="GUI/UpgradeMenu/MarginContainer/VBoxContainer/UpgradeContainer" instance=ExtResource("6_ra3gs")]
+layout_mode = 2
+
+[node name="UpgradeOptions2" parent="GUI/UpgradeMenu/MarginContainer/VBoxContainer/UpgradeContainer" instance=ExtResource("6_ra3gs")]
+layout_mode = 2
+
+[node name="UpgradeOptions3" parent="GUI/UpgradeMenu/MarginContainer/VBoxContainer/UpgradeContainer" instance=ExtResource("6_ra3gs")]
+layout_mode = 2
+
+[node name="NextLevel" type="Button" parent="GUI/UpgradeMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Proceed to Next Level"
+
 [connection signal="pressed" from="GUI/PausedScreen/GridContainer/ResumeButtom" to="." method="_on_resume_buttom_pressed"]
 [connection signal="pressed" from="GUI/PausedScreen/GridContainer/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="GUI/UpgradeMenu/MarginContainer/VBoxContainer/UpgradeContainer/UpgradeOptions" to="." method="_on_upgrade_options_pressed"]
+[connection signal="pressed" from="GUI/UpgradeMenu/MarginContainer/VBoxContainer/UpgradeContainer/UpgradeOptions2" to="." method="_on_upgrade_options_2_pressed"]
+[connection signal="pressed" from="GUI/UpgradeMenu/MarginContainer/VBoxContainer/UpgradeContainer/UpgradeOptions3" to="." method="_on_upgrade_options_3_pressed"]
+[connection signal="pressed" from="GUI/UpgradeMenu/MarginContainer/VBoxContainer/NextLevel" to="." method="_on_next_level_pressed"]

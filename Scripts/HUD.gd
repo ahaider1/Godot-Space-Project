@@ -6,24 +6,28 @@ extends CanvasLayer
 @onready var pause_screen = $GUI/PausedScreen
 var is_paused = false
 
-#init upgrade window
-@onready var upgradeOptions=preload("res://Scenes/upgrade_options.tscn")
-
-#init window within upgrade that display options
-@onready var options=get_node("GUI/Upgrade/upgradeOptions")
+# init reference to upgrade menu
+@onready var upgrade_menu = $GUI/UpgradeMenu
 
 # init healthbar variable
 @onready var healthbar = $GUI/Healthbar
 
 # init reference to player
-@onready var player = get_node("../Player")
+@onready var player: Player = get_node("../Player")
 
-#init level window
-@onready var upgrade=$GUI/Upgrade
-
-# inite reference to level objective
+# init reference to level objective
 @onready var level_objective = get_node("../LevelObjective")
 
+# init references to upgrade options
+# we will only ever have 3 upgrade options
+@onready var upgrade_option_1: UpgradeOption = $GUI/UpgradeMenu/MarginContainer/VBoxContainer/UpgradeContainer/UpgradeOptions
+@onready var upgrade_option_2: UpgradeOption = $GUI/UpgradeMenu/MarginContainer/VBoxContainer/UpgradeContainer/UpgradeOptions2
+@onready var upgrade_option_3: UpgradeOption = $GUI/UpgradeMenu/MarginContainer/VBoxContainer/UpgradeContainer/UpgradeOptions3
+
+# track which option is currently selected
+# -1 means none have been selected
+# 0 means 0th index, 1 means 1st index, etc of offered_upgrades
+var selected_upgrade_option = -1
 
 ######### my functions #########
 
@@ -63,28 +67,19 @@ func resumeGame():
 func toggleUpgradePanel():
 	
 	# upgrade screen is already visible
-	if upgrade.visible:
-		upgrade.hide()
+	if upgrade_menu.visible:
+		upgrade_menu.hide()
 		resumeGame()
 	
 	# otherwise, show upgrade screen and pause
 	else:
-		upgrade.show()
+		upgrade_menu.show()
 		pauseGame()
-
-		var option=0;
-		var max_option=3
-		
-		while option < max_option:
-			var option_choice=upgradeOptions.instantiate()
-			option_choice.item=getRandomItem()
-			options.add_child(option_choice)
-			option += 1
-			print(option)
 
 
 # get a random item from the database
 func getRandomItem():
+	# dblist is list of all valid/available upgrade options
 	var dblist= []
 	#check database
 	for i in Database.UPGRADES:
@@ -97,7 +92,11 @@ func getRandomItem():
 	
 	if dblist.size() < 1:
 		return
+	
+	# pick a random item from list of availabe ones
 	var randomItem=dblist.pick_random()
+	
+	# add random item to list of offered upgrades 
 	offered_upgrades.append(randomItem)
 	return randomItem
 
@@ -112,10 +111,8 @@ func getInput():
 
 	# if user hits escape
 	if Input.is_action_just_pressed("escape"):
-		
-		
 		# exit the upgrade panel if it is shown
-		if upgrade.visible:
+		if upgrade_menu.visible:
 			toggleUpgradePanel()
 		else:
 			togglePauseScreen()
@@ -125,7 +122,12 @@ func getInput():
 func updateHealthbar():
 	healthbar.value = player.health_component.health
 
-
+# assign upgrade options information
+# like name, sprite, description
+func assignUpgradeOptions():
+	upgrade_option_1.assignItem(getRandomItem()) 
+	upgrade_option_2.assignItem(getRandomItem())
+	upgrade_option_3.assignItem(getRandomItem())
 
 
 ######### Godot functions #########
@@ -134,9 +136,13 @@ func updateHealthbar():
 func _ready():
 	resumeGame()
 	
-	# connect signal
+	# connect signals
 	if level_objective:
 		level_objective.connect("show_upgrades", _on_show_upgrades)
+	
+	# assign upgrade options
+	assignUpgradeOptions()
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -166,4 +172,38 @@ func _on_resume_buttom_pressed():
 func _on_show_upgrades():
 	# show the upgrade panel
 	toggleUpgradePanel()
+
+# these are all called when corresponding upgrade buttons are pressed
+func _on_upgrade_options_pressed():
+	# only allowing one upgrade to be selected
+	upgrade_option_2.button_pressed = false
+	upgrade_option_3.button_pressed = false
+	selected_upgrade_option = 0
+
+
+func _on_upgrade_options_2_pressed():
+	# only allowing one upgrade to be selected
+	upgrade_option_1.button_pressed = false
+	upgrade_option_3.button_pressed = false
+	selected_upgrade_option = 1
+
+
+func _on_upgrade_options_3_pressed():
+	# only allowing one upgrade to be selected
+	upgrade_option_1.button_pressed = false
+	upgrade_option_2.button_pressed = false
+	selected_upgrade_option = 2
+
+
+# Called when next level button is pressed
+func _on_next_level_pressed():
+	# upgrade with selected upgrade
+	if (selected_upgrade_option != -1):
+		player.upgradeCharacter(offered_upgrades[selected_upgrade_option])
+	
+
+	resumeGame()
+	Manager.nextLevel()
+	pass
+
 

@@ -2,46 +2,55 @@ extends Node
 
 #database of upgrades to be applied to the player
 
+# upgrade textures
+var test_weapon_texture: Texture2D = preload("res://Sprites/Weapons/test weapon.png")
+var turret_weapon_texture: Texture2D = preload("res://Sprites/Weapons/Turret Weapon.png")
+var heart_texture: Texture2D = preload("res://Sprites/Heart.png")
+var not_drawn_yet: Texture2D = preload("res://Sprites/notDrawnYet.png")
 
-const UPGRADES = {
+var UPGRADES = {
 	"upgrade 1": {
 		
 		"displayname": "Max Health Up",
 		"details" : "Increase Max Health by 100",
-		#If we want upgrade to follow on from each other, use this
+		"texture" : heart_texture
 	},
 	
 	"upgrade 2": {
 		
 		"displayname": " Main Weapon Fire Rate Up",
 		"details" : "Doubles the fire rate of your main weapon",
-		#If we want upgrade to follow on from each other, use this
-		"prerequisites": []
+		"texture" : not_drawn_yet
 	},
 	
 	"upgrade 3": {
 		
-		"displayname": "Equip Turret Weapon",
+		"displayname": "Equip Turret",
 		"details" : "Changes your fast firing weapon 
 		for a slower one that deals more damage",
-		#If we want upgrade to follow on from each other, use this
-		"prerequisites": []
+		"texture" : turret_weapon_texture
 		
 	
 	},
 	
 	"upgrade 4": {
-		"displayname": "Hip Gun",
-		"details" : "Add a fast firing weapon to the left side of your spaceship"
-		
+		"displayname": "Hip Fire",
+		"details" : "Add a fast firing weapon to
+		 the left side of your spaceship",
+		"texture" : test_weapon_texture
 	},
 	
 	"upgrade 5": {
 		"displayname": "Movement Speed Up",
-		"details" : "Increase your movement speed by 1.5"
-	}
+		"details" : "Increase your movement speed by 1.5",
+		"texture" : not_drawn_yet
+	},
 	
-	
-	
-	
+	"upgrade 6": {
+		"displayname": "Bulking Season",
+		"details": "Reduce movement speed significantly, 
+		but greatly increase fire rate of all weapons",
+		
+		"texture" : not_drawn_yet
+		}
 }

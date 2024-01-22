@@ -33,6 +33,7 @@ func _physics_process(delta):
 
 # on collision with a physics body
 func _on_body_entered(body):
+	
 	explode()
 
 

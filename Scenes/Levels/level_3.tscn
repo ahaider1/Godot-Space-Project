@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://da0tjx0qlbtk7"]
 
-[ext_resource type="Script" path="res://Scripts/level_3.gd" id="1_cpoun"]
+[ext_resource type="Script" path="res://Scripts/Level Scripts/level_3.gd" id="1_cpoun"]
 
 [node name="Level_3" type="Node"]
 script = ExtResource("1_cpoun")
@@ -26,10 +26,11 @@ layout_mode = 2
 
 [node name="Play Again" type="Button" parent="CenterContainer/Vertical Alignment/HBoxContainer"]
 layout_mode = 2
-text = "Main Menu"
+text = "Play Again"
 
 [node name="Main Menu" type="Button" parent="CenterContainer/Vertical Alignment/HBoxContainer"]
 layout_mode = 2
 text = "Main Menu"
 
+[connection signal="pressed" from="CenterContainer/Vertical Alignment/HBoxContainer/Play Again" to="." method="_on_play_again_pressed"]
 [connection signal="pressed" from="CenterContainer/Vertical Alignment/HBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]
