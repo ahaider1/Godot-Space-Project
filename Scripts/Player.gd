@@ -12,6 +12,7 @@ class_name Player
 
 # init other
 @onready var turret_weapon= preload("res://Scenes/Weapons/TurretWeapon.tscn")
+
 @onready var test_weapon= preload("res://Scenes/Weapons/TestWeapon.tscn")
 
 @onready var weapon_slot1=$WeaponSlot
