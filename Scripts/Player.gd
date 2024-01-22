@@ -12,16 +12,14 @@ class_name Player
 
 # init other
 @onready var turret_weapon= preload("res://Scenes/Weapons/TurretWeapon.tscn")
+@onready var test_weapon= preload("res://Scenes/Weapons/BulletShooter.tscn")
 
-@onready var test_weapon= preload("res://Scenes/Weapons/TestWeapon.tscn")
-
-@onready var weapon_slot1=$WeaponSlot
-@onready var weapon_slot2=$WeaponSlot2
-@onready var weapon_slot3=$WeaponSlot3
 # init components
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var hitbox_component: HitboxComponent = $HitboxComponent
 @onready var move_component: MovementComponent = $MovementComponent
+
+@onready var weapon_component_1: WeaponComponent = $WeaponComponent
 
 ######### my functions #########
 
@@ -68,20 +66,23 @@ func apply_upgrades():
 			
 				
 			"upgrade 3":
-				weapon_slot1.weapon=null
-				var upgrade_weapon=turret_weapon.instantiate()
-				weapon_slot1.add_child(upgrade_weapon)
-				weapon_slot1.weapon=upgrade_weapon
+				#weapon_slot1.weapon=null
+				#var upgrade_weapon=turret_weapon.instantiate()
+				#weapon_slot1.add_child(upgrade_weapon)
+				#weapon_slot1.weapon=upgrade_weapon
+				print("upgrade 3 not yet implemented, i will work on inv system")
 				
 				
 			"upgrade 2":
-				weapon_slot1.weapon.weapon_component.fire_rate=weapon_slot1.weapon.weapon_component.fire_rate/2
+				weapon_component_1.weapon.fire_rate /= 2
+				#print("upgrade 2 not yet implemented")
 			
 				
 			"upgrade 4":
-				var upgrade_weapon=test_weapon.instantiate()
-				weapon_slot2.add_child(upgrade_weapon)
-				weapon_slot2.weapon=upgrade_weapon
+				#var upgrade_weapon=test_weapon.instantiate()
+				#weapon_slot2.add_child(upgrade_weapon)
+				#weapon_slot2.weapon=upgrade_weapon
+				print("upgrade 4 not yet implemented, i will work on inv system")
 				
 			"upgrade 5":
 				move_component.max_speed=move_component.max_speed*1.5
@@ -90,10 +91,8 @@ func apply_upgrades():
 			"upgrade 6":
 				move_component.max_speed=move_component.max_speed/5
 				move_component.acceleration=move_component.acceleration/5
-				weapon_slot1.weapon.weapon_component.fire_rate=0.05
+				weapon_component_1.weapon.fire_rate=0.05
 				
-				if weapon_slot2.weapon != null:
-					weapon_slot2.weapon.weapon_component.fire_rate=0.05
 
 ######### Godot functions #########
 
