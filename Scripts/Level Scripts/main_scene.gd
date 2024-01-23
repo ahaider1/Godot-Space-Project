@@ -30,6 +30,7 @@ func resetInvAndEquipment():
 func _ready():
 	# respawn player 
 	Manager.player_is_dead = false
+	Manager.player_node = null
 	
 	# reset the player's inv
 	resetInvAndEquipment()

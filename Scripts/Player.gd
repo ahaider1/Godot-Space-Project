@@ -57,51 +57,51 @@ func upgradeCharacter(upgrade):
 	Player_Data.collected_upgrades.append(upgrade)
 
 # apply upgrades to player
-func apply_upgrades():
-	if Player_Data.collected_upgrades.size() < 1:
-		return 
-	
-	print(get_tree().current_scene.name)
-	if get_tree().current_scene.name == "Level_1":
-		Player_Data.collected_upgrades.clear()
-		return
-	
-	
-	for i in Player_Data.collected_upgrades:
-		
-		match i:
-			"upgrade 1":
-				health_component.max_health=200
-				health_component.health=200
-			
-				
-			"upgrade 3":
-				#weapon_slot1.weapon=null
-				#var upgrade_weapon=turret_weapon.instantiate()
-				#weapon_slot1.add_child(upgrade_weapon)
-				#weapon_slot1.weapon=upgrade_weapon
-				print("upgrade 3 not yet implemented, i will work on inv system")
-				
-				
-			"upgrade 2":
-				weapon_component_1.weapon.fire_rate /= 2
-				#print("upgrade 2 not yet implemented")
-			
-				
-			"upgrade 4":
-				#var upgrade_weapon=test_weapon.instantiate()
-				#weapon_slot2.add_child(upgrade_weapon)
-				#weapon_slot2.weapon=upgrade_weapon
-				print("upgrade 4 not yet implemented, i will work on inv system")
-				
-			"upgrade 5":
-				move_component.max_speed=move_component.max_speed*1.5
-				move_component.acceleration=move_component.acceleration*1.5
-				
-			"upgrade 6":
-				move_component.max_speed=move_component.max_speed/5
-				move_component.acceleration=move_component.acceleration/5
-				weapon_component_1.weapon.fire_rate=0.05
+#func apply_upgrades():
+	#if Player_Data.collected_upgrades.size() < 1:
+		#return 
+	#
+	#print(get_tree().current_scene.name)
+	#if get_tree().current_scene.name == "Level_1":
+		#Player_Data.collected_upgrades.clear()
+		#return
+	#
+	#
+	#for i in Player_Data.collected_upgrades:
+		#
+		#match i:
+			#"upgrade 1":
+				#health_component.max_health=200
+				#health_component.health=200
+			#
+				#
+			#"upgrade 3":
+				##weapon_slot1.weapon=null
+				##var upgrade_weapon=turret_weapon.instantiate()
+				##weapon_slot1.add_child(upgrade_weapon)
+				##weapon_slot1.weapon=upgrade_weapon
+				#print("upgrade 3 not yet implemented, i will work on inv system")
+				#
+				#
+			#"upgrade 2":
+				#weapon_component_1.weapon.fire_rate /= 2
+				##print("upgrade 2 not yet implemented")
+			#
+				#
+			#"upgrade 4":
+				##var upgrade_weapon=test_weapon.instantiate()
+				##weapon_slot2.add_child(upgrade_weapon)
+				##weapon_slot2.weapon=upgrade_weapon
+				#print("upgrade 4 not yet implemented, i will work on inv system")
+				#
+			#"upgrade 5":
+				#move_component.max_speed=move_component.max_speed*1.5
+				#move_component.acceleration=move_component.acceleration*1.5
+				#
+			#"upgrade 6":
+				#move_component.max_speed=move_component.max_speed/5
+				#move_component.acceleration=move_component.acceleration/5
+				#weapon_component_1.weapon.fire_rate=0.05
 
 # assign weapon components to their weapons
 # depending on what is in the player's equipment slots
@@ -153,8 +153,6 @@ func _ready():
 	# connect to equipment inventory
 	equipment.connect("equipment_changed", onEquipmentChanged)
 
-	apply_upgrades()
-	
 	# update all weapon components at the start
 	updateWeaponComponent(0)
 	updateWeaponComponent(1)

@@ -17,22 +17,6 @@ grow_vertical = 2
 theme = ExtResource("1_aousu")
 script = ExtResource("2_laj78")
 
-[node name="GrabbedSlot" parent="." instance=ExtResource("2_pau3f")]
-visible = false
-modulate = Color(1, 1, 1, 0.54902)
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -526.0
-offset_top = -254.0
-offset_right = -430.0
-offset_bottom = -158.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -172,3 +156,19 @@ layout_mode = 2
 
 [node name="InventorySlot20" parent="HBoxContainer/PanelContainer/MarginContainer/GridContainer" instance=ExtResource("2_pau3f")]
 layout_mode = 2
+
+[node name="GrabbedSlot" parent="." instance=ExtResource("2_pau3f")]
+visible = false
+modulate = Color(1, 1, 1, 0.54902)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -526.0
+offset_top = -254.0
+offset_right = -430.0
+offset_bottom = -158.0
+grow_horizontal = 2
+grow_vertical = 2

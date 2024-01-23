@@ -24,8 +24,6 @@ extends Weapon
 # if an entity wants to have a weapon it needs to have a:
 # WeaponComponent -> Weapon
 
-# parent of the entity should be the level
-@onready var curr_level = entity.get_parent()
 
 # determine if we can fire or not
 var can_fire: bool = true
@@ -55,7 +53,7 @@ func fire():
 			proj_instance.belongs_to_player = false
 
 		# add the bullet to the scene
-		curr_level.add_child(proj_instance)
+		entity.get_parent().add_child(proj_instance)
 		can_fire = false
 
 		# asynchronous wait

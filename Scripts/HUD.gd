@@ -17,7 +17,7 @@ var is_paused = false
 @onready var healthbar = $GUI/Healthbar
 
 # init reference to player
-@onready var player: Player = get_node("../Player")
+var player: Player = Manager.player_node
 
 # init reference to level objective
 @onready var level_objective = get_node("../LevelObjective")
@@ -33,9 +33,12 @@ var is_paused = false
 # 0 means 0th index, 1 means 1st index, etc of offered_upgrades
 var selected_upgrade_option = -1
 
+# an array of all offered upgrades
+var offered_upgrades: Array[String] = []
+
 ######### my functions #########
 
-var offered_upgrades = []
+
 
 # toggle pause screen
 func togglePauseScreen():
@@ -97,12 +100,10 @@ func resumeGame():
 # get a random item from the database
 func getRandomItem():
 	# dblist is list of all valid/available upgrade options
-	var dblist= []
+	var dblist: Array[String] = []
 	#check database
 	for i in Database.UPGRADES:
-		if i in Player_Data.collected_upgrades: #check if already have
-			pass
-		elif i in offered_upgrades:
+		if i in offered_upgrades:
 			pass
 		else:
 			dblist.append(i)
@@ -110,7 +111,7 @@ func getRandomItem():
 	if dblist.size() < 1:
 		return
 	
-	# pick a random item from list of availabe ones
+	# pick a random item from list of available ones
 	var randomItem=dblist.pick_random()
 	
 	# add random item to list of offered upgrades 
@@ -159,6 +160,9 @@ func assignUpgradeOptions():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if !player:
+		player = get_node("../Player")
+	
 	resumeGame()
 	
 	# connect signals
