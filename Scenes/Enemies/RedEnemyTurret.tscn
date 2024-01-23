@@ -36,7 +36,7 @@ radius = 6.0
 radius = 7.0
 
 [node name="RedEnemyTurret" type="CharacterBody2D"]
-collision_layer = 0
+collision_layer = 8
 collision_mask = 7
 script = ExtResource("1_dvsaf")
 
@@ -67,7 +67,8 @@ rotation_frict = 10
 aim_accuracy_angle = 5
 
 [node name="SightComponent" parent="." instance=ExtResource("7_olqud")]
-shoot_distance = 150.0
+view_distance = 100.0
+shoot_distance = 100.0
 
 [node name="WeaponComponent" parent="." node_paths=PackedStringArray("weapon") instance=ExtResource("8_7sy7f")]
 position = Vector2(8, 0)

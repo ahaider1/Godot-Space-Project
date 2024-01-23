@@ -40,6 +40,9 @@ func nextLevel(upgrade: String):
 	player_node.rotation_speed = 0
 	player_node.global_position = Vector2.ZERO
 	
+	# reset player health
+	player_node.health_component.health = player_node.health_component.max_health
+	
 	call_deferred("nextLevelDeferred")
 
 # function to actually change the scene

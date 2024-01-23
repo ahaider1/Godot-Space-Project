@@ -70,6 +70,7 @@ rotation_accel = 30
 
 [node name="SightComponent" parent="." instance=ExtResource("12_pkvas")]
 view_distance = 100.0
+shoot_distance = 50.0
 
 [node name="WeaponComponent" parent="." node_paths=PackedStringArray("weapon") instance=ExtResource("9_gc0ju")]
 position = Vector2(5, 0)

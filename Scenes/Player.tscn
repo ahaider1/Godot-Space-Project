@@ -51,7 +51,7 @@ sprite_frames = SubResource("SpriteFrames_1d0r3")
 animation = &"Idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(5.009, 5.009)
+zoom = Vector2(4.069, 4.069)
 
 [node name="HealthComponent" parent="." instance=ExtResource("10_u55m1")]
 health = 1000
