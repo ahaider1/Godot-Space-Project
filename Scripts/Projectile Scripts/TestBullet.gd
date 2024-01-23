@@ -13,9 +13,6 @@ extends Projectile
 func _ready():
 	# assign collision layer and mask
 	assignCollision()
-	
-	
-	assignLifetime()
 
 
 func _process(delta):
@@ -26,6 +23,12 @@ func _process(delta):
 # sometimes this can cause tunnelling 
 # if bullet is too fast
 func _physics_process(delta):
+	
+	# check if the projectile has exceeded its range
+	# if it has it should disappear
+	checkExceedsRange(delta)
+	
+	# move proj
 	translate(proj_direction * proj_speed * delta)
 
 

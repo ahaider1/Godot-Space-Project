@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cytueldhukhkk"]
+[gd_scene load_steps=12 format=3 uid="uid://cytueldhukhkk"]
 
 [ext_resource type="Script" path="res://Scripts/Level Scripts/Level_1.gd" id="1_fr4vf"]
 [ext_resource type="PackedScene" uid="uid://i50ur55hpmhl" path="res://Scenes/Enemies/enemy1.tscn" id="2_0moyg"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://crci032yq4fo6" path="res://Scenes/Enemies/RedEnemyTurret.tscn" id="8_m7yfc"]
 [ext_resource type="PackedScene" uid="uid://b8h064xd04ley" path="res://Scenes/Player.tscn" id="9_nj0ff"]
 [ext_resource type="PackedScene" uid="uid://c6yn3mb0ybjoa" path="res://Scenes/Enemies/SquareEnemy.tscn" id="10_jokj1"]
+[ext_resource type="PackedScene" uid="uid://4umb6fwyg1ax" path="res://Scenes/Enemies/SemicircleEnemy.tscn" id="11_wl4xd"]
 
 [node name="Level_1" type="Node"]
 script = ExtResource("1_fr4vf")
@@ -52,13 +53,16 @@ texture_progress = ExtResource("5_hrqf6")
 
 [node name="HUD" parent="." instance=ExtResource("6_3x4c6")]
 
-[node name="Enemy1" parent="." instance=ExtResource("2_0moyg")]
-position = Vector2(-177, -132)
-
 [node name="RedEnemyTurret" parent="." instance=ExtResource("8_m7yfc")]
 position = Vector2(-36, -200)
 
 [node name="LevelObjective" parent="." instance=ExtResource("7_fe2p6")]
 
+[node name="Enemy1" parent="." instance=ExtResource("2_0moyg")]
+position = Vector2(235, -132)
+
 [node name="SquareEnemy" parent="." instance=ExtResource("10_jokj1")]
-position = Vector2(48, -68)
+position = Vector2(243, -8)
+
+[node name="SemicircleEnemy" parent="." instance=ExtResource("11_wl4xd")]
+position = Vector2(193, -147)

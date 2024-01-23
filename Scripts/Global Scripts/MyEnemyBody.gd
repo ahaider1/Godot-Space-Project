@@ -6,6 +6,16 @@ class_name MyEnemyBody
 
 ######### initialise variables #########
 
+const ORANGE_ALERT_EFFECT = preload("res://Scenes/Effects/OrangeAlertEffect.tscn")
+const RED_ALERT_EFFECT = preload("res://Scenes/Effects/RedAlertEffect.tscn")
+
+
+
+# AI stuff
+# all enemies should have this
+var has_seen_player: bool = false
+var is_dead: bool = false
+
 
 
 ######### my functions #########
@@ -72,7 +82,29 @@ func rotateToward(direction: Vector2, move_component: MovementComponent):
 		# dont rotate
 		move_component.rotation_direction = 0
 
+# red alert: alerts all enemies in range
+func redAlert(sight_component: SightComponent):
+	
+	# do the visual effect
+	var effect_instance = RED_ALERT_EFFECT.instantiate()
+	effect_instance.position = get_global_transform().get_origin() + Vector2(0, -10)
+	get_tree().current_scene.add_child(effect_instance)
+	
+	# alert all enemies in range
+	for enemy: MyEnemyBody in sight_component.allies_in_range:
+		if enemy != self && enemy.has_seen_player == false:
+			enemy.orangeAlert()
 
+# orange alert: when an enemy is alerted by red alert
+func orangeAlert():
+	
+	# do the visual effect
+	var effect_instance = ORANGE_ALERT_EFFECT.instantiate()
+	effect_instance.position = get_global_transform().get_origin() + Vector2(0, -10)
+	get_tree().current_scene.add_child(effect_instance)
+	
+	# get alerted
+	has_seen_player = true
 
 # die process
 func die(delta):

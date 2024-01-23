@@ -13,6 +13,11 @@ class_name Projectile
 # after 3 seconds, proj will vanish
 @export var proj_lifetime: float = 1
 
+# how far will the projectile go before disappearing
+@export var proj_range: float = 50
+
+var proj_travelled: float = 0
+
 var proj_direction = Vector2.ZERO
 
 var belongs_to_player: bool = false
@@ -52,7 +57,7 @@ func explode():
 	# instantiate explosion
 	var explosion_instance = explosion.instantiate()
 	explosion_instance.position = get_global_position()
-	get_tree().get_root().add_child(explosion_instance)
+	get_tree().current_scene.add_child(explosion_instance)
 	
 	# delete current proj
 	queue_free()
@@ -74,11 +79,13 @@ func assignCollision():
 		collision_layer = enemy_proj_collision_layer
 		collision_mask = enemy_proj_collision_mask
 
-# assign proj lifetime
-func assignLifetime():
-	# asynchronous wait, after proj_lifetime seconds 
-	# projectile will vanish
-	await get_tree().create_timer(proj_lifetime).timeout
-	is_vanishing = true
+# check if proj has exceeded its range
+# if it has then it should disappear
+func checkExceedsRange(delta):
+	# add to its distance travelled
+	proj_travelled += proj_speed * delta
+	
+	if proj_travelled > proj_range:
+		is_vanishing = true
 
 

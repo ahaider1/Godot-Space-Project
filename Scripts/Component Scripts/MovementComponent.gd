@@ -8,7 +8,7 @@ class_name MovementComponent
 
 # IMPORTANT: current direction that entity wants to rotate towards
 # -1 means counterclockwise, 1 means clockwise, 0 means dont rotate
-var rotation_direction = 0
+var rotation_direction: int = 0
 # whether we want to go forwards, backwards, or neither
 var forward_backward: int = 0
 
@@ -20,9 +20,9 @@ var face_dir: Vector2
 @export var max_speed = 100
 @export var acceleration = 1200
 
-@export var max_rotation_speed = 3
-@export var rotation_accel = 15
-@export var rotation_frict = 5
+@export var max_rotation_speed: float = 3
+@export var rotation_accel: float = 15
+@export var rotation_frict: float = 5
 
 # get reference to parent node
 # it should be a MyCharacterBody

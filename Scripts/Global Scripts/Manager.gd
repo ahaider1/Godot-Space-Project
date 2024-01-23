@@ -12,19 +12,30 @@ var enemy_proj_layer: int = 1 << 4
 
 var player_node: Player
 
+# init resources
+const BULLET_SHOOTER = preload("res://Inventory Items/Items/BulletShooter.tres")
+const TURRET_WEAPON = preload("res://Inventory Items/Items/TurretWeapon.tres")
+
+
+
 
 ######### my functions #########
 
 # call deferred, because otherwise godot 4.2 complains
-func nextLevel():
+func nextLevel(upgrade: String):
 	# save current player node
-	var level_node = get_parent().get_child(get_parent().get_children().size() - 1)
+	var level_node = get_tree().current_scene
+
 	# store it in player_node
 	player_node = level_node.get_node("Player")
 	# disconnect from parent so that when parent gets queue_free()ed 
 	# it doesnt also get queue freed
 	player_node.get_parent().remove_child(player_node)
 	
+	print(player_node)
+	
+	# upgrade the player with the upgrade
+	upgradePlayer(upgrade)
 	
 	call_deferred("nextLevelDeferred")
 
@@ -36,6 +47,41 @@ func nextLevelDeferred():
 		"res://Scenes/Levels/Level_" + 
 		str((get_tree().current_scene.name.to_int())+1)+ ".tscn"
 	)
+
+# functionality function for character upgrading
+func upgradePlayer(upgrade):
+	match upgrade:
+		"upgrade 1":
+			player_node.health_component.max_health += 100
+			#player_node.health_component.health=200
+		
+		"upgrade 2":
+			#player_node.weapon_component_1.weapon.fire_rate /= 2
+			print("upgrade 2 not yet implemented")
+			
+		"upgrade 3":
+			addToInventory(TURRET_WEAPON)
+			
+		"upgrade 4":
+			addToInventory(BULLET_SHOOTER)
+			
+		"upgrade 5":
+			player_node.move_component.max_speed *= 1.5
+			player_node.move_component.acceleration *= 1.5
+			
+		"upgrade 6":
+			player_node.move_component.max_speed /= 5
+			player_node.move_component.acceleration /= 5
+		
+		# switch statement default (else):
+		_:
+			print("no upgrade selected")
+
+func addToInventory(item: InventoryItem):
+	for i in range(player_node.inventory.items.size()):
+		if player_node.inventory.items[i] == null:
+			player_node.inventory.items[i] = item
+			return
 
 
 

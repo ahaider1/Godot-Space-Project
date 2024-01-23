@@ -55,7 +55,7 @@ debug_color = Color(0.992157, 0, 0.262745, 0.419608)
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("collision_shape", "health_component") instance=ExtResource("9_sl2ee")]
 collision_layer = 8
-collision_mask = 5
+collision_mask = 15
 collision_shape = NodePath("HitboxShape")
 health_component = NodePath("../HealthComponent")
 
@@ -69,6 +69,7 @@ rotation_accel = 30
 [node name="PathfindComponent" parent="." instance=ExtResource("11_jaf5c")]
 
 [node name="SightComponent" parent="." instance=ExtResource("12_pkvas")]
+view_distance = 100.0
 
 [node name="WeaponComponent" parent="." node_paths=PackedStringArray("weapon") instance=ExtResource("9_gc0ju")]
 position = Vector2(5, 0)

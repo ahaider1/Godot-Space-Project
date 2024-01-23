@@ -8,10 +8,6 @@ extends MyEnemyBody
 @onready var player: Player = Manager.player_node
 
 
-# AI stuff
-var has_seen_player: bool = false
-var is_dead: bool = false
-
 # get reference to components
 @onready var pathfind_component: PathfindComponent = $PathfindComponent
 @onready var move_component: MovementComponent = $MovementComponent
@@ -73,6 +69,9 @@ func _physics_process(_delta):
 
 # catch the can see player signal
 func on_can_see_player():
+	if !has_seen_player:
+		redAlert(sight_component)
+	
 	has_seen_player = true
 
 # death
@@ -89,6 +88,9 @@ func onHurt():
 	
 	# enemy will agro if u shoot them 
 	# even if they cant see u
+	if !has_seen_player:
+		redAlert(sight_component)
+	
 	has_seen_player = true
 
 # all animations upon finishing will transition back to idle

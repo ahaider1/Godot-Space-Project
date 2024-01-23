@@ -22,15 +22,25 @@ signal can_see_player
 # what max distance will enemy start shooting at?
 @export var shoot_distance: float = 70
 
+# what distance can enemy alert allies at?
+@export var ally_range: float = 70
+@onready var ally_detector: CollisionShape2D = $AllyRange/DetectorShape
+
+# track list of all allies in contact range
+var allies_in_range: Array[MyEnemyBody]
+
+
 # raycast circle
 # like a bucket fill in a circle shape
 # basically a collision circle that cant go through walls
 @onready var raycast_circle: RayCast2D = $CircleSweeper
 
+@onready var raycircle_collider: CollisionShape2D = $OptimiseRaycircle/RaycircleShape
+
 var player_in_raycircle = false
 var player_within_radius = false
 
-
+var raycast_created = false
 
 ######### my functions #########
 
@@ -60,8 +70,11 @@ func createRaycircle():
 	raycast_circle.target_position = Vector2(0, shoot_distance)
 	
 	# set the circle collision radius same as circle sweeper radius
-	var raycircle_collider: CollisionShape2D = $OptimiseRaycircle/RaycircleShape
 	raycircle_collider.shape.radius = shoot_distance
+
+# create the ally detector
+func createAllyDetector():
+	ally_detector.shape.radius = ally_range
 
 
 # check if player is in enemy's line of sight
@@ -94,12 +107,9 @@ func sweepForPlayer():
 ######### Godot functions #########
 
 func _ready():
-	# make all the rays
 	createRaycasts()
-
-	# make the raycircle
 	createRaycircle()
-	
+	createAllyDetector()
 
 
 func _physics_process(delta):
@@ -110,7 +120,6 @@ func _physics_process(delta):
 	
 	if player_within_radius:
 		sweepForPlayer()
-
 
 
 
@@ -125,3 +134,11 @@ func _on_optimise_raycircle_body_exited(body):
 	if body.is_in_group("player"):
 		player_in_raycircle = false
 		player_within_radius = false
+
+
+func _on_ally_range_body_entered(body):
+	allies_in_range.append(body)
+
+
+func _on_ally_range_body_exited(body):
+	allies_in_range.erase(body)

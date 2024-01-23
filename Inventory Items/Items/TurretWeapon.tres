@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://mvadne1hgeje"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory Scripts/InventoryItem.gd" id="1_bn745"]
+[ext_resource type="Texture2D" uid="uid://qceq1n3ts7hk" path="res://Sprites/Weapons/Turret Weapon.png" id="2_y2d8l"]
+[ext_resource type="PackedScene" uid="uid://v6n5q2bg4ux6" path="res://Scenes/Weapons/TurretWeapon.tscn" id="3_hncua"]
+
+[resource]
+script = ExtResource("1_bn745")
+name = "TurretWeapon"
+texture = ExtResource("2_y2d8l")
+weapon = ExtResource("3_hncua")

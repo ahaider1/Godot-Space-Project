@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://xkyj170tclyw"]
+
+[ext_resource type="Texture2D" uid="uid://d0ritcy0m8vnu" path="res://Sprites/Effects/RedAlert1.png" id="1_wqdus"]
+[ext_resource type="Texture2D" uid="uid://xvw4i2iha2wi" path="res://Sprites/Effects/RedAlert2.png" id="2_xy17e"]
+[ext_resource type="Texture2D" uid="uid://dd0dx184vp1mg" path="res://Sprites/Effects/RedAlert3.png" id="3_x7uga"]
+[ext_resource type="Texture2D" uid="uid://uf4cxiw4xil8" path="res://Sprites/Effects/RedAlert4.png" id="4_23bnu"]
+[ext_resource type="Script" path="res://Scripts/Effect Scripts/RedAlertEffect.gd" id="5_3blqt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iqg7p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wqdus")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xy17e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_x7uga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_23bnu")
+}],
+"loop": false,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="RedAlertEffect" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_iqg7p")
+autoplay = "default"
+frame = 3
+frame_progress = 1.0
+script = ExtResource("5_3blqt")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

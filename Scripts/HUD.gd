@@ -36,6 +36,10 @@ var selected_upgrade_option = -1
 # an array of all offered upgrades
 var offered_upgrades: Array[String] = []
 
+# died message
+@onready var died_message: Control = $GUI/Died
+
+
 ######### my functions #########
 
 
@@ -121,12 +125,6 @@ func getRandomItem():
 
 # get user input
 func getInput():
-	# if player dies
-	# lets bring up a pausedScreen-like overlay 
-	# instead of transitioning scenes
-	### NEED TO CHANGE HERE ###
-	if Manager.player_is_dead:
-		get_tree().change_scene_to_file("res://Scenes/Levels/death_scene.tscn")
 
 	# if user hits escape
 	if Input.is_action_just_pressed("escape"):
@@ -176,6 +174,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	# if player dies
+	if Manager.player_is_dead:
+		died_message.modulate.a += 0.5 * delta
+		died_message.modulate.a = min(died_message.modulate.a, 255)
+	
 	getInput()
 	
 	updateHealthbar()
@@ -226,13 +229,16 @@ func _on_upgrade_options_3_pressed():
 
 # Called when next level button is pressed
 func _on_next_level_pressed():
-	# upgrade with selected upgrade
-	if (selected_upgrade_option != -1):
-		player.upgradeCharacter(offered_upgrades[selected_upgrade_option])
 	
+	# default upgrade is none
+	var current_upgrade: String = "none"
+	# if an upgrade is selected
+	if (selected_upgrade_option != -1):
+		current_upgrade = offered_upgrades[selected_upgrade_option]
 
 	resumeGame()
-	Manager.nextLevel()
-	pass
+	
+	# proceed to the next level with the selected upgrade
+	Manager.nextLevel(current_upgrade)
 
 

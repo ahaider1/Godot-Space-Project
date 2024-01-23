@@ -53,7 +53,7 @@ func fire():
 			proj_instance.belongs_to_player = false
 
 		# add the bullet to the scene
-		entity.get_parent().add_child(proj_instance)
+		get_tree().current_scene.add_child(proj_instance)
 		can_fire = false
 
 		# asynchronous wait

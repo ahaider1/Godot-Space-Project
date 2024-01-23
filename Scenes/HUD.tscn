@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dlu086iuonjm7"]
+[gd_scene load_steps=7 format=3 uid="uid://dlu086iuonjm7"]
 
 [ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_le6ac"]
 [ext_resource type="Texture2D" uid="uid://ipmhr83c38uf" path="res://Sprites/Healthbar.png" id="1_q7lyp"]
 [ext_resource type="Texture2D" uid="uid://bjmje8nyb6gkl" path="res://Sprites/Healthbar2.png" id="2_mitvj"]
 [ext_resource type="Theme" uid="uid://cg51xn2o6bhqx" path="res://Themes/new_theme.tres" id="2_mqy5o"]
-[ext_resource type="FontFile" uid="uid://bun53tt5c6irt" path="res://Themes/Fonts/Pixeled.ttf" id="5_el2b8"]
 [ext_resource type="PackedScene" uid="uid://0iim021blvjp" path="res://Scenes/upgrade_options.tscn" id="6_ra3gs"]
 [ext_resource type="PackedScene" uid="uid://by8kp5mp38pbm" path="res://Scenes/Inventory/InventoryUI.tscn" id="7_bqbh4"]
 
@@ -21,6 +20,49 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("2_mqy5o")
+
+[node name="Died" type="Control" parent="GUI"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="YouDied" type="Label" parent="GUI/Died"]
+modulate = Color(0.54902, 0.105882, 0.207843, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -299.0
+offset_top = -114.0
+offset_right = 299.0
+offset_bottom = 114.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 81
+text = "You Died!"
+
+[node name="YouDied2" type="Label" parent="GUI/Died"]
+modulate = Color(0.54902, 0.105882, 0.207843, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -178.0
+offset_top = 70.0
+offset_right = 420.0
+offset_bottom = 298.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 21
+text = "Pause to go to menu"
 
 [node name="Healthbar" type="TextureProgressBar" parent="GUI"]
 layout_mode = 0
@@ -68,70 +110,6 @@ text = "Resume"
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "Main Menu"
-
-[node name="Upgrade" type="Panel" parent="GUI"]
-visible = false
-custom_minimum_size = Vector2(650, 800)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -325.0
-offset_top = -400.0
-offset_right = 325.0
-offset_bottom = 400.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="GUI/Upgrade"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -126.0
-offset_top = -13.0
-offset_right = 127.0
-offset_bottom = 40.0
-grow_horizontal = 2
-theme = ExtResource("2_mqy5o")
-theme_override_fonts/font = ExtResource("5_el2b8")
-text = "Choose an Upgrade"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="upgradeOptions" type="VBoxContainer" parent="GUI/Upgrade"]
-layout_mode = 0
-offset_left = 25.0
-offset_top = 39.0
-offset_right = 184.0
-offset_bottom = 234.0
-
-[node name="Button" type="Button" parent="GUI/Upgrade"]
-layout_mode = 2
-offset_left = 80.0
-offset_top = 218.0
-offset_right = 260.0
-offset_bottom = 399.0
-
-[node name="UpgradesContainer" type="GridContainer" parent="GUI/Upgrade"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -503.5
-offset_top = -188.0
-offset_right = 503.5
-offset_bottom = 188.0
-grow_horizontal = 2
-grow_vertical = 2
-columns = 3
-
-[node name="TextureRect" type="TextureRect" parent="GUI/Upgrade/UpgradesContainer"]
-layout_mode = 2
 
 [node name="UpgradeMenu" type="PanelContainer" parent="GUI"]
 visible = false
