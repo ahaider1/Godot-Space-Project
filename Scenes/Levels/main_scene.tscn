@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://l0dhjvkvo87c"]
+[gd_scene load_steps=10 format=3 uid="uid://l0dhjvkvo87c"]
 
 [ext_resource type="Script" path="res://Scripts/Level Scripts/main_scene.gd" id="1_py4sb"]
 [ext_resource type="Theme" uid="uid://cg51xn2o6bhqx" path="res://Themes/new_theme.tres" id="2_gk20u"]
 [ext_resource type="Texture2D" uid="uid://cydj2ydcfyx56" path="res://Sprites/Main Menu.png" id="3_1hgxy"]
 [ext_resource type="Texture2D" uid="uid://c6gixve6sf1o" path="res://Sprites/Player/Player.png" id="4_gl031"]
 [ext_resource type="Texture2D" uid="uid://c21l1mv7drck0" path="res://Sprites/Enemy/Enemy.png" id="5_e2ps7"]
+[ext_resource type="Texture2D" uid="uid://dt61h5h5lt5a7" path="res://Sprites/Others/Fire contols.png" id="6_nfqsc"]
+[ext_resource type="Texture2D" uid="uid://t2llvv7kux84" path="res://Sprites/Others/inv controls.png" id="7_yijyu"]
+[ext_resource type="Texture2D" uid="uid://04yby80akgpo" path="res://Sprites/Others/Movement controls.png" id="8_6c1rn"]
+[ext_resource type="Texture2D" uid="uid://cpmv3ugobbpdy" path="res://Sprites/Others/Pause contols.png" id="9_63cpr"]
 
 [node name="main" type="Node"]
 script = ExtResource("1_py4sb")
@@ -74,6 +78,82 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 80
 text = "Quit
 "
+
+[node name="MovementControls" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 33.0
+offset_right = 514.0
+offset_bottom = 145.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Movement"
+
+[node name="FireControls" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 1428.0
+offset_top = 39.0
+offset_right = 1628.0
+offset_bottom = 151.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Shoot"
+
+[node name="InventoryControls" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 1369.0
+offset_top = 284.0
+offset_right = 1713.0
+offset_bottom = 396.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Inventory"
+
+[node name="EscapeControls" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 215.0
+offset_top = 424.0
+offset_right = 415.0
+offset_bottom = 536.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Pause"
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 1309.0
+offset_top = 80.0
+offset_right = 1755.0
+offset_bottom = 389.0
+texture = ExtResource("6_nfqsc")
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 1281.0
+offset_top = 222.0
+offset_right = 1902.0
+offset_bottom = 633.0
+texture = ExtResource("7_yijyu")
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 76.0
+offset_right = 618.0
+offset_bottom = 548.0
+texture = ExtResource("8_6c1rn")
+stretch_mode = 5
+
+[node name="TextureRect5" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 487.0
+offset_right = 504.0
+offset_bottom = 757.0
+texture = ExtResource("9_63cpr")
+stretch_mode = 5
 
 [node name="Test" type="Node2D" parent="."]
 

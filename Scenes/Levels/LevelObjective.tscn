@@ -1,21 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://qpmoiutjx3ki"]
+[gd_scene load_steps=6 format=3 uid="uid://qpmoiutjx3ki"]
 
 [ext_resource type="Script" path="res://Scripts/Level Scripts/LevelObjective.gd" id="1_lxc2p"]
-[ext_resource type="Texture2D" uid="uid://j5nlybhx4yi5" path="res://Sprites/Projectiles/test_explosion4.png" id="2_8qe5o"]
+[ext_resource type="Texture2D" uid="uid://s181umof6t3q" path="res://Sprites/Others/Level Objective1.png" id="2_bi5pv"]
+[ext_resource type="Texture2D" uid="uid://bpgsnya5khbrn" path="res://Sprites/Others/Level Objective2.png" id="3_0jwm0"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tvgpv"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_fr5ll"]
+radius = 7.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_haln7"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_8qe5o")
+"texture": ExtResource("2_bi5pv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_8qe5o")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_8qe5o")
+"texture": ExtResource("3_0jwm0")
 }],
 "loop": true,
 "name": &"End",
@@ -26,11 +25,12 @@ animations = [{
 script = ExtResource("1_lxc2p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_tvgpv")
+shape = SubResource("CircleShape2D_fr5ll")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_haln7")
 animation = &"End"
 autoplay = "End"
+frame_progress = 0.881374
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

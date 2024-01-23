@@ -145,6 +145,7 @@ func getInput():
 # update health bar
 func updateHealthbar():
 	healthbar.value = player.health_component.health
+	healthbar.max_value = player.health_component.max_health
 
 # assign upgrade options information
 # like name, sprite, description

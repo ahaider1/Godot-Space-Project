@@ -38,6 +38,7 @@ func nextLevel(upgrade: String):
 	# set player velocity to 0
 	player_node.velocity = Vector2.ZERO
 	player_node.rotation_speed = 0
+	player_node.global_position = Vector2.ZERO
 	
 	call_deferred("nextLevelDeferred")
 

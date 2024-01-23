@@ -5,7 +5,7 @@ extends MyEnemyBody
 @onready var anim = $AnimatedSprite2D
 
 # reference to player
-@onready var player: MyCharacterBody = get_parent().get_node("Player")
+@onready var player: Player = Manager.player_node
 
 # get reference to components
 @onready var move_component: MovementComponent = $MovementComponent
@@ -40,6 +40,9 @@ func decideInput():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if !player:
+		player = get_parent().get_node("Player")
+	
 	anim.play("Idle")
 	
 	# connect signals

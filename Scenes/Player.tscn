@@ -54,7 +54,8 @@ animation = &"Idle"
 zoom = Vector2(5.009, 5.009)
 
 [node name="HealthComponent" parent="." instance=ExtResource("10_u55m1")]
-health = 100000
+health = 1000
+max_health = 1000
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("collision_shape", "health_component") instance=ExtResource("11_18h0j")]
 collision_mask = 0
