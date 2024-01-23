@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Inventory" load_steps=2 format=3 uid="uid://dkwgk4wf7ng7m"]
+[gd_resource type="Resource" script_class="Inventory" load_steps=3 format=3 uid="uid://dkwgk4wf7ng7m"]
 
+[ext_resource type="Resource" uid="uid://bcx8mj4yogn1d" path="res://Inventory Items/Items/ThickBlaster.tres" id="1_yubqm"]
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/Inventory.gd" id="2_8ddwr"]
 
 [resource]
 script = ExtResource("2_8ddwr")
-items = Array[Resource("res://Scripts/Inventory Scripts/InventoryItem.gd")]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+items = Array[Resource("res://Scripts/Inventory Scripts/InventoryItem.gd")]([null, ExtResource("1_yubqm"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])

@@ -6,7 +6,7 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(Manager.player_node)
+
 	# add the stored player node to level
 	add_child(Manager.player_node)
 	

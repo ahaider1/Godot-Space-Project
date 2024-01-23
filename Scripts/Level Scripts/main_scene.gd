@@ -33,7 +33,7 @@ func _ready():
 	Manager.player_node = null
 	
 	# reset the player's inv
-	resetInvAndEquipment()
+	# resetInvAndEquipment()
 
 
 ######### Godot signal functions #########

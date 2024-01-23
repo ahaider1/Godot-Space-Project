@@ -3,8 +3,13 @@ extends Node
 #database of upgrades to be applied to the player
 
 # upgrade textures
+
+# weapon textures
 var test_weapon_texture: Texture2D = preload("res://Sprites/Weapons/test weapon.png")
 var turret_weapon_texture: Texture2D = preload("res://Sprites/Weapons/Turret Weapon.png")
+var thicc_blaster_texture: Texture2D = preload("res://Sprites/Weapons/ThickBlaster.png")
+
+# other textures
 var heart_texture: Texture2D = preload("res://Sprites/Heart.png")
 var not_drawn_yet: Texture2D = preload("res://Sprites/notDrawnYet.png")
 
@@ -52,5 +57,12 @@ var UPGRADES = {
 		but greatly increase fire rate of all weapons",
 		
 		"texture" : not_drawn_yet
-		}
+	},
+	
+	"upgrade 7": {
+		"displayname": "Thicc Blaster",
+		"details": "Adds a thicc blaster to your inventory",
+		
+		"texture" : thicc_blaster_texture
+	}
 }

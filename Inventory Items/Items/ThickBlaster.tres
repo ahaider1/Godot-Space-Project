@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://bcx8mj4yogn1d"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory Scripts/InventoryItem.gd" id="1_wbimg"]
+[ext_resource type="Texture2D" uid="uid://c6ksx7fgbwt3r" path="res://Sprites/Weapons/ThickBlaster.png" id="2_ushlx"]
+[ext_resource type="PackedScene" uid="uid://cusmv8udl7a6v" path="res://Scenes/Weapons/ThickBlaster.tscn" id="3_5rs5n"]
+
+[resource]
+script = ExtResource("1_wbimg")
+name = "ThickBlaster"
+texture = ExtResource("2_ushlx")
+weapon = ExtResource("3_5rs5n")

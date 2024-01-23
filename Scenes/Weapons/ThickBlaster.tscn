@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://cusmv8udl7a6v"]
+
+[ext_resource type="Texture2D" uid="uid://bkfkv41p4r6lm" path="res://Sprites/Weapons/ThickBlasterFire1.png" id="1_qrg0q"]
+[ext_resource type="Script" path="res://Scripts/Weapon Scripts/ThickBlaster.gd" id="1_xura0"]
+[ext_resource type="Texture2D" uid="uid://4vesxbaa01xf" path="res://Sprites/Weapons/ThickBlasterFire2.png" id="2_3bvl4"]
+[ext_resource type="PackedScene" uid="uid://bt4ivo2qvtq4c" path="res://Scenes/Projectiles/HotBullet.tscn" id="2_w631l"]
+[ext_resource type="Texture2D" uid="uid://ce21jdmgnqys6" path="res://Sprites/Weapons/ThickBlasterFire3.png" id="3_13cxs"]
+[ext_resource type="Texture2D" uid="uid://pe1o3agr7lhy" path="res://Sprites/Weapons/ThickBlasterFire4.png" id="4_2raj5"]
+[ext_resource type="Texture2D" uid="uid://c6ksx7fgbwt3r" path="res://Sprites/Weapons/ThickBlaster.png" id="5_tfhk6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3t8tv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3hl2f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qrg0q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_3bvl4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_13cxs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2raj5")
+}],
+"loop": false,
+"name": &"fire",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_tfhk6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="ThickBlaster" type="Area2D"]
+rotation = 1.5708
+script = ExtResource("1_xura0")
+fire_rate = 0.5
+projectile_tscn = ExtResource("2_w631l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_3t8tv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3hl2f")
+animation = &"fire"
+
+[node name="ProjSpawnPt" type="Marker2D" parent="."]
+position = Vector2(-3.49691e-07, -8)

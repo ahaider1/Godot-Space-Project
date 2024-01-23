@@ -78,6 +78,9 @@ func onDeath():
 
 
 func onHurt():
+	if !has_seen_player:
+		redAlert(sight_component)
+
 	# animation
 	anim.play("Damaged")
 	

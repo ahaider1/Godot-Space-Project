@@ -15,7 +15,7 @@ var player_node: Player
 # init resources
 const BULLET_SHOOTER = preload("res://Inventory Items/Items/BulletShooter.tres")
 const TURRET_WEAPON = preload("res://Inventory Items/Items/TurretWeapon.tres")
-
+const THICK_BLASTER = preload("res://Inventory Items/Items/ThickBlaster.tres")
 
 
 
@@ -32,10 +32,12 @@ func nextLevel(upgrade: String):
 	# it doesnt also get queue freed
 	player_node.get_parent().remove_child(player_node)
 	
-	print(player_node)
-	
 	# upgrade the player with the upgrade
 	upgradePlayer(upgrade)
+	
+	# set player velocity to 0
+	player_node.velocity = Vector2.ZERO
+	player_node.rotation_speed = 0
 	
 	call_deferred("nextLevelDeferred")
 
@@ -72,6 +74,9 @@ func upgradePlayer(upgrade):
 		"upgrade 6":
 			player_node.move_component.max_speed /= 5
 			player_node.move_component.acceleration /= 5
+		
+		"upgrade 7":
+			addToInventory(THICK_BLASTER)
 		
 		# switch statement default (else):
 		_:

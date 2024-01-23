@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bt4ivo2qvtq4c"]
+
+[ext_resource type="Texture2D" uid="uid://dq1ss6rbjelep" path="res://Sprites/Projectiles/HotBullet.png" id="1_0kbq1"]
+[ext_resource type="Script" path="res://Scripts/Projectile Scripts/HotBullet.gd" id="1_d53pf"]
+[ext_resource type="PackedScene" uid="uid://doxqg8fmjjfa4" path="res://Scenes/Projectiles/test_explosion.tscn" id="2_28igd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dtgl7"]
+radius = 1.0
+height = 6.0
+
+[node name="HotBullet" type="Area2D"]
+script = ExtResource("1_d53pf")
+explosion = ExtResource("2_28igd")
+proj_damage = 60
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.5, -0.5)
+rotation = 1.5708
+texture = ExtResource("1_0kbq1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_dtgl7")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

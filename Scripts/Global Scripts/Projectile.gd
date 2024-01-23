@@ -10,8 +10,6 @@ class_name Projectile
 # proj stats
 @export var proj_speed: int = 250
 @export var proj_damage: int = 30
-# after 3 seconds, proj will vanish
-@export var proj_lifetime: float = 1
 
 # how far will the projectile go before disappearing
 @export var proj_range: float = 50
