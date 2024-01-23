@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://4giin1o8hdht"]
+
+[ext_resource type="Script" path="res://Scripts/Weapon Scripts/EnergyBullet.gd" id="1_lr6f4"]
+[ext_resource type="PackedScene" uid="uid://doxqg8fmjjfa4" path="res://Scenes/Projectiles/test_explosion.tscn" id="2_8wbc5"]
+[ext_resource type="Texture2D" uid="uid://c1thdp1i7d27n" path="res://Sprites/Projectiles/EnergyBullet.png" id="2_ynrkx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d60k2"]
+radius = 3.0
+height = 6.0
+
+[node name="Energy_Bullet" type="Area2D"]
+position = Vector2(-1.5, 1.5)
+script = ExtResource("1_lr6f4")
+explosion = ExtResource("2_8wbc5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_ynrkx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, -0.5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_d60k2")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
