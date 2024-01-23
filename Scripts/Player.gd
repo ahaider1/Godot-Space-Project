@@ -20,6 +20,16 @@ class_name Player
 @onready var move_component: MovementComponent = $MovementComponent
 
 @onready var weapon_component_1: WeaponComponent = $WeaponComponent
+@onready var weapon_component_2: WeaponComponent = $WeaponComponent2
+@onready var weapon_component_3: WeaponComponent = $WeaponComponent3
+
+
+
+# init inventory
+
+@export var inventory: Inventory
+@export var equipment: Equipment
+
 
 ######### my functions #########
 
@@ -92,7 +102,38 @@ func apply_upgrades():
 				move_component.max_speed=move_component.max_speed/5
 				move_component.acceleration=move_component.acceleration/5
 				weapon_component_1.weapon.fire_rate=0.05
-				
+
+# assign weapon components to their weapons
+# depending on what is in the player's equipment slots
+func updateWeaponComponent(index: int):
+	# dont worry about scalability here we will only ever have 3 weapon slots
+	var curr_component: WeaponComponent
+	match index:
+		0:
+			curr_component = weapon_component_1
+		1:
+			curr_component = weapon_component_2
+		2:
+			curr_component = weapon_component_3
+	
+	# if there is no item in the equipment slot
+	if equipment.items[index] == null:
+		# disconnect and delete the weapon instance
+		curr_component.weapon = null
+		var curr_weapon: Weapon = null
+		
+		if curr_component.get_child_count() > 0:
+			curr_weapon = curr_component.get_child(0)
+
+		if curr_weapon:
+			curr_weapon.queue_free()
+
+	# otherwise there is a weapon in the equipment slot
+	else:
+		# connect the new weapon to weapon component
+		var new_weapon: Weapon = equipment.items[index].weapon.instantiate()
+		curr_component.add_child(new_weapon)
+		curr_component.weapon = new_weapon
 
 ######### Godot functions #########
 
@@ -109,7 +150,15 @@ func _ready():
 	health_component.connect("died", onPlayerDie)
 	health_component.connect("took_damage", onPlayerHurt)
 
+	# connect to equipment inventory
+	equipment.connect("equipment_changed", onEquipmentChanged)
+
 	apply_upgrades()
+	
+	# update all weapon components at the start
+	updateWeaponComponent(0)
+	updateWeaponComponent(1)
+	updateWeaponComponent(2)
 
 
 # normal processing
@@ -133,4 +182,8 @@ func onPlayerHurt():
 
 func _on_animated_sprite_2d_animation_finished():
 	anim.play("Idle")
+
+func onEquipmentChanged(index: int):
+	updateWeaponComponent(index)
+
 

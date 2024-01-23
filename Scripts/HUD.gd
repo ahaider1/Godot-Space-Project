@@ -9,6 +9,10 @@ var is_paused = false
 # init reference to upgrade menu
 @onready var upgrade_menu = $GUI/UpgradeMenu
 
+# init reference to inventory UI
+@onready var inventory_ui = $GUI/InventoryUI
+
+
 # init healthbar variable
 @onready var healthbar = $GUI/Healthbar
 
@@ -47,6 +51,32 @@ func togglePauseScreen():
 		pause_screen.show()
 		pauseGame()
 
+
+# toggle the UI display 
+func toggleInventory():
+
+	if inventory_ui.visible:
+		inventory_ui.hide()
+		resumeGame()
+	else:
+		pauseGame()
+		inventory_ui.show()
+
+
+# toggle upgrade panel
+func toggleUpgradePanel():
+	
+	# upgrade screen is already visible
+	if upgrade_menu.visible:
+		upgrade_menu.hide()
+		resumeGame()
+	
+	# otherwise, show upgrade screen and pause
+	else:
+		upgrade_menu.show()
+		pauseGame()
+
+
 # pause game
 func pauseGame():
 	# actually pause the game
@@ -62,19 +92,6 @@ func resumeGame():
 	# actually resume the game
 	get_tree().paused = false
 	is_paused = false
-
-# toggle upgrade panel
-func toggleUpgradePanel():
-	
-	# upgrade screen is already visible
-	if upgrade_menu.visible:
-		upgrade_menu.hide()
-		resumeGame()
-	
-	# otherwise, show upgrade screen and pause
-	else:
-		upgrade_menu.show()
-		pauseGame()
 
 
 # get a random item from the database
@@ -106,6 +123,7 @@ func getInput():
 	# if player dies
 	# lets bring up a pausedScreen-like overlay 
 	# instead of transitioning scenes
+	### NEED TO CHANGE HERE ###
 	if Manager.player_is_dead:
 		get_tree().change_scene_to_file("res://Scenes/Levels/death_scene.tscn")
 
@@ -114,8 +132,15 @@ func getInput():
 		# exit the upgrade panel if it is shown
 		if upgrade_menu.visible:
 			toggleUpgradePanel()
+		elif inventory_ui.visible:
+			toggleInventory()
 		else:
 			togglePauseScreen()
+	
+	# if user hits tab
+	if Input.is_action_just_pressed("inventory"):
+		if !upgrade_menu.visible && !pause_screen.visible: 
+			toggleInventory()
 
 
 # update health bar

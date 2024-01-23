@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dlu086iuonjm7"]
+[gd_scene load_steps=8 format=3 uid="uid://dlu086iuonjm7"]
 
 [ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_le6ac"]
 [ext_resource type="Texture2D" uid="uid://ipmhr83c38uf" path="res://Sprites/Healthbar.png" id="1_q7lyp"]
@@ -6,6 +6,7 @@
 [ext_resource type="Theme" uid="uid://cg51xn2o6bhqx" path="res://Themes/new_theme.tres" id="2_mqy5o"]
 [ext_resource type="FontFile" uid="uid://bun53tt5c6irt" path="res://Themes/Fonts/Pixeled.ttf" id="5_el2b8"]
 [ext_resource type="PackedScene" uid="uid://0iim021blvjp" path="res://Scenes/upgrade_options.tscn" id="6_ra3gs"]
+[ext_resource type="PackedScene" uid="uid://by8kp5mp38pbm" path="res://Scenes/Inventory/InventoryUI.tscn" id="7_bqbh4"]
 
 [node name="HUD" type="CanvasLayer"]
 process_mode = 3
@@ -175,6 +176,10 @@ layout_mode = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 26
 text = "Proceed to Next Level"
+
+[node name="InventoryUI" parent="GUI" instance=ExtResource("7_bqbh4")]
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="GUI/PausedScreen/GridContainer/ResumeButtom" to="." method="_on_resume_buttom_pressed"]
 [connection signal="pressed" from="GUI/PausedScreen/GridContainer/MenuButton" to="." method="_on_menu_button_pressed"]
