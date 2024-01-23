@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cytueldhukhkk"]
+[gd_scene load_steps=16 format=3 uid="uid://cytueldhukhkk"]
 
 [ext_resource type="Script" path="res://Scripts/Level Scripts/Level_1.gd" id="1_fr4vf"]
 [ext_resource type="PackedScene" uid="uid://i50ur55hpmhl" path="res://Scenes/Enemies/enemy1.tscn" id="2_0moyg"]
@@ -11,6 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://b8h064xd04ley" path="res://Scenes/Player.tscn" id="9_nj0ff"]
 [ext_resource type="PackedScene" uid="uid://c6yn3mb0ybjoa" path="res://Scenes/Enemies/SquareEnemy.tscn" id="10_jokj1"]
 [ext_resource type="PackedScene" uid="uid://4umb6fwyg1ax" path="res://Scenes/Enemies/SemicircleEnemy.tscn" id="11_wl4xd"]
+[ext_resource type="PackedScene" uid="uid://ew1ffv43qsgu" path="res://Scenes/Enemies/invis_enemy.tscn" id="12_632by"]
+[ext_resource type="PackedScene" uid="uid://sp44a3aquuw5" path="res://Scenes/Enemies/speedy_enemy.tscn" id="13_1cm6g"]
+[ext_resource type="PackedScene" uid="uid://bvojblgathx3m" path="res://Scenes/Enemies/Diamond_Enemy.tscn" id="14_f8elv"]
+[ext_resource type="PackedScene" uid="uid://grthyrhy378i" path="res://Scenes/Enemies/Boss1.tscn" id="15_upjem"]
 
 [node name="Level_1" type="Node"]
 script = ExtResource("1_fr4vf")
@@ -66,3 +70,15 @@ position = Vector2(243, -8)
 
 [node name="SemicircleEnemy" parent="." instance=ExtResource("11_wl4xd")]
 position = Vector2(193, -147)
+
+[node name="invis enemy" parent="." instance=ExtResource("12_632by")]
+position = Vector2(-355, -116)
+
+[node name="Enemy2" parent="." instance=ExtResource("13_1cm6g")]
+position = Vector2(-261, 5)
+
+[node name="Diamond Enemy" parent="." instance=ExtResource("14_f8elv")]
+position = Vector2(-346, -37)
+
+[node name="Boss1" parent="." instance=ExtResource("15_upjem")]
+position = Vector2(-335, -221)

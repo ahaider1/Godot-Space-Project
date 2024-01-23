@@ -1,0 +1,82 @@
+[gd_scene load_steps=13 format=3 uid="uid://sp44a3aquuw5"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy Scripts/speedy_enemy.gd" id="1_i5pp2"]
+[ext_resource type="Texture2D" uid="uid://b6uiurmhbm5sv" path="res://Sprites/Enemy/SpeedyEnemyDamaged.png" id="2_2e6vn"]
+[ext_resource type="PackedScene" uid="uid://jtvlcehy0nfl" path="res://Scenes/Components/HealthComponent.tscn" id="4_lei7c"]
+[ext_resource type="PackedScene" uid="uid://1supvjtsm3dy" path="res://Scenes/Components/HitboxComponent.tscn" id="5_jxtay"]
+[ext_resource type="PackedScene" uid="uid://q70mr8ml54qa" path="res://Scenes/Components/MovementComponent.tscn" id="6_pi1os"]
+[ext_resource type="PackedScene" uid="uid://bo7etjs2vl81y" path="res://Scenes/Components/PathfindComponent.tscn" id="7_r7dog"]
+[ext_resource type="PackedScene" uid="uid://b72r5cu2ik1sv" path="res://Scenes/Components/SightComponent.tscn" id="8_lpmwb"]
+[ext_resource type="PackedScene" uid="uid://cw3w33kirfyn3" path="res://Scenes/Weapons/ThickBlaster.tscn" id="9_kescw"]
+[ext_resource type="PackedScene" uid="uid://bjrgoe3hux3j3" path="res://Scenes/Components/WeaponComponent.tscn" id="9_ptimy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6j7ua"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2e6vn")
+}],
+"loop": false,
+"name": &"Damaged",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2e6vn")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u1ams"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xky50"]
+radius = 8.0
+
+[node name="Speedy Enemy" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 11
+script = ExtResource("1_i5pp2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_6j7ua")
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.168, 0)
+scale = Vector2(0.574, 0.574)
+shape = SubResource("CircleShape2D_u1ams")
+debug_color = Color(0.992157, 0, 0.262745, 0.419608)
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_lei7c")]
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("collision_shape", "health_component") instance=ExtResource("5_jxtay")]
+collision_layer = 8
+collision_mask = 15
+collision_shape = NodePath("HitboxShape")
+health_component = NodePath("../HealthComponent")
+
+[node name="HitboxShape" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_xky50")
+
+[node name="MovementComponent" parent="." instance=ExtResource("6_pi1os")]
+friction = 200
+max_speed = 150
+acceleration = 2000
+rotation_accel = 30
+
+[node name="PathfindComponent" parent="." instance=ExtResource("7_r7dog")]
+
+[node name="SightComponent" parent="." instance=ExtResource("8_lpmwb")]
+view_distance = 100.0
+
+[node name="WeaponComponent" parent="." node_paths=PackedStringArray("weapon") instance=ExtResource("9_ptimy")]
+position = Vector2(5, 0)
+weapon = NodePath("ThickBlaster")
+
+[node name="ThickBlaster" parent="WeaponComponent" instance=ExtResource("9_kescw")]
+position = Vector2(2, 0)
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -1,9 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cusmv8udl7a6v"]
+[gd_scene load_steps=10 format=3 uid="uid://cw3w33kirfyn3"]
 
 [ext_resource type="Texture2D" uid="uid://bkfkv41p4r6lm" path="res://Sprites/Weapons/ThickBlasterFire1.png" id="1_qrg0q"]
 [ext_resource type="Script" path="res://Scripts/Weapon Scripts/ThickBlaster.gd" id="1_xura0"]
 [ext_resource type="Texture2D" uid="uid://4vesxbaa01xf" path="res://Sprites/Weapons/ThickBlasterFire2.png" id="2_3bvl4"]
-[ext_resource type="PackedScene" uid="uid://bt4ivo2qvtq4c" path="res://Scenes/Projectiles/HotBullet.tscn" id="2_w631l"]
+[ext_resource type="PackedScene" uid="uid://4daxe4vdn4wk" path="res://Scenes/Projectiles/HotBullet.tscn" id="2_w631l"]
 [ext_resource type="Texture2D" uid="uid://ce21jdmgnqys6" path="res://Sprites/Weapons/ThickBlasterFire3.png" id="3_13cxs"]
 [ext_resource type="Texture2D" uid="uid://pe1o3agr7lhy" path="res://Sprites/Weapons/ThickBlasterFire4.png" id="4_2raj5"]
 [ext_resource type="Texture2D" uid="uid://c6ksx7fgbwt3r" path="res://Sprites/Weapons/ThickBlaster.png" id="5_tfhk6"]

@@ -15,7 +15,7 @@ extends Weapon
 # the weapon sprite animator 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 
-# init the nodes that this component belongs to
+# init the nodes that thiws component belongs to
 @onready var weapon_component: WeaponComponent = get_parent()
 
 # entity could be a player or enemy

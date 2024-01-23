@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://4giin1o8hdht"]
 
-[ext_resource type="Script" path="res://Scripts/Weapon Scripts/EnergyBullet.gd" id="1_lr6f4"]
+[ext_resource type="Script" path="res://Scripts/Projectile Scripts/EnergyBullet.gd" id="1_tfeyq"]
 [ext_resource type="PackedScene" uid="uid://doxqg8fmjjfa4" path="res://Scenes/Projectiles/test_explosion.tscn" id="2_8wbc5"]
 [ext_resource type="Texture2D" uid="uid://c1thdp1i7d27n" path="res://Sprites/Projectiles/EnergyBullet.png" id="2_ynrkx"]
 
@@ -10,7 +10,7 @@ height = 6.0
 
 [node name="Energy_Bullet" type="Area2D"]
 position = Vector2(-1.5, 1.5)
-script = ExtResource("1_lr6f4")
+script = ExtResource("1_tfeyq")
 explosion = ExtResource("2_8wbc5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

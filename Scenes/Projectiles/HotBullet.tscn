@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bt4ivo2qvtq4c"]
+[gd_scene load_steps=5 format=3 uid="uid://4daxe4vdn4wk"]
 
 [ext_resource type="Texture2D" uid="uid://dq1ss6rbjelep" path="res://Sprites/Projectiles/HotBullet.png" id="1_0kbq1"]
 [ext_resource type="Script" path="res://Scripts/Projectile Scripts/HotBullet.gd" id="1_d53pf"]
@@ -9,6 +9,7 @@ radius = 1.0
 height = 6.0
 
 [node name="HotBullet" type="Area2D"]
+rotation = 1.5708
 script = ExtResource("1_d53pf")
 explosion = ExtResource("2_28igd")
 proj_damage = 60

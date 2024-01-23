@@ -44,8 +44,8 @@ func _on_area_entered(area):
 	# check if the area we have entered is a HitboxComponent
 	if area is HitboxComponent:
 		area.takeDamage(proj_damage)
+		explode()
 	
-	explode()
 
 
 
