@@ -41,7 +41,7 @@ scale = Vector2(15, 15)
 texture = ExtResource("4_gl031")
 
 [node name="Enemy" type="Sprite2D" parent="CanvasLayer/Control"]
-position = Vector2(500.181, 775.706)
+position = Vector2(657, 814)
 rotation = 1.45386
 scale = Vector2(15, 15)
 texture = ExtResource("5_e2ps7")
@@ -82,9 +82,9 @@ text = "Quit
 [node name="MovementControls" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 0
 offset_left = 170.0
-offset_top = 33.0
+offset_top = -1.0
 offset_right = 514.0
-offset_bottom = 145.0
+offset_bottom = 111.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "Movement"
@@ -101,57 +101,57 @@ text = "Shoot"
 
 [node name="InventoryControls" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 0
-offset_left = 1369.0
-offset_top = 284.0
-offset_right = 1713.0
-offset_bottom = 396.0
+offset_left = 1412.0
+offset_top = 362.0
+offset_right = 1756.0
+offset_bottom = 474.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "Inventory"
 
 [node name="EscapeControls" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 0
-offset_left = 215.0
-offset_top = 424.0
-offset_right = 415.0
-offset_bottom = 536.0
+offset_left = 224.0
+offset_top = 491.0
+offset_right = 424.0
+offset_bottom = 603.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "Pause"
 
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Control"]
 layout_mode = 0
-offset_left = 1309.0
-offset_top = 80.0
-offset_right = 1755.0
-offset_bottom = 389.0
+offset_left = 1302.0
+offset_top = 55.0
+offset_right = 1748.0
+offset_bottom = 364.0
 texture = ExtResource("6_nfqsc")
 stretch_mode = 5
 
 [node name="TextureRect3" type="TextureRect" parent="CanvasLayer/Control"]
 layout_mode = 0
-offset_left = 1281.0
-offset_top = 222.0
-offset_right = 1902.0
-offset_bottom = 633.0
+offset_left = 1324.0
+offset_top = 307.0
+offset_right = 1945.0
+offset_bottom = 718.0
 texture = ExtResource("7_yijyu")
 stretch_mode = 5
 
 [node name="TextureRect4" type="TextureRect" parent="CanvasLayer/Control"]
 layout_mode = 0
-offset_left = 58.0
-offset_top = 76.0
-offset_right = 618.0
-offset_bottom = 548.0
+offset_left = 46.0
+offset_top = 41.0
+offset_right = 606.0
+offset_bottom = 513.0
 texture = ExtResource("8_6c1rn")
 stretch_mode = 5
 
 [node name="TextureRect5" type="TextureRect" parent="CanvasLayer/Control"]
 layout_mode = 0
-offset_left = 160.0
-offset_top = 487.0
-offset_right = 504.0
-offset_bottom = 757.0
+offset_left = 162.0
+offset_top = 551.0
+offset_right = 506.0
+offset_bottom = 821.0
 texture = ExtResource("9_63cpr")
 stretch_mode = 5
 

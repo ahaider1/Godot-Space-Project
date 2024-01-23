@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://da0tjx0qlbtk7"]
+
+[ext_resource type="Script" path="res://Scripts/Level Scripts/Level_12.gd" id="1_vgah8"]
+
+[node name="Level_12" type="Node"]
+script = ExtResource("1_vgah8")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Vertical Alignment" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Death Phrase" type="Label" parent="CenterContainer/Vertical Alignment"]
+custom_minimum_size = Vector2(104, 16)
+layout_mode = 2
+text = "You Died!"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Vertical Alignment"]
+layout_mode = 2
+
+[node name="Play Again" type="Button" parent="CenterContainer/Vertical Alignment/HBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Play Again"
+
+[node name="Main Menu" type="Button" parent="CenterContainer/Vertical Alignment/HBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[connection signal="pressed" from="CenterContainer/Vertical Alignment/HBoxContainer/Play Again" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="CenterContainer/Vertical Alignment/HBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]
