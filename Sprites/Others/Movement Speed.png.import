@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv0ig24ov4880"
-path="res://.godot/imported/Heart.png-e910d028e12b6ab43422798cb5418f7e.ctex"
+uid="uid://cr7pbwqokoj2c"
+path="res://.godot/imported/Movement Speed.png-9e120d7723b9cddffb9a5e6b6aaece85.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Heart.png"
-dest_files=["res://.godot/imported/Heart.png-e910d028e12b6ab43422798cb5418f7e.ctex"]
+source_file="res://Sprites/Others/Movement Speed.png"
+dest_files=["res://.godot/imported/Movement Speed.png-9e120d7723b9cddffb9a5e6b6aaece85.ctex"]
 
 [params]
 

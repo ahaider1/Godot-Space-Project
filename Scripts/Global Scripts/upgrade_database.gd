@@ -10,8 +10,12 @@ var turret_weapon_texture: Texture2D = preload("res://Sprites/Weapons/Turret Wea
 var thicc_blaster_texture: Texture2D = preload("res://Sprites/Weapons/ThickBlaster.png")
 
 # other textures
-var heart_texture: Texture2D = preload("res://Sprites/Heart.png")
-var not_drawn_yet: Texture2D = preload("res://Sprites/notDrawnYet.png")
+var heart_texture: Texture2D = preload("res://Sprites/Others/Heart.png")
+var move_speed_texture: Texture2D = preload("res://Sprites/Others/Movement Speed.png")
+
+var not_drawn_yet: Texture2D = preload("res://Sprites/Others/notDrawnYet.png")
+
+
 
 var UPGRADES = {
 	"upgrade 1": {
@@ -23,38 +27,35 @@ var UPGRADES = {
 	
 	"upgrade 2": {
 		
-		"displayname": " Main Weapon Fire Rate Up",
-		"details" : "Doubles the fire rate of your main weapon",
+		"displayname": "Not IMP",
+		"details" : "Not IMP",
 		"texture" : not_drawn_yet
 	},
 	
 	"upgrade 3": {
 		
-		"displayname": "Equip Turret",
-		"details" : "Changes your fast firing weapon 
-		for a slower one that deals more damage",
+		"displayname": "Blaster",
+		"details" : "Adds a Blaster to your inventory",
 		"texture" : turret_weapon_texture
 		
 	
 	},
 	
 	"upgrade 4": {
-		"displayname": "Hip Fire",
-		"details" : "Add a fast firing weapon to
-		 the left side of your spaceship",
+		"displayname": "Ol' Fashioned",
+		"details" : "Add an Ol' Fashioned weapon to your inventory",
 		"texture" : test_weapon_texture
 	},
 	
 	"upgrade 5": {
 		"displayname": "Movement Speed Up",
 		"details" : "Increase your movement speed by 1.5",
-		"texture" : not_drawn_yet
+		"texture" : move_speed_texture
 	},
 	
 	"upgrade 6": {
-		"displayname": "Bulking Season",
-		"details": "Reduce movement speed significantly, 
-		but greatly increase fire rate of all weapons",
+		"displayname": "Not IMP",
+		"details": "Not IMP",
 		
 		"texture" : not_drawn_yet
 	},

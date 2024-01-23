@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://cg51xn2o6bhqx" path="res://Themes/new_theme.tres" id="1_a688w"]
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/InventorySlot.gd" id="2_emxci"]
-[ext_resource type="Texture2D" uid="uid://xfvqsf27oixn" path="res://Sprites/notDrawnYet.png" id="3_0asly"]
+[ext_resource type="Texture2D" uid="uid://xfvqsf27oixn" path="res://Sprites/Others/notDrawnYet.png" id="3_0asly"]
 
 [node name="InventorySlot" type="PanelContainer"]
 custom_minimum_size = Vector2(96, 96)
