@@ -50,10 +50,11 @@ projectile_tscn = ExtResource("8_ltboi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_44dll")
-animation = &"idle"
+animation = &"fire"
+frame = 3
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_k2i2o")
 

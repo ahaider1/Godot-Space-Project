@@ -3,7 +3,7 @@ extends MyEnemyBody
 ######### initialise variables #########
 
 @onready var anim = $AnimatedSprite2D
-
+@onready var gun=$WeaponComponent/BulletShooter/AnimatedSprite2D
 # reference to player
 @onready var player: Player = Manager.player_node
 
@@ -25,7 +25,8 @@ func decideInput():
 
 	# if player exists and we have seen them
 	if player != null && has_seen_player:
-		
+		anim.modulate.a=0;
+		gun.modulate.a=0;
 		# if we can rotate such that 
 		# we have line of sight on player
 		if sight_component.player_in_raycircle:

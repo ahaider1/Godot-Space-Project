@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://q70mr8ml54qa" path="res://Scenes/Components/MovementComponent.tscn" id="6_uolcw"]
 [ext_resource type="PackedScene" uid="uid://b72r5cu2ik1sv" path="res://Scenes/Components/SightComponent.tscn" id="7_olqud"]
 [ext_resource type="PackedScene" uid="uid://bjrgoe3hux3j3" path="res://Scenes/Components/WeaponComponent.tscn" id="8_7sy7f"]
-[ext_resource type="PackedScene" uid="uid://cusmv8udl7a6v" path="res://Scenes/Weapons/ThickBlaster.tscn" id="9_qsulk"]
+[ext_resource type="PackedScene" uid="uid://v6n5q2bg4ux6" path="res://Scenes/Weapons/TurretWeapon.tscn" id="9_ujco5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gr7vl"]
 animations = [{
@@ -71,8 +71,8 @@ shoot_distance = 150.0
 
 [node name="WeaponComponent" parent="." node_paths=PackedStringArray("weapon") instance=ExtResource("8_7sy7f")]
 position = Vector2(8, 0)
-weapon = NodePath("ThickBlaster")
+weapon = NodePath("TurretWeapon")
 
-[node name="ThickBlaster" parent="WeaponComponent" instance=ExtResource("9_qsulk")]
+[node name="TurretWeapon" parent="WeaponComponent" instance=ExtResource("9_ujco5")]
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
