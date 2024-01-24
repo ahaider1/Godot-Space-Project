@@ -177,8 +177,8 @@ func getInput():
 
 # update health bar
 func updateHealthbar():
-	healthbar.value = player.health_component.health
-	healthbar.max_value = player.health_component.max_health
+		healthbar.value = player.health_component.health
+		healthbar.max_value = player.health_component.max_health
 
 # update money bar
 func updateMoney():
@@ -208,7 +208,7 @@ func _ready():
 	# assign upgrade options
 	assignUpgradeOptions()
 	
-	updateHealthbar()
+	#updateHealthbar()
 	
 	updateMoney()
 
