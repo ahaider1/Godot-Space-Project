@@ -96,7 +96,8 @@ func addToInventory(item: InventoryItem):
 			player_node.inventory.items[i] = item
 			return
 
-
+func restore_health():
+	player_node.health_component.health = player_node.health_component.max_health
 
 ######### Godot functions #########
 
