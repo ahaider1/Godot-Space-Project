@@ -38,6 +38,7 @@ radius = 8.0
 collision_layer = 8
 collision_mask = 11
 script = ExtResource("1_i5pp2")
+enemy_worth = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = 1.5708
@@ -51,7 +52,8 @@ shape = SubResource("CircleShape2D_u1ams")
 debug_color = Color(0.992157, 0, 0.262745, 0.419608)
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_lei7c")]
-max_health = 50
+health = 40
+max_health = 40
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("collision_shape", "health_component") instance=ExtResource("5_jxtay")]
 collision_layer = 32

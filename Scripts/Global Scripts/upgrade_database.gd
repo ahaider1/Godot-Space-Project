@@ -27,7 +27,8 @@ var UPGRADES = {
 		"displayname": "Max Health Up",
 		"details" : "Increase Max Health by 100",
 		"texture" : heart_texture,
-		"disabled" : false
+		"disabled" : false,
+		"cost" : 100
 	},
 	
 	"upgrade 2": {
@@ -35,7 +36,8 @@ var UPGRADES = {
 		"displayname": "Unlock Teleport",
 		"details" : "Press F to teleport towards your cursor",
 		"texture" : teleport_icon,
-		"disabled" : false
+		"disabled" : false,
+		"cost" : 100
 	},
 	
 	"upgrade 3": {
@@ -43,7 +45,8 @@ var UPGRADES = {
 		"displayname": "Blaster",
 		"details" : "Adds a Blaster to your inventory",
 		"texture" : turret_weapon_texture,
-		"disabled" : false
+		"disabled" : false,
+		"cost" : 100
 		
 	
 	},
@@ -52,34 +55,39 @@ var UPGRADES = {
 		"displayname": "Mini Blaster",
 		"details" : "Add a Mini Blaster weapon to your inventory",
 		"texture" : test_weapon_texture,
-		"disabled" : false
+		"disabled" : false,
+		"cost" : 100
 	},
 	
 	"upgrade 5": {
 		"displayname": "Movement Speed Up",
 		"details" : "Increase your movement speed by 1.5",
 		"texture" : move_speed_texture,
-		"disabled" : false
+		"disabled" : false,
+		"cost" : 100
 	},
 	
 	"upgrade 6": {
 		"displayname": "Unlock Turret Mode",
 		"details": "Hold SHIFT to go into Turret Mode",
 		"texture" : turret_icon,
-		"disabled" : false
+		"disabled" : false,
+		"cost" : 100
 	},
 	
 	"upgrade 7": {
 		"displayname": "Thicc Blaster",
 		"details": "Adds a Thicc Blaster to your inventory",
 		"texture" : thicc_blaster_texture,
-		"disabled" : false
+		"disabled" : false,
+		"cost" : 100
 	},
 	
 	"upgrade 8": {
 		"displayname": "Energy Blaster",
 		"details": "Adds an Energy Blaster to your inventory",
 		"texture" : energy_blaster_texture,
-		"disabled" : false
+		"disabled" : false,
+		"cost" : 100
 	}
 }

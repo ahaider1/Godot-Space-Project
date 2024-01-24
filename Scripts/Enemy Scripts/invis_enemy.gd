@@ -86,7 +86,9 @@ func onDeath():
 	# make him visible on death
 	if !is_dead:
 		modulate.a = 1
-
+	
+	if !is_dead:
+		Manager.player_money += enemy_worth
 	
 	is_dead = true
 	

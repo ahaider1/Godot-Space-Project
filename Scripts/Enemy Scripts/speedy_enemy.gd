@@ -77,6 +77,9 @@ func on_can_see_player():
 
 # death
 func onDeath():
+	if !is_dead:
+		Manager.player_money += enemy_worth
+	
 	is_dead = true
 	
 	# remove colliders

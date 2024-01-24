@@ -39,6 +39,8 @@ var offered_upgrades: Array[String] = []
 # died message
 @onready var died_message: Control = $GUI/Died
 
+# allow player to purchase item
+
 
 ######### my functions #########
 

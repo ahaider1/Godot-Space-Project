@@ -21,6 +21,10 @@ const THICK_BLASTER = preload("res://Inventory Items/Items/ThickBlaster.tres")
 const ENERGY_BLASTER = preload("res://Inventory Items/Items/EnergyBlaster.tres")
 
 
+# currency system
+var player_money: int = 0
+
+
 ######### my functions #########
 
 # call deferred, because otherwise godot 4.2 complains

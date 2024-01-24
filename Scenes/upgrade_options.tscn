@@ -44,6 +44,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_ajb1s")
 theme_override_fonts/font = ExtResource("3_sp8d2")
+theme_override_font_sizes/font_size = 20
 text = "Name"
 horizontal_alignment = 1
 autowrap_mode = 3
@@ -70,3 +71,16 @@ offset_bottom = 226.0
 grow_horizontal = 2
 texture = ExtResource("4_bolht")
 stretch_mode = 5
+
+[node name="Cost" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_right = 40.0
+offset_bottom = 47.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 15
+text = "Cost"
+horizontal_alignment = 1

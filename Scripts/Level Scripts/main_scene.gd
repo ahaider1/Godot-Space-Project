@@ -41,6 +41,9 @@ func _ready():
 
 	Manager.player_node = null
 	
+	# reset money
+	Manager.player_money = 0
+	
 	# reset the player's inv
 	resetInvAndEquipment()
 

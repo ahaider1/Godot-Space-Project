@@ -9,6 +9,8 @@ class_name MyEnemyBody
 const ORANGE_ALERT_EFFECT = preload("res://Scenes/Effects/OrangeAlertEffect.tscn")
 const RED_ALERT_EFFECT = preload("res://Scenes/Effects/RedAlertEffect.tscn")
 
+# drop money on death
+@export var enemy_worth: int = 50
 
 
 # AI stuff
