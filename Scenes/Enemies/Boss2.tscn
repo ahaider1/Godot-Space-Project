@@ -1,0 +1,110 @@
+[gd_scene load_steps=16 format=3 uid="uid://dclil3kh7lwiv"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy Scripts/Boss2.gd" id="1_1xr8y"]
+[ext_resource type="Texture2D" uid="uid://dfbwgxv3ol0rr" path="res://Sprites/Enemy/Boss2Damaged.png" id="2_52h2t"]
+[ext_resource type="Texture2D" uid="uid://b1qsdggst7csp" path="res://Sprites/Enemy/Boss2.png" id="3_xnaje"]
+[ext_resource type="PackedScene" uid="uid://jtvlcehy0nfl" path="res://Scenes/Components/HealthComponent.tscn" id="4_ucec4"]
+[ext_resource type="PackedScene" uid="uid://1supvjtsm3dy" path="res://Scenes/Components/HitboxComponent.tscn" id="5_yvuwq"]
+[ext_resource type="PackedScene" uid="uid://q70mr8ml54qa" path="res://Scenes/Components/MovementComponent.tscn" id="6_u2hb6"]
+[ext_resource type="PackedScene" uid="uid://bo7etjs2vl81y" path="res://Scenes/Components/PathfindComponent.tscn" id="7_glkqb"]
+[ext_resource type="PackedScene" uid="uid://b72r5cu2ik1sv" path="res://Scenes/Components/SightComponent.tscn" id="8_uvsif"]
+[ext_resource type="PackedScene" uid="uid://bjrgoe3hux3j3" path="res://Scenes/Components/WeaponComponent.tscn" id="9_ur6ky"]
+[ext_resource type="PackedScene" uid="uid://b3ddmccpax12m" path="res://Scenes/Weapons/NotABlaster.tscn" id="10_q5qhh"]
+[ext_resource type="PackedScene" uid="uid://dimvu4wppvcxj" path="res://Scenes/Weapons/InvertedBlaster.tscn" id="11_kk7ei"]
+[ext_resource type="PackedScene" uid="uid://cqeg556568csj" path="res://Scenes/Weapons/InvertedHeavy.tscn" id="12_t3cgr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_px0s5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_52h2t")
+}],
+"loop": false,
+"name": &"Damaged",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_xnaje")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tgnr7"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7xh0t"]
+radius = 7.0
+
+[node name="Boss2" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 11
+script = ExtResource("1_1xr8y")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_px0s5")
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_tgnr7")
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_ucec4")]
+health = 1000
+max_health = 1000
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("collision_shape", "health_component") instance=ExtResource("5_yvuwq")]
+collision_layer = 32
+collision_mask = 0
+collision_shape = NodePath("CollisionShape2D")
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(-2, 0)
+shape = SubResource("CircleShape2D_7xh0t")
+
+[node name="MovementComponent" parent="." instance=ExtResource("6_u2hb6")]
+max_speed = 140
+max_rotation_speed = 5.0
+rotation_accel = 30.0
+aim_accuracy_angle = 5
+
+[node name="PathfindComponent" parent="." instance=ExtResource("7_glkqb")]
+
+[node name="SightComponent" parent="." instance=ExtResource("8_uvsif")]
+shoot_distance = 120.0
+
+[node name="WeaponComponent" parent="." node_paths=PackedStringArray("weapon") instance=ExtResource("9_ur6ky")]
+position = Vector2(6, 0)
+weapon = NodePath("NotABlaster")
+
+[node name="NotABlaster" parent="WeaponComponent" instance=ExtResource("10_q5qhh")]
+
+[node name="WeaponComponent2" parent="." node_paths=PackedStringArray("weapon") instance=ExtResource("9_ur6ky")]
+position = Vector2(3, -4)
+weapon = NodePath("InvertedBlaster")
+
+[node name="InvertedBlaster" parent="WeaponComponent2" instance=ExtResource("11_kk7ei")]
+
+[node name="WeaponComponent3" parent="." node_paths=PackedStringArray("weapon") instance=ExtResource("9_ur6ky")]
+position = Vector2(3, 4)
+weapon = NodePath("InvertedHeavy")
+
+[node name="InvertedHeavy" parent="WeaponComponent3" instance=ExtResource("12_t3cgr")]
+
+[node name="WeaponComponent4" parent="." node_paths=PackedStringArray("weapon") instance=ExtResource("9_ur6ky")]
+position = Vector2(3, -4)
+weapon = NodePath("InvertedHeavy")
+
+[node name="InvertedHeavy" parent="WeaponComponent4" instance=ExtResource("12_t3cgr")]
+
+[node name="WeaponComponent5" parent="." node_paths=PackedStringArray("weapon") instance=ExtResource("9_ur6ky")]
+position = Vector2(3, 4)
+weapon = NodePath("InvertedBlaster")
+
+[node name="InvertedBlaster" parent="WeaponComponent5" instance=ExtResource("11_kk7ei")]
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

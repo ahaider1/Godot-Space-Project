@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cytueldhukhkk"]
+[gd_scene load_steps=25 format=3 uid="uid://cytueldhukhkk"]
 
 [ext_resource type="Script" path="res://Scripts/Level Scripts/Level_1.gd" id="1_fr4vf"]
 [ext_resource type="TileSet" uid="uid://dcmulqhgkngjh" path="res://OurTileset.tres" id="3_re42b"]
@@ -22,6 +22,8 @@
 [ext_resource type="PackedScene" uid="uid://d2wmkttrqfts2" path="res://Scenes/Enemies/InvertedSquare.tscn" id="20_cbx8v"]
 [ext_resource type="PackedScene" uid="uid://cj3ivgug06cr8" path="res://Scenes/Enemies/InvertedTurret.tscn" id="21_3p8j5"]
 [ext_resource type="PackedScene" uid="uid://dq1d5ip10tnn5" path="res://Scenes/Enemies/MeleeEnemy.tscn" id="22_11tg8"]
+[ext_resource type="PackedScene" uid="uid://d0f7f8m6p5jw1" path="res://Scenes/Enemies/Boss2Shell.tscn" id="23_yjct5"]
+[ext_resource type="PackedScene" uid="uid://dclil3kh7lwiv" path="res://Scenes/Enemies/Boss2.tscn" id="24_2fe6r"]
 
 [node name="Level_1" type="Node"]
 script = ExtResource("1_fr4vf")
@@ -155,3 +157,8 @@ position = Vector2(-335, -180)
 
 [node name="MeleeEnemy" parent="." instance=ExtResource("22_11tg8")]
 position = Vector2(-436, 4)
+
+[node name="Boss2Shell" parent="." instance=ExtResource("23_yjct5")]
+position = Vector2(-334, -35)
+
+[node name="Boss2" parent="." instance=ExtResource("24_2fe6r")]
