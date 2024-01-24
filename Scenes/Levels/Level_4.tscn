@@ -49,11 +49,11 @@ position = Vector2(330, 76)
 
 [node name="Enemy4" parent="." instance=ExtResource("7_s32ja")]
 position = Vector2(457, 355)
-rotation = 0.558505
+rotation = 1.25315
 
 [node name="Enemy6" parent="." instance=ExtResource("7_s32ja")]
 position = Vector2(274, 364)
-rotation = -0.830777
+rotation = 5.77006
 
 [node name="Enemy7" parent="." instance=ExtResource("7_s32ja")]
 position = Vector2(229, 417)

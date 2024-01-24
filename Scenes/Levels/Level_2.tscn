@@ -29,16 +29,12 @@ position = Vector2(757, -1)
 position = Vector2(288, 151)
 rotation = 2.04204
 
-[node name="RedEnemyTurret" parent="." instance=ExtResource("6_k4wvw")]
-position = Vector2(702, 13)
-rotation = 3.14159
-
 [node name="RedEnemyTurret3" parent="." instance=ExtResource("6_k4wvw")]
 position = Vector2(564, -1)
 rotation = 4.71239
 
 [node name="RedEnemyTurret2" parent="." instance=ExtResource("6_k4wvw")]
-position = Vector2(702, -13)
+position = Vector2(714, -1)
 rotation = 3.14159
 
 [node name="HUD" parent="." instance=ExtResource("5_glcbc")]
