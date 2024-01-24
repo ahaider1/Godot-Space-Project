@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://bk0ej1bs4de6k"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory Scripts/InventoryItem.gd" id="1_1ckqu"]
+[ext_resource type="Texture2D" uid="uid://cbvbxahy718pu" path="res://Sprites/Weapons/NotABlaster.png" id="2_6p5k2"]
+[ext_resource type="PackedScene" uid="uid://b3ddmccpax12m" path="res://Scenes/Weapons/NotABlaster.tscn" id="3_lmuan"]
+
+[resource]
+script = ExtResource("1_1ckqu")
+name = "NotABlaster"
+texture = ExtResource("2_6p5k2")
+weapon = ExtResource("3_lmuan")

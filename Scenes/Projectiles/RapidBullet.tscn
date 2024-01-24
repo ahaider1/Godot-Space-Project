@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1r7ma1urmvn0"]
+
+[ext_resource type="Script" path="res://Scripts/Projectile Scripts/RapidBullet.gd" id="1_1qytr"]
+[ext_resource type="PackedScene" uid="uid://doxqg8fmjjfa4" path="res://Scenes/Projectiles/test_explosion.tscn" id="2_1e3wc"]
+[ext_resource type="Texture2D" uid="uid://cr58fwmn8orfe" path="res://Sprites/Projectiles/RapidBullet.png" id="2_f2mb1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vaj6"]
+size = Vector2(2, 2)
+
+[node name="RapidBullet" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_1qytr")
+explosion = ExtResource("2_1e3wc")
+proj_damage = 10
+proj_range = 150.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.5, 0.5)
+texture = ExtResource("2_f2mb1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1vaj6")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

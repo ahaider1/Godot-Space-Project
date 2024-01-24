@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://g6loim3upt57"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory Scripts/InventoryItem.gd" id="1_8rq50"]
+[ext_resource type="Texture2D" uid="uid://cnr5j8a4ynny6" path="res://Sprites/Weapons/InvertedHeavy.png" id="2_7js8v"]
+[ext_resource type="PackedScene" uid="uid://cqeg556568csj" path="res://Scenes/Weapons/InvertedHeavy.tscn" id="3_qnu2m"]
+
+[resource]
+script = ExtResource("1_8rq50")
+name = "InvertedHeavy"
+texture = ExtResource("2_7js8v")
+weapon = ExtResource("3_qnu2m")

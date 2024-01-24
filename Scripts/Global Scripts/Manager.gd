@@ -19,7 +19,13 @@ const BULLET_SHOOTER = preload("res://Inventory Items/Items/BulletShooter.tres")
 const TURRET_WEAPON = preload("res://Inventory Items/Items/TurretWeapon.tres")
 const THICK_BLASTER = preload("res://Inventory Items/Items/ThickBlaster.tres")
 const ENERGY_BLASTER = preload("res://Inventory Items/Items/EnergyBlaster.tres")
+const RAY_BLASTER = preload("res://Inventory Items/Items/RayBlaster.tres")
 
+const FLAME_BLASTER = preload("res://Inventory Items/Items/FlameBlaster.tres")
+const INVERTED_BLASTER = preload("res://Inventory Items/Items/InvertedBlaster.tres")
+const INVERTED_HEAVY = preload("res://Inventory Items/Items/InvertedHeavy.tres")
+const NOT_A_BLASTER = preload("res://Inventory Items/Items/NotABlaster.tres")
+const RAPID_BLASTER = preload("res://Inventory Items/Items/RapidBlaster.tres")
 
 # currency system
 var player_money: int = 0
@@ -90,6 +96,25 @@ func upgradePlayer(upgrade):
 		
 		"upgrade 8":
 			addToInventory(ENERGY_BLASTER)
+		
+		"upgrade 9":
+			addToInventory(RAY_BLASTER)
+		
+		"upgrade 10":
+			addToInventory(FLAME_BLASTER)
+		
+		"upgrade 11":
+			addToInventory(INVERTED_BLASTER)
+		
+		"upgrade 12":
+			addToInventory(INVERTED_HEAVY)
+		
+		"upgrade 13":
+			addToInventory(NOT_A_BLASTER)
+		
+		"upgrade 14":
+			addToInventory(RAPID_BLASTER)
+
 		
 		
 		# switch statement default (else):

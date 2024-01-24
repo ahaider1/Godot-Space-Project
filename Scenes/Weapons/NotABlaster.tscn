@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3ddmccpax12m"]
+
+[ext_resource type="Script" path="res://Scripts/Weapon Scripts/NotABlaster.gd" id="1_my5d1"]
+[ext_resource type="Texture2D" uid="uid://cbvbxahy718pu" path="res://Sprites/Weapons/NotABlaster.png" id="2_h61lw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ryeei"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_h61lw")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7n1t1"]
+size = Vector2(2.00003, 6.99999)
+
+[node name="NotABlaster" type="Area2D"]
+rotation = 1.5708
+script = ExtResource("1_my5d1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.448e-05, -4)
+sprite_frames = SubResource("SpriteFrames_ryeei")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.81e-05, -5)
+shape = SubResource("RectangleShape2D_7n1t1")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

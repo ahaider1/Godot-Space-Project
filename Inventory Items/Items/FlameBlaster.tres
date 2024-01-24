@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://derv4mp1vkxbt"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory Scripts/InventoryItem.gd" id="1_1evdg"]
+[ext_resource type="Texture2D" uid="uid://pvjjfp7msu7w" path="res://Sprites/Weapons/FlameBlaster.png" id="2_s0qd2"]
+[ext_resource type="PackedScene" uid="uid://b17q7jsbfehls" path="res://Scenes/Weapons/FlameBlaster.tscn" id="3_j5t4v"]
+
+[resource]
+script = ExtResource("1_1evdg")
+name = "FlameBlaster"
+texture = ExtResource("2_s0qd2")
+weapon = ExtResource("3_j5t4v")

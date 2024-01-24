@@ -1,0 +1,80 @@
+[gd_scene load_steps=14 format=3 uid="uid://sinkpvjufnfj"]
+
+[ext_resource type="Texture2D" uid="uid://dlvwuoqqkkoyp" path="res://Sprites/Enemy/FireEnemyDamaged.png" id="1_c2bgf"]
+[ext_resource type="Script" path="res://Scripts/FireEnemy.gd" id="1_exr8v"]
+[ext_resource type="Texture2D" uid="uid://bhm02c0bvpatm" path="res://Sprites/Enemy/FireEnemy.png" id="2_kkqul"]
+[ext_resource type="PackedScene" uid="uid://jtvlcehy0nfl" path="res://Scenes/Components/HealthComponent.tscn" id="3_2wvip"]
+[ext_resource type="PackedScene" uid="uid://1supvjtsm3dy" path="res://Scenes/Components/HitboxComponent.tscn" id="4_g3ych"]
+[ext_resource type="PackedScene" uid="uid://q70mr8ml54qa" path="res://Scenes/Components/MovementComponent.tscn" id="5_3hmh6"]
+[ext_resource type="PackedScene" uid="uid://b72r5cu2ik1sv" path="res://Scenes/Components/SightComponent.tscn" id="6_w0m3q"]
+[ext_resource type="PackedScene" uid="uid://bo7etjs2vl81y" path="res://Scenes/Components/PathfindComponent.tscn" id="7_grdc1"]
+[ext_resource type="PackedScene" uid="uid://bjrgoe3hux3j3" path="res://Scenes/Components/WeaponComponent.tscn" id="9_3thj0"]
+[ext_resource type="PackedScene" uid="uid://b17q7jsbfehls" path="res://Scenes/Weapons/FlameBlaster.tscn" id="10_ykkjk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gfpd2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_c2bgf")
+}],
+"loop": false,
+"name": &"Damaged",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_kkqul")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8w3e"]
+size = Vector2(9, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_65l3n"]
+size = Vector2(11, 10)
+
+[node name="FireEnemy" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 11
+script = ExtResource("1_exr8v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_gfpd2")
+animation = &"Damaged"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_u8w3e")
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_2wvip")]
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("collision_shape", "health_component") instance=ExtResource("4_g3ych")]
+collision_layer = 32
+collision_mask = 0
+collision_shape = NodePath("CollisionShape2D")
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_65l3n")
+
+[node name="MovementComponent" parent="." instance=ExtResource("5_3hmh6")]
+max_rotation_speed = 5.0
+aim_accuracy_angle = 20
+
+[node name="SightComponent" parent="." instance=ExtResource("6_w0m3q")]
+view_distance = 100.0
+
+[node name="PathfindComponent" parent="." instance=ExtResource("7_grdc1")]
+
+[node name="WeaponComponent" parent="." node_paths=PackedStringArray("weapon") instance=ExtResource("9_3thj0")]
+position = Vector2(7, 0)
+weapon = NodePath("FlameBlaster")
+
+[node name="FlameBlaster" parent="WeaponComponent" instance=ExtResource("10_ykkjk")]
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

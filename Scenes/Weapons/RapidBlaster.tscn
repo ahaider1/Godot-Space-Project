@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://dj86gogmclvs5"]
+
+[ext_resource type="Script" path="res://Scripts/Weapon Scripts/RapidBlaster.gd" id="1_blk8h"]
+[ext_resource type="Texture2D" uid="uid://ckcrqc0iqfdcq" path="res://Sprites/Weapons/RapidBlaster.png" id="2_473tk"]
+[ext_resource type="Texture2D" uid="uid://bvqfglo1tfo6x" path="res://Sprites/Weapons/RapidBlasterFire1.png" id="2_c4egb"]
+[ext_resource type="PackedScene" uid="uid://d1r7ma1urmvn0" path="res://Scenes/Projectiles/RapidBullet.tscn" id="2_pibk8"]
+[ext_resource type="Texture2D" uid="uid://dvnefnnike5cm" path="res://Sprites/Weapons/RapidBlasterFire2.png" id="3_vccwb"]
+[ext_resource type="Texture2D" uid="uid://cahr4v3f4jwq5" path="res://Sprites/Weapons/RapidBlasterFire3.png" id="4_njw3h"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bdhr6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_c4egb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vccwb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_njw3h")
+}],
+"loop": false,
+"name": &"fire",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_473tk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3p10s"]
+
+[node name="RapidBlaster" type="Area2D"]
+rotation = 1.5708
+script = ExtResource("1_blk8h")
+fire_rate = 0.05
+accuracy_degrees = 10.0
+projectile_tscn = ExtResource("2_pibk8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.086e-05, -3)
+sprite_frames = SubResource("SpriteFrames_bdhr6")
+animation = &"fire"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_3p10s")
+
+[node name="ProjSpawnPt" type="Marker2D" parent="."]
+position = Vector2(-2.62268e-07, -6)
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cytueldhukhkk"]
+[gd_scene load_steps=23 format=3 uid="uid://cytueldhukhkk"]
 
 [ext_resource type="Script" path="res://Scripts/Level Scripts/Level_1.gd" id="1_fr4vf"]
 [ext_resource type="TileSet" uid="uid://dcmulqhgkngjh" path="res://OurTileset.tres" id="3_re42b"]
@@ -17,6 +17,11 @@
 [ext_resource type="PackedScene" uid="uid://3yexhhct74iq" path="res://Scenes/Enemies/InvertedEnemy.tscn" id="13_2a6c0"]
 [ext_resource type="PackedScene" uid="uid://i50ur55hpmhl" path="res://Scenes/Enemies/enemy1.tscn" id="15_x1572"]
 [ext_resource type="PackedScene" uid="uid://c6yn3mb0ybjoa" path="res://Scenes/Enemies/SquareEnemy.tscn" id="16_s3udg"]
+[ext_resource type="PackedScene" uid="uid://sinkpvjufnfj" path="res://Scenes/Enemies/FireEnemy.tscn" id="18_urcus"]
+[ext_resource type="PackedScene" uid="uid://5lcw7msve10u" path="res://Scenes/Enemies/HeavyEnemy.tscn" id="19_4eqam"]
+[ext_resource type="PackedScene" uid="uid://d2wmkttrqfts2" path="res://Scenes/Enemies/InvertedSquare.tscn" id="20_cbx8v"]
+[ext_resource type="PackedScene" uid="uid://cj3ivgug06cr8" path="res://Scenes/Enemies/InvertedTurret.tscn" id="21_3p8j5"]
+[ext_resource type="PackedScene" uid="uid://dq1d5ip10tnn5" path="res://Scenes/Enemies/MeleeEnemy.tscn" id="22_11tg8"]
 
 [node name="Level_1" type="Node"]
 script = ExtResource("1_fr4vf")
@@ -116,13 +121,13 @@ autowrap_mode = 3
 position = Vector2(-301, -168)
 
 [node name="SemicircleEnemy" parent="." instance=ExtResource("11_cow7k")]
-position = Vector2(-320, -21)
+position = Vector2(-239, -146)
 
 [node name="Speedy Enemy" parent="." instance=ExtResource("12_cff13")]
 position = Vector2(-260, -155)
 
 [node name="InvertedEnemy" parent="." instance=ExtResource("13_2a6c0")]
-position = Vector2(-289, -96)
+position = Vector2(-247, -180)
 
 [node name="Diamond Enemy" parent="." instance=ExtResource("10_2k4aa")]
 position = Vector2(-273, -122)
@@ -135,3 +140,18 @@ position = Vector2(-248, -126)
 
 [node name="Boss1" parent="." instance=ExtResource("10_uc1wq")]
 position = Vector2(-332, -146)
+
+[node name="FireEnemy" parent="." instance=ExtResource("18_urcus")]
+position = Vector2(-337, -107)
+
+[node name="HeavyEnemy" parent="." instance=ExtResource("19_4eqam")]
+position = Vector2(-269, -180)
+
+[node name="InvertedSquare" parent="." instance=ExtResource("20_cbx8v")]
+position = Vector2(-254, -108)
+
+[node name="InvertedTurret" parent="." instance=ExtResource("21_3p8j5")]
+position = Vector2(-335, -180)
+
+[node name="MeleeEnemy" parent="." instance=ExtResource("22_11tg8")]
+position = Vector2(-436, 4)

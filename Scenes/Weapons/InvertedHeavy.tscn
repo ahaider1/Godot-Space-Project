@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3 uid="uid://cqeg556568csj"]
+
+[ext_resource type="Script" path="res://Scripts/Weapon Scripts/InvertedHeavy.gd" id="1_gxedd"]
+[ext_resource type="Texture2D" uid="uid://cnr5j8a4ynny6" path="res://Sprites/Weapons/InvertedHeavy.png" id="2_j4pbr"]
+[ext_resource type="Texture2D" uid="uid://cfbsaapab1wua" path="res://Sprites/Weapons/InvertedHeavyFire1.png" id="2_sgcch"]
+[ext_resource type="PackedScene" uid="uid://dnn63gnmkp8h1" path="res://Scenes/Projectiles/InvertedHeavyBullet.tscn" id="2_wt41t"]
+[ext_resource type="Texture2D" uid="uid://0nd5kn6t8bhf" path="res://Sprites/Weapons/InvertedHeavyFire2.png" id="3_1ediy"]
+[ext_resource type="Texture2D" uid="uid://bvylx85pyfs8m" path="res://Sprites/Weapons/InvertedHeavyFire3.png" id="4_pq5wx"]
+[ext_resource type="Texture2D" uid="uid://b51o3c660by7s" path="res://Sprites/Weapons/InvertedHeavyFire4.png" id="5_t6gsf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6cpdj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_sgcch")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1ediy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pq5wx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_t6gsf")
+}],
+"loop": false,
+"name": &"fire",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_j4pbr")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bofnp"]
+
+[node name="InvertedHeavy" type="Area2D"]
+rotation = 1.5708
+script = ExtResource("1_gxedd")
+fire_rate = 0.7
+projectile_tscn = ExtResource("2_wt41t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6cpdj")
+animation = &"fire"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_bofnp")
+
+[node name="ProjSpawnPt" type="Marker2D" parent="."]
+position = Vector2(-1.74846e-07, -4)
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://mw2lrw476in1"]
+
+[ext_resource type="Script" path="res://Scripts/Projectile Scripts/FlameBullet.gd" id="1_i757v"]
+[ext_resource type="Texture2D" uid="uid://bveb7s8flgp0k" path="res://Sprites/Projectiles/FlameBullet.png" id="2_pjilj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mebxl"]
+size = Vector2(4, 4)
+
+[node name="FlameBullet" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_i757v")
+proj_damage = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_pjilj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mebxl")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -13,7 +13,7 @@ class_name PathfindComponent
 # the vector direction of where the nav_agent is currently pointing at
 @export var current_dir: Vector2
 
-# parent should be an enemy17
+# parent should be an enemy
 @onready var entity: MyEnemyBody = get_parent()
 
 

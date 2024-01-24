@@ -9,6 +9,16 @@ var test_weapon_texture: Texture2D = preload("res://Sprites/Weapons/test weapon.
 var turret_weapon_texture: Texture2D = preload("res://Sprites/Weapons/Turret Weapon.png")
 var thicc_blaster_texture: Texture2D = preload("res://Sprites/Weapons/ThickBlaster.png")
 var energy_blaster_texture: Texture2D = preload("res://Sprites/Weapons/EnergyBlaster.png")
+var raygun_texture: Texture2D = preload("res://Sprites/Weapons/Raygun.png")
+
+const FLAME_BLASTER = preload("res://Sprites/Weapons/FlameBlaster.png")
+const INVERTED_BLASTER = preload("res://Sprites/Weapons/InvertedBlaster.png")
+const INVERTED_HEAVY = preload("res://Sprites/Weapons/InvertedHeavy.png")
+const NOT_A_BLASTER = preload("res://Sprites/Weapons/NotABlaster.png")
+const RAPID_BLASTER = preload("res://Sprites/Weapons/RapidBlaster.png")
+
+
+
 
 # other textures
 var heart_texture: Texture2D = preload("res://Sprites/Others/Heart.png")
@@ -89,5 +99,54 @@ var UPGRADES = {
 		"texture" : energy_blaster_texture,
 		"disabled" : false,
 		"cost" : 100
+	},
+	
+	"upgrade 9": {
+		"displayname": "Ray Blaster",
+		"details": "Adds a Ray Blaster to your inventory",
+		"texture" : raygun_texture,
+		"disabled" : false,
+		"cost" : 100
+	},
+	
+	"upgrade 10": {
+		"displayname": "Flame Blaster",
+		"details": "Adds a Flame Blaster to your inventory",
+		"texture" : FLAME_BLASTER,
+		"disabled" : false,
+		"cost" : 100
+	},
+	
+	"upgrade 11": {
+		"displayname": "Inverted Blaster",
+		"details": "Adds an Inverted Blaster to your inventory",
+		"texture" : INVERTED_BLASTER,
+		"disabled" : false,
+		"cost" : 100
+	},
+	
+	"upgrade 12": {
+		"displayname": "Inverted Heavy Blaster",
+		"details": "Adds an Inverted Heavy Blaster to your inventory",
+		"texture" : INVERTED_HEAVY,
+		"disabled" : false,
+		"cost" : 100
+	},
+	
+	"upgrade 13": {
+		"displayname": "Not A Blaster",
+		"details": "Does not add a Blaster to your inventory",
+		"texture" : NOT_A_BLASTER,
+		"disabled" : false,
+		"cost" : 100
+	},
+	
+	"upgrade 14": {
+		"displayname": "Rapid Blaster",
+		"details": "Adds a Rapid Blaster to your inventory",
+		"texture" : RAPID_BLASTER,
+		"disabled" : false,
+		"cost" : 100
 	}
+	
 }

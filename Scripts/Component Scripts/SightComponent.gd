@@ -129,6 +129,8 @@ func _on_optimise_raycircle_body_entered(body):
 	if body.is_in_group("player"):
 		player_within_radius = true
 		sweepForPlayer()
+		
+		
 
 func _on_optimise_raycircle_body_exited(body):
 	if body.is_in_group("player"):

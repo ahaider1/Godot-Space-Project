@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://bbidx8mwptiww"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory Scripts/InventoryItem.gd" id="1_vdtya"]
+[ext_resource type="Texture2D" uid="uid://dv1brby2k7tgn" path="res://Sprites/Weapons/InvertedBlaster.png" id="2_mxcc4"]
+[ext_resource type="PackedScene" uid="uid://dimvu4wppvcxj" path="res://Scenes/Weapons/InvertedBlaster.tscn" id="3_givin"]
+
+[resource]
+script = ExtResource("1_vdtya")
+name = "InvertedBlaster"
+texture = ExtResource("2_mxcc4")
+weapon = ExtResource("3_givin")
