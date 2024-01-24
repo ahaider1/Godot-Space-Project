@@ -78,6 +78,14 @@ func toggleUpgradePanel():
 	# upgrade screen is already visible
 	if upgrade_menu.visible:
 		upgrade_menu.hide()
+		# unpress all the buttons
+		upgrade_option_1.button_pressed = false
+		upgrade_option_2.button_pressed = false
+		upgrade_option_3.button_pressed = false
+		
+		# unselect upgrade
+		selected_upgrade_option = -1
+		
 		resumeGame()
 	
 	# otherwise, show upgrade screen and pause

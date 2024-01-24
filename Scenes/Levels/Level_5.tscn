@@ -1,11 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bgfa4sj2rmbko"]
+[gd_scene load_steps=10 format=3 uid="uid://cjp2xsdway1qc"]
 
 [ext_resource type="TileSet" uid="uid://dcmulqhgkngjh" path="res://OurTileset.tres" id="1_kpb7s"]
 [ext_resource type="Script" path="res://Scripts/Level Scripts/Level_5.gd" id="1_sc7rv"]
 [ext_resource type="PackedScene" uid="uid://qpmoiutjx3ki" path="res://Scenes/Levels/LevelObjective.tscn" id="2_ql62u"]
 [ext_resource type="PackedScene" uid="uid://dlu086iuonjm7" path="res://Scenes/HUD.tscn" id="3_oreq4"]
 [ext_resource type="PackedScene" uid="uid://c6yn3mb0ybjoa" path="res://Scenes/Enemies/SquareEnemy.tscn" id="5_ami7a"]
-[ext_resource type="PackedScene" uid="uid://vjnniriny818" path="res://Scenes/Levels/HealthUp.tscn" id="8_7q3sx"]
+[ext_resource type="PackedScene" uid="uid://yr51kur28gux" path="res://Scenes/Levels/HealthUp.tscn" id="8_7q3sx"]
 [ext_resource type="PackedScene" uid="uid://ew1ffv43qsgu" path="res://Scenes/Enemies/invis_enemy.tscn" id="9_hnnrt"]
 [ext_resource type="PackedScene" uid="uid://i50ur55hpmhl" path="res://Scenes/Enemies/enemy1.tscn" id="9_pwljf"]
 [ext_resource type="PackedScene" uid="uid://crci032yq4fo6" path="res://Scenes/Enemies/RedEnemyTurret.tscn" id="10_tbcta"]
@@ -24,7 +24,9 @@ position = Vector2(1196, 907)
 rotation = 0.115192
 
 [node name="HUD" parent="." instance=ExtResource("3_oreq4")]
-visible = false
+
+[node name="Healthup" parent="." instance=ExtResource("8_7q3sx")]
+position = Vector2(393, -75)
 
 [node name="SquareEnemy" parent="." instance=ExtResource("5_ami7a")]
 position = Vector2(334, 3)
@@ -37,9 +39,6 @@ rotation = 3.14159
 [node name="SquareEnemy3" parent="." instance=ExtResource("5_ami7a")]
 position = Vector2(331, -56)
 rotation = 3.14159
-
-[node name="Healthup" parent="." instance=ExtResource("8_7q3sx")]
-position = Vector2(393, -75)
 
 [node name="invis enemy" parent="." instance=ExtResource("9_hnnrt")]
 position = Vector2(333, 505)

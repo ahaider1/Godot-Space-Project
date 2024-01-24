@@ -7,7 +7,7 @@ signal pathfind_signal
 
 # how frequently we want the pathfinding alg to run
 # for all entities with pathfinding
-@export var pathfind_freq: float = 0.1
+@export var pathfind_freq: float = 0.5
 
 var pathfind_timer: Timer
 
