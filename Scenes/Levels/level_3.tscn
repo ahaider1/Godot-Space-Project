@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://da0tjx0qlbtk7"]
+[gd_scene load_steps=11 format=3 uid="uid://dattwuhay3d1c"]
 
 [ext_resource type="Script" path="res://Scripts/Level Scripts/Level_3.gd" id="1_3lc4o"]
 [ext_resource type="TileSet" uid="uid://dcmulqhgkngjh" path="res://OurTileset.tres" id="1_y1j3e"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://i50ur55hpmhl" path="res://Scenes/Enemies/enemy1.tscn" id="6_5m2vi"]
 [ext_resource type="PackedScene" uid="uid://sp44a3aquuw5" path="res://Scenes/Enemies/speedy_enemy.tscn" id="7_edm21"]
 [ext_resource type="Texture2D" uid="uid://ipmhr83c38uf" path="res://Sprites/Healthbar.png" id="9_3bubj"]
-[ext_resource type="PackedScene" uid="uid://vjnniriny818" path="res://Scenes/Levels/HealthUp.tscn" id="10_soxlp"]
+[ext_resource type="PackedScene" uid="uid://yr51kur28gux" path="res://Scenes/Levels/HealthUp.tscn" id="10_soxlp"]
 [ext_resource type="Texture2D" uid="uid://bjmje8nyb6gkl" path="res://Sprites/Healthbar2.png" id="10_xtb42"]
 
 [node name="Level_3" type="Node"]

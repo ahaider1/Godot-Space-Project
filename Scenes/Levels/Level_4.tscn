@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c770dh1xgxkqs"]
+[gd_scene load_steps=10 format=3 uid="uid://bh0l1afens1gv"]
 
 [ext_resource type="TileSet" uid="uid://dcmulqhgkngjh" path="res://OurTileset.tres" id="1_6eabm"]
 [ext_resource type="Script" path="res://Scripts/Level Scripts/Level_4.gd" id="1_x0yo7"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://i50ur55hpmhl" path="res://Scenes/Enemies/enemy1.tscn" id="7_s32ja"]
 [ext_resource type="PackedScene" uid="uid://sp44a3aquuw5" path="res://Scenes/Enemies/speedy_enemy.tscn" id="8_arj7p"]
 [ext_resource type="PackedScene" uid="uid://crci032yq4fo6" path="res://Scenes/Enemies/RedEnemyTurret.tscn" id="9_fjrpg"]
-[ext_resource type="PackedScene" uid="uid://vjnniriny818" path="res://Scenes/Levels/HealthUp.tscn" id="10_tym44"]
+[ext_resource type="PackedScene" uid="uid://yr51kur28gux" path="res://Scenes/Levels/HealthUp.tscn" id="10_tym44"]
 
 [node name="Level_4" type="Node"]
 script = ExtResource("1_x0yo7")

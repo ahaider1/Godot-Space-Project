@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://vjnniriny818"]
+[gd_scene load_steps=6 format=3 uid="uid://yr51kur28gux"]
 
 [ext_resource type="Script" path="res://Scripts/HealthUp.gd" id="1_yuin1"]
-[ext_resource type="Texture2D" uid="uid://s181umof6t3q" path="res://Sprites/Others/Level Objective1.png" id="2_llveg"]
-[ext_resource type="Texture2D" uid="uid://bpgsnya5khbrn" path="res://Sprites/Others/Level Objective2.png" id="3_d8yee"]
+[ext_resource type="Texture2D" uid="uid://dxx7elyornxl6" path="res://Sprites/Others/Level Heal1.png" id="2_kkruk"]
+[ext_resource type="Texture2D" uid="uid://baw4x56ouxrop" path="res://Sprites/Others/Level Heal2.png" id="3_yqbaw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fr5ll"]
 radius = 7.0
@@ -11,10 +11,10 @@ radius = 7.0
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_llveg")
+"texture": ExtResource("2_kkruk")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_d8yee")
+"texture": ExtResource("3_yqbaw")
 }],
 "loop": true,
 "name": &"End",
