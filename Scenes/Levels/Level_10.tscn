@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://ce60ndcgnyla5"]
+[gd_scene load_steps=9 format=3 uid="uid://ce60ndcgnyla5"]
 
 [ext_resource type="TileSet" uid="uid://dcmulqhgkngjh" path="res://OurTileset.tres" id="1_mcj5k"]
 [ext_resource type="Script" path="res://Scripts/Level Scripts/Level_10.gd" id="1_ytxyf"]
 [ext_resource type="PackedScene" uid="uid://qpmoiutjx3ki" path="res://Scenes/Levels/LevelObjective.tscn" id="2_h5n1k"]
 [ext_resource type="PackedScene" uid="uid://dlu086iuonjm7" path="res://Scenes/HUD.tscn" id="3_o1vus"]
-[ext_resource type="PackedScene" uid="uid://i50ur55hpmhl" path="res://Scenes/Enemies/enemy1.tscn" id="5_1u3r8"]
 [ext_resource type="PackedScene" uid="uid://3yexhhct74iq" path="res://Scenes/Enemies/InvertedEnemy.tscn" id="6_465j8"]
+[ext_resource type="PackedScene" path="res://Scenes/Enemies/InvertedSquare.tscn" id="7_7dag5"]
 [ext_resource type="PackedScene" uid="uid://yr51kur28gux" path="res://Scenes/Levels/HealthUp.tscn" id="7_vfxse"]
+[ext_resource type="PackedScene" path="res://Scenes/Enemies/InvertedTurret.tscn" id="8_oefu4"]
 
 [node name="Level_10" type="Node"]
 script = ExtResource("1_ytxyf")
@@ -22,45 +23,101 @@ position = Vector2(-1074, -658)
 
 [node name="HUD" parent="." instance=ExtResource("3_o1vus")]
 
-[node name="InvertedSquare1" parent="." instance=ExtResource("5_1u3r8")]
-position = Vector2(-204, 55)
-rotation = -0.637045
-
-[node name="InvertedSquare4" parent="." instance=ExtResource("5_1u3r8")]
-position = Vector2(-206, -77)
-rotation = -0.0680678
-
-[node name="InvertedSquare3" parent="." instance=ExtResource("5_1u3r8")]
-position = Vector2(-709, -187)
-rotation = -0.462512
-
-[node name="InvertedSquare2" parent="." instance=ExtResource("5_1u3r8")]
-position = Vector2(-479, -178)
-rotation = -0.637045
-
-[node name="InvertedTurret1" parent="." instance=ExtResource("5_1u3r8")]
-position = Vector2(-392, 7.62939e-06)
-rotation = -5.38609
-
-[node name="InvertedTurret5" parent="." instance=ExtResource("5_1u3r8")]
-position = Vector2(-616, -272)
-rotation = -5.38609
-
-[node name="InvertedTurret2" parent="." instance=ExtResource("5_1u3r8")]
-position = Vector2(-375, -8.00001)
-rotation = -5.34594
-
-[node name="InvertedTurret3" parent="." instance=ExtResource("5_1u3r8")]
-position = Vector2(-429, -115)
-rotation = -4.6513
-
-[node name="InvertedTurret4" parent="." instance=ExtResource("5_1u3r8")]
-position = Vector2(-393, -141)
-rotation = 0.0174533
-
 [node name="InvertedEnemy" parent="." instance=ExtResource("6_465j8")]
 position = Vector2(-680, -267)
 rotation = 0.733038
 
 [node name="Healthup" parent="." instance=ExtResource("7_vfxse")]
 position = Vector2(-673, -626)
+
+[node name="InvertedSquare" parent="." instance=ExtResource("7_7dag5")]
+position = Vector2(-209, 56)
+
+[node name="InvertedSquare2" parent="." instance=ExtResource("7_7dag5")]
+position = Vector2(-486, -170)
+
+[node name="InvertedSquare3" parent="." instance=ExtResource("7_7dag5")]
+position = Vector2(-708, -194)
+
+[node name="InvertedSquare4" parent="." instance=ExtResource("7_7dag5")]
+position = Vector2(-186, -90)
+rotation = 0.462512
+
+[node name="InvertedTurret" parent="." instance=ExtResource("8_oefu4")]
+position = Vector2(-369, -9.00002)
+rotation = 1.09956
+
+[node name="InvertedTurret3" parent="." instance=ExtResource("8_oefu4")]
+position = Vector2(-430, -106)
+rotation = 1.57952
+
+[node name="InvertedTurret4" parent="." instance=ExtResource("8_oefu4")]
+position = Vector2(-392, -145)
+rotation = 1.57952
+
+[node name="InvertedTurret2" parent="." instance=ExtResource("8_oefu4")]
+position = Vector2(-393, 3)
+rotation = 1.09956
+
+[node name="InvertedTurret5" parent="." instance=ExtResource("8_oefu4")]
+position = Vector2(-581, -281)
+rotation = -4.02473
+
+[node name="InvertedEnemy2" parent="." instance=ExtResource("6_465j8")]
+position = Vector2(-869, -597)
+rotation = 1.50622
+
+[node name="InvertedEnemy5" parent="." instance=ExtResource("6_465j8")]
+position = Vector2(-767, -636)
+rotation = -3.24282
+
+[node name="InvertedEnemy6" parent="." instance=ExtResource("6_465j8")]
+position = Vector2(-696, -609)
+rotation = -6.19592
+
+[node name="InvertedEnemy4" parent="." instance=ExtResource("6_465j8")]
+position = Vector2(-1008, -634)
+rotation = 0.637045
+
+[node name="InvertedEnemy3" parent="." instance=ExtResource("6_465j8")]
+position = Vector2(-876, -503)
+rotation = 1.50622
+
+[node name="InvertedSquare5" parent="." instance=ExtResource("7_7dag5")]
+position = Vector2(-857, -332)
+
+[node name="InvertedSquare9" parent="." instance=ExtResource("7_7dag5")]
+position = Vector2(-724, -508)
+
+[node name="InvertedSquare7" parent="." instance=ExtResource("7_7dag5")]
+position = Vector2(-952, -479)
+
+[node name="InvertedSquare6" parent="." instance=ExtResource("7_7dag5")]
+position = Vector2(-904, -289)
+rotation = 2.14326
+
+[node name="InvertedSquare10" parent="." instance=ExtResource("7_7dag5")]
+position = Vector2(-779, -536)
+rotation = 2.14326
+
+[node name="InvertedSquare8" parent="." instance=ExtResource("7_7dag5")]
+position = Vector2(-1015, -455)
+rotation = 2.14326
+
+[node name="InvertedTurret6" parent="." instance=ExtResource("8_oefu4")]
+position = Vector2(-919, -391)
+
+[node name="InvertedTurret9" parent="." instance=ExtResource("8_oefu4")]
+position = Vector2(-729, -423)
+
+[node name="InvertedTurret7" parent="." instance=ExtResource("8_oefu4")]
+position = Vector2(-968, -357)
+rotation = -3.24282
+
+[node name="InvertedTurret10" parent="." instance=ExtResource("8_oefu4")]
+position = Vector2(-794, -453)
+rotation = -4.34238
+
+[node name="InvertedTurret8" parent="." instance=ExtResource("8_oefu4")]
+position = Vector2(-987, -561)
+rotation = -3.59014

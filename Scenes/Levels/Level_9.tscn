@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dfq1b0rngd2fr"]
+[gd_scene load_steps=16 format=3 uid="uid://dfq1b0rngd2fr"]
 
 [ext_resource type="Script" path="res://Scripts/Level Scripts/Level_9.gd" id="1_2n8in"]
 [ext_resource type="TileSet" uid="uid://dcmulqhgkngjh" path="res://OurTileset.tres" id="1_x61da"]
@@ -12,6 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://c6yn3mb0ybjoa" path="res://Scenes/Enemies/SquareEnemy.tscn" id="10_58oxm"]
 [ext_resource type="PackedScene" uid="uid://ew1ffv43qsgu" path="res://Scenes/Enemies/invis_enemy.tscn" id="11_a8u0q"]
 [ext_resource type="PackedScene" uid="uid://bvojblgathx3m" path="res://Scenes/Enemies/Diamond_Enemy.tscn" id="12_u66hw"]
+[ext_resource type="PackedScene" path="res://Scenes/Enemies/MeleeEnemy.tscn" id="13_opxdn"]
+[ext_resource type="PackedScene" path="res://Scenes/Enemies/HeavyEnemy.tscn" id="14_537lu"]
+[ext_resource type="PackedScene" path="res://Scenes/Enemies/FireEnemy.tscn" id="15_31huj"]
 
 [node name="Level_9" type="Node"]
 script = ExtResource("1_2n8in")
@@ -35,76 +38,8 @@ rotation = 3.14159
 position = Vector2(199, -13)
 rotation = 3.14159
 
-[node name="MeleeEnemy1" parent="." instance=ExtResource("6_7ryvl")]
-position = Vector2(288, -31)
-rotation = 1.5708
-
-[node name="MeleeEnemy6" parent="." instance=ExtResource("6_7ryvl")]
-position = Vector2(667, 102)
-rotation = 1.5708
-
-[node name="MeleeEnemy7" parent="." instance=ExtResource("6_7ryvl")]
-position = Vector2(667, 102)
-rotation = 1.5708
-
-[node name="MeleeEnemy8" parent="." instance=ExtResource("6_7ryvl")]
-position = Vector2(621, 47)
-rotation = -1.79769
-
-[node name="MeleeEnemy9" parent="." instance=ExtResource("6_7ryvl")]
-position = Vector2(636, 78)
-rotation = -3.70882
-
-[node name="MeleeEnemy10" parent="." instance=ExtResource("6_7ryvl")]
-position = Vector2(995, -467)
-rotation = -5.27264
-
-[node name="MeleeEnemy11" parent="." instance=ExtResource("6_7ryvl")]
-position = Vector2(842, -496)
-rotation = -4.69319
-
-[node name="MeleeEnemy4" parent="." instance=ExtResource("6_7ryvl")]
-position = Vector2(306, 83)
-rotation = 3.19221
-
-[node name="MeleeEnemy2" parent="." instance=ExtResource("6_7ryvl")]
-position = Vector2(286, -75)
-rotation = 3.42434
-
-[node name="MeleeEnemy3" parent="." instance=ExtResource("6_7ryvl")]
-position = Vector2(333, -51)
-rotation = 3.89907
-
-[node name="MeleeEnemy5" parent="." instance=ExtResource("6_7ryvl")]
-position = Vector2(333, 31)
-rotation = 4.71064
-
 [node name="Healthup" parent="." instance=ExtResource("7_mila8")]
 position = Vector2(475, 364)
-
-[node name="MachineGun1" parent="." instance=ExtResource("6_7ryvl")]
-position = Vector2(464, 142)
-rotation = 3.93746
-
-[node name="MachineGun3" parent="." instance=ExtResource("6_7ryvl")]
-position = Vector2(706, 44)
-rotation = 2.49058
-
-[node name="MachineGun5" parent="." instance=ExtResource("6_7ryvl")]
-position = Vector2(989, -88)
-rotation = 2.49058
-
-[node name="MachineGun4" parent="." instance=ExtResource("6_7ryvl")]
-position = Vector2(886, -128)
-rotation = 2.49058
-
-[node name="MachineGun2" parent="." instance=ExtResource("6_7ryvl")]
-position = Vector2(706, 149)
-rotation = 3.93746
-
-[node name="MachineGun6" parent="." instance=ExtResource("6_7ryvl")]
-position = Vector2(915, -477)
-rotation = 0.970403
 
 [node name="Player" parent="." instance=ExtResource("8_qv0ip")]
 
@@ -141,14 +76,6 @@ rotation = -4.2237
 position = Vector2(1016, -131)
 rotation = -4.0544
 
-[node name="Flamethrower1" parent="." instance=ExtResource("6_7ryvl")]
-position = Vector2(941, -343)
-rotation = -4.0544
-
-[node name="Flamethrower2" parent="." instance=ExtResource("6_7ryvl")]
-position = Vector2(997, -339)
-rotation = -5.73341
-
 [node name="Diamond Enemy" parent="." instance=ExtResource("12_u66hw")]
 position = Vector2(846, -421)
 rotation = -3.44703
@@ -156,3 +83,75 @@ rotation = -3.44703
 [node name="Diamond Enemy2" parent="." instance=ExtResource("12_u66hw")]
 position = Vector2(1038, -405)
 rotation = -4.77348
+
+[node name="MeleeEnemy" parent="." instance=ExtResource("13_opxdn")]
+position = Vector2(296, -70)
+rotation = 0.602139
+
+[node name="MeleeEnemy2" parent="." instance=ExtResource("13_opxdn")]
+position = Vector2(335, -49)
+rotation = 0.602139
+
+[node name="MeleeEnemy5" parent="." instance=ExtResource("13_opxdn")]
+position = Vector2(331, 32)
+rotation = 1.64061
+
+[node name="MeleeEnemy12" parent="." instance=ExtResource("13_opxdn")]
+position = Vector2(294, 89)
+rotation = 0.0278456
+
+[node name="MeleeEnemy3" parent="." instance=ExtResource("13_opxdn")]
+position = Vector2(289, -21)
+rotation = -1.30129
+
+[node name="HeavyEnemy" parent="." instance=ExtResource("14_537lu")]
+position = Vector2(472, 146)
+rotation = -2.43299
+
+[node name="HeavyEnemy2" parent="." instance=ExtResource("14_537lu")]
+position = Vector2(701, 141)
+rotation = -2.72271
+
+[node name="HeavyEnemy3" parent="." instance=ExtResource("14_537lu")]
+position = Vector2(709, 39)
+rotation = -4.112
+
+[node name="HeavyEnemy4" parent="." instance=ExtResource("14_537lu")]
+position = Vector2(886, -130)
+rotation = -4.112
+
+[node name="HeavyEnemy5" parent="." instance=ExtResource("14_537lu")]
+position = Vector2(995, -89)
+rotation = -4.112
+
+[node name="MeleeEnemy4" parent="." instance=ExtResource("13_opxdn")]
+position = Vector2(623, 81)
+rotation = -0.811578
+
+[node name="MeleeEnemy6" parent="." instance=ExtResource("13_opxdn")]
+position = Vector2(675, 108)
+rotation = -1.50622
+
+[node name="MeleeEnemy8" parent="." instance=ExtResource("13_opxdn")]
+position = Vector2(623, 36)
+rotation = -5.2133
+
+[node name="FireEnemy" parent="." instance=ExtResource("15_31huj")]
+position = Vector2(939, -340)
+rotation = -3.99506
+
+[node name="FireEnemy2" parent="." instance=ExtResource("15_31huj")]
+position = Vector2(1000, -337)
+rotation = -5.50128
+
+[node name="MeleeEnemy7" parent="." instance=ExtResource("13_opxdn")]
+position = Vector2(998, -464)
+rotation = -2.37365
+
+[node name="MeleeEnemy9" parent="." instance=ExtResource("13_opxdn")]
+position = Vector2(841, -490)
+rotation = -1.27409
+
+[node name="HeavyEnemy6" parent="." instance=ExtResource("14_537lu")]
+position = Vector2(916, -475)
+rotation = 1.04196
