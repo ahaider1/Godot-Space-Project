@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://bcx8mj4yogn1d"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://cypr1wy7nnpo4"]
 
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/InventoryItem.gd" id="1_wbimg"]
 [ext_resource type="Texture2D" uid="uid://c6ksx7fgbwt3r" path="res://Sprites/Weapons/ThickBlaster.png" id="2_ushlx"]
