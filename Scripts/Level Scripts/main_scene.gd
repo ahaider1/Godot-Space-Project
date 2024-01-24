@@ -11,6 +11,7 @@ const BULLET_SHOOTER = preload("res://Inventory Items/Items/BulletShooter.tres")
 const ENERGY_BLASTER = preload("res://Inventory Items/Items/EnergyBlaster.tres")
 const THICK_BLASTER = preload("res://Inventory Items/Items/ThickBlaster.tres")
 const TURRET_WEAPON = preload("res://Inventory Items/Items/TurretWeapon.tres")
+const RAY_BLASTER = preload("res://Inventory Items/Items/RayBlaster.tres")
 
 ######### my functions #########
 
@@ -27,6 +28,7 @@ func resetInvAndEquipment():
 	player_inventory.items[1] = TURRET_WEAPON
 	player_inventory.items[2] = THICK_BLASTER
 	player_inventory.items[3] = ENERGY_BLASTER
+	player_inventory.items[4] = RAY_BLASTER
 
 
 
@@ -36,6 +38,7 @@ func resetInvAndEquipment():
 func _ready():
 	# respawn player 
 	Manager.player_is_dead = false
+
 	Manager.player_node = null
 	
 	# reset the player's inv

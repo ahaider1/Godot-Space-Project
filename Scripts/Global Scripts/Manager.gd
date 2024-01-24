@@ -9,6 +9,8 @@ var walls_layer: int = 1 << 1
 var player_proj_layer: int = 1 << 2
 var enemy_layer: int = 1 << 3
 var enemy_proj_layer: int = 1 << 4
+var enemy_hitbox_layer: int = 1 << 5
+var player_hitbox_layer: int = 1 << 6
 
 var player_node: Player
 
@@ -62,8 +64,8 @@ func upgradePlayer(upgrade):
 			#player_node.health_component.health=200
 		
 		"upgrade 2":
-			#player_node.weapon_component_1.weapon.fire_rate /= 2
-			print("upgrade 2 not yet implemented")
+			player_node.teleport_unlocked = true
+			Database.UPGRADES[upgrade]["disabled"] = true
 			
 		"upgrade 3":
 			addToInventory(TURRET_WEAPON)
@@ -76,8 +78,8 @@ func upgradePlayer(upgrade):
 			player_node.move_component.acceleration *= 1.5
 			
 		"upgrade 6":
-			player_node.move_component.max_speed /= 5
-			player_node.move_component.acceleration /= 5
+			player_node.turret_mode_unlocked = true
+			Database.UPGRADES[upgrade]["disabled"] = true
 		
 		"upgrade 7":
 			addToInventory(THICK_BLASTER)

@@ -56,8 +56,8 @@ health = 50
 max_health = 50
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("collision_shape", "health_component") instance=ExtResource("9_sl2ee")]
-collision_layer = 8
-collision_mask = 15
+collision_layer = 32
+collision_mask = 0
 collision_shape = NodePath("HitboxShape")
 health_component = NodePath("../HealthComponent")
 

@@ -39,7 +39,7 @@ size = Vector2(12, 14)
 
 [node name="SquareEnemy" type="CharacterBody2D"]
 collision_layer = 8
-collision_mask = 15
+collision_mask = 11
 script = ExtResource("1_02bq5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -53,8 +53,8 @@ shape = SubResource("RectangleShape2D_y1eok")
 [node name="HealthComponent" parent="." instance=ExtResource("3_w4100")]
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("collision_shape", "health_component") instance=ExtResource("4_g3clo")]
-collision_layer = 8
-collision_mask = 15
+collision_layer = 32
+collision_mask = 0
 collision_shape = NodePath("CollisionShape2D")
 health_component = NodePath("../HealthComponent")
 

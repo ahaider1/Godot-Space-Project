@@ -54,8 +54,8 @@ debug_color = Color(0.992157, 0, 0.262745, 0.419608)
 [node name="HealthComponent" parent="." instance=ExtResource("4_orbxe")]
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("collision_shape", "health_component") instance=ExtResource("5_0s4y5")]
-collision_layer = 8
-collision_mask = 15
+collision_layer = 32
+collision_mask = 0
 collision_shape = NodePath("HitboxShape")
 health_component = NodePath("../HealthComponent")
 

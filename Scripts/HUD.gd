@@ -109,6 +109,8 @@ func getRandomItem():
 	for i in Database.UPGRADES:
 		if i in offered_upgrades:
 			pass
+		elif Database.UPGRADES[i]["disabled"] == true:
+			pass
 		else:
 			dblist.append(i)
 	

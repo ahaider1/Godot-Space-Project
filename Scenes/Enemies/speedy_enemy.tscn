@@ -55,8 +55,8 @@ health = 50
 max_health = 50
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("collision_shape", "health_component") instance=ExtResource("5_jxtay")]
-collision_layer = 8
-collision_mask = 15
+collision_layer = 32
+collision_mask = 0
 collision_shape = NodePath("HitboxShape")
 health_component = NodePath("../HealthComponent")
 
@@ -74,9 +74,8 @@ rotation_accel = 30
 [node name="SightComponent" parent="." instance=ExtResource("8_lpmwb")]
 view_distance = 100.0
 
-[node name="WeaponComponent" parent="." node_paths=PackedStringArray("weapon") instance=ExtResource("9_ptimy")]
+[node name="WeaponComponent" parent="." instance=ExtResource("9_ptimy")]
 position = Vector2(7, 0)
-weapon = NodePath("")
 
 [node name="BulletShooter" parent="WeaponComponent" instance=ExtResource("9_7ogmy")]
 

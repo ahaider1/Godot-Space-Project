@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://b8h064xd04ley"]
+[gd_scene load_steps=14 format=3 uid="uid://b8h064xd04ley"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_rohca"]
 [ext_resource type="Resource" uid="uid://dkwgk4wf7ng7m" path="res://Inventory Items/PlayerInventory.tres" id="2_xg2n4"]
 [ext_resource type="Texture2D" uid="uid://bjn8gj6krihfa" path="res://Sprites/Player/PlayerDamaged.png" id="3_ku120"]
 [ext_resource type="Texture2D" uid="uid://c6gixve6sf1o" path="res://Sprites/Player/Player.png" id="3_rud1o"]
 [ext_resource type="Resource" uid="uid://bdts36j3t4gef" path="res://Inventory Items/PlayerEquipment.tres" id="3_yd0ke"]
+[ext_resource type="PackedScene" uid="uid://endvjbg26dex" path="res://Scenes/Effects/TeleportEffect.tscn" id="4_uaey4"]
 [ext_resource type="PackedScene" uid="uid://bjrgoe3hux3j3" path="res://Scenes/Components/WeaponComponent.tscn" id="7_0m7yy"]
 [ext_resource type="PackedScene" uid="uid://q70mr8ml54qa" path="res://Scenes/Components/MovementComponent.tscn" id="10_p5vso"]
 [ext_resource type="PackedScene" uid="uid://jtvlcehy0nfl" path="res://Scenes/Components/HealthComponent.tscn" id="10_u55m1"]
@@ -39,6 +40,7 @@ collision_mask = 10
 script = ExtResource("1_rohca")
 inventory = ExtResource("2_xg2n4")
 equipment = ExtResource("3_yd0ke")
+teleport_effect = ExtResource("4_uaey4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.168, 0)
@@ -58,6 +60,7 @@ health = 1000
 max_health = 1000
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("collision_shape", "health_component") instance=ExtResource("11_18h0j")]
+collision_layer = 64
 collision_mask = 0
 collision_shape = NodePath("CollisionShape2D")
 health_component = NodePath("../HealthComponent")

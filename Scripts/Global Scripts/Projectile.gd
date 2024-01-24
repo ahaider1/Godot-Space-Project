@@ -33,9 +33,9 @@ var enemy_proj_collision_layer: int = Manager.enemy_proj_layer
 
 # what collision layer the proj scans collisions for if it is a:
 # player proj
-var player_proj_collision_mask: int = Manager.walls_layer | Manager.enemy_layer
+var player_proj_collision_mask: int = Manager.walls_layer | Manager.enemy_hitbox_layer
 # enemy proj
-var enemy_proj_collision_mask: int = Manager.walls_layer | Manager.player_layer
+var enemy_proj_collision_mask: int = Manager.walls_layer | Manager.player_hitbox_layer
 
 
 

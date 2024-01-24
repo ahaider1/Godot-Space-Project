@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://des53pa0w1sps"]
+
+[ext_resource type="Script" path="res://Scripts/Projectile Scripts/RayBullet.gd" id="1_l36i2"]
+[ext_resource type="Texture2D" uid="uid://wteftew0lmee" path="res://Sprites/Projectiles/RaygunBullet.png" id="2_5pwh2"]
+[ext_resource type="PackedScene" uid="uid://doxqg8fmjjfa4" path="res://Scenes/Projectiles/test_explosion.tscn" id="2_apemb"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vq5iu"]
+radius = 1.0
+height = 8.0
+
+[node name="RayBullet" type="Area2D"]
+script = ExtResource("1_l36i2")
+explosion = ExtResource("2_apemb")
+proj_speed = 800
+proj_damage = 100
+proj_range = 200.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.5, -0.5)
+rotation = 1.5708
+texture = ExtResource("2_5pwh2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_vq5iu")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

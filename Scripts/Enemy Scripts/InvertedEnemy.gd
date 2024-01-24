@@ -3,7 +3,7 @@ extends MyEnemyBody
 ######### initialise variables #########
 
 @onready var anim = $AnimatedSprite2D
-@onready var gun=$WeaponComponent/BulletShooter/AnimatedSprite2D
+
 # reference to player
 @onready var player: Player = Manager.player_node
 
@@ -15,34 +15,63 @@ extends MyEnemyBody
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var hitbox_component: HitboxComponent = $HitboxComponent
 
-# init other stats
-var invis_speed: float = 3
+# teleporting
+var can_teleport: bool = true
+# can teleport once every teleport freq seconds
+@export var teleport_freq: float = 4
+@export var teleport_distance: float = 50
+@export var teleport_effect: PackedScene
 
 
 ######### my functions #########
 
 # core AI design
-func decideInput(delta):
+func decideInput():
 	if is_dead || Manager.player_is_dead:
 		stopMoving(move_component)
 		return
 
 	# if player exists and we have seen them
 	if player != null && has_seen_player:
-		turnInvis(delta)
+		
 		# if we can rotate such that 
 		# we have line of sight on player
 		if sight_component.player_in_raycircle:
 			# then rotate and shoot at the player
 			stopAndShoot(player.global_position, move_component)
 
+		elif can_teleport:
+			teleport()
+
 		# otherwise, move to the player's position
 		else: 
 			moveTo(player.global_position, pathfind_component, move_component)
 
-func turnInvis(delta):
-	modulate.a -= invis_speed * delta
-	modulate.a = max(0, modulate.a)
+func teleport():
+
+	can_teleport = false
+
+	# create the teleport effect
+	var effect_instance = teleport_effect.instantiate()
+	effect_instance.position = get_global_position()
+	get_tree().current_scene.add_child(effect_instance)
+	
+
+	# determine where to teleport and actually teleport
+	var teleport_dir: Vector2 = (player.global_position - global_position).normalized()
+	teleport_dir *= teleport_distance
+	
+	rotation = teleport_dir.angle()
+	global_position += teleport_dir
+	
+	# create another effect at end
+	var effect_instance2 = teleport_effect.instantiate()
+	effect_instance2.position = get_global_position()
+	get_tree().current_scene.add_child(effect_instance2)
+	
+	await get_tree().create_timer(teleport_freq).timeout
+	can_teleport = true
+	
 
 
 ######### Godot functions #########
@@ -66,9 +95,9 @@ func _process(delta):
 		# die
 		die(delta)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# get AI input
-	decideInput(delta)
+	decideInput()
 
 
 
@@ -83,13 +112,7 @@ func on_can_see_player():
 
 # death
 func onDeath():
-	# make him visible on death
-	if !is_dead:
-		modulate.a = 1
-
-	
 	is_dead = true
-	
 	
 	# remove colliders
 	$CollisionShape2D.queue_free()
@@ -98,7 +121,6 @@ func onDeath():
 func onHurt():
 	# animation
 	anim.play("Damaged")
-	
 	
 	# enemy will agro if u shoot them 
 	# even if they cant see u

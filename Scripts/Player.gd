@@ -30,6 +30,15 @@ var turret_mode_unlocked = false
 @export var inventory: Inventory
 @export var equipment: Equipment
 
+# teleporting
+var teleport_unlocked: bool = false
+
+var can_teleport: bool = true
+# can teleport once every teleport freq seconds
+@export var teleport_freq: float = 4
+@export var teleport_distance: float = 50
+@export var teleport_effect: PackedScene
+
 
 ######### my functions #########
 
@@ -42,34 +51,24 @@ func getInput():
 		move_component.rotation_direction = 0
 		return
 	
-	# user holds shift for turret mode
-	if turret_mode_unlocked:
-		if Input.is_action_just_pressed("turret_mode"):
-			turret_mode = true
-		elif Input.is_action_just_released("turret_mode"):
-			turret_mode = false
 	
 	
 	
 	# is player going forwards or backwards
 	move_component.forward_backward = Input.get_axis("down", "up")
-
 	# set current direction player wants to rotate
 	move_component.rotation_direction = Input.get_axis("left", "right")
-	
-	if turret_mode:
-		# if player is in turret mode, he cant move
-		move_component.rotation_direction = 0
-		move_component.forward_backward = 0
-		
-		# override move component, set rotation directly
-		rotation = (get_global_mouse_position() - global_position).angle()
+
+	# do all turret mode stuff
+	checkForTurretMode()
+
+	# check for teleport input
+	if Input.is_action_just_pressed("teleport") && can_teleport && teleport_unlocked:
+		teleport()
 
 	# firing mechanics
 	if Input.is_action_pressed("fire"):
 		is_firing.emit()
-
-
 
 # assign weapon components to their weapons
 # depending on what is in the player's equipment slots
@@ -103,6 +102,51 @@ func updateWeaponComponent(index: int):
 		var new_weapon: Weapon = equipment.items[index].weapon.instantiate()
 		curr_component.add_child(new_weapon)
 		curr_component.weapon = new_weapon
+
+func checkForTurretMode():
+	# user holds shift for turret mode
+	if turret_mode_unlocked:
+		if Input.is_action_just_pressed("turret_mode"):
+			turret_mode = true
+		elif Input.is_action_just_released("turret_mode"):
+			turret_mode = false
+	
+	if turret_mode:
+		# if player is in turret mode, he cant move
+		move_component.rotation_direction = 0
+		move_component.forward_backward = 0
+		
+		# override move component, set rotation directly
+		rotation = (get_global_mouse_position() - global_position).angle()
+
+# teleport
+func teleport():
+
+	can_teleport = false
+
+	# create the teleport effect
+	var effect_instance = teleport_effect.instantiate()
+	effect_instance.position = get_global_position()
+	get_tree().current_scene.add_child(effect_instance)
+	
+
+	# determine where to teleport and actually teleport
+	var teleport_dir: Vector2 = (get_global_mouse_position() - global_position).normalized()
+	teleport_dir *= teleport_distance
+	
+	rotation = teleport_dir.angle()
+	global_position += teleport_dir
+	# stop moving
+	velocity = Vector2.ZERO
+	rotation_speed = 0
+	
+	# create another effect at end
+	var effect_instance2 = teleport_effect.instantiate()
+	effect_instance2.position = get_global_position()
+	get_tree().current_scene.add_child(effect_instance2)
+	
+	await get_tree().create_timer(teleport_freq).timeout
+	can_teleport = true
 
 ######### Godot functions #########
 

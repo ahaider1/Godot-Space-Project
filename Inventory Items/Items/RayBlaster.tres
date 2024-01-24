@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://dxcy1qtw54t58"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory Scripts/InventoryItem.gd" id="1_aefei"]
+[ext_resource type="Texture2D" uid="uid://v3t8v0exlp4" path="res://Sprites/Weapons/Raygun.png" id="2_t8aum"]
+[ext_resource type="PackedScene" uid="uid://dt7nk78oytpxl" path="res://Scenes/Weapons/RayBlaster.tscn" id="3_lh6ma"]
+
+[resource]
+script = ExtResource("1_aefei")
+name = "Rayblaster"
+texture = ExtResource("2_t8aum")
+weapon = ExtResource("3_lh6ma")

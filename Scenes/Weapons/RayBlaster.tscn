@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3 uid="uid://dt7nk78oytpxl"]
+
+[ext_resource type="Script" path="res://Scripts/Weapon Scripts/Rayblaster.gd" id="1_nl3bo"]
+[ext_resource type="PackedScene" uid="uid://des53pa0w1sps" path="res://Scenes/Projectiles/RayBullet.tscn" id="2_a4jpg"]
+[ext_resource type="Texture2D" uid="uid://1vci2r5wetiw" path="res://Sprites/Weapons/RaygunFire1.png" id="3_nkh0d"]
+[ext_resource type="Texture2D" uid="uid://b2ul0oxlwgut3" path="res://Sprites/Weapons/RaygunFire2.png" id="4_qy7bg"]
+[ext_resource type="Texture2D" uid="uid://b0prh0rduq4sj" path="res://Sprites/Weapons/RaygunFire3.png" id="5_i2s0v"]
+[ext_resource type="Texture2D" uid="uid://db2mi14sgw4hp" path="res://Sprites/Weapons/RaygunFire4.png" id="6_cbf6h"]
+[ext_resource type="Texture2D" uid="uid://v3t8v0exlp4" path="res://Sprites/Weapons/Raygun.png" id="7_4r1ih"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3ijyb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_nkh0d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qy7bg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_i2s0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cbf6h")
+}],
+"loop": false,
+"name": &"fire",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_4r1ih")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r8x6a"]
+
+[node name="RayBlaster" type="Area2D"]
+rotation = 1.5708
+script = ExtResource("1_nl3bo")
+fire_rate = 0.7
+projectile_tscn = ExtResource("2_a4jpg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3ijyb")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_r8x6a")
+
+[node name="ProjSpawnPt" type="Marker2D" parent="."]
+position = Vector2(-3.49691e-07, -8)
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
