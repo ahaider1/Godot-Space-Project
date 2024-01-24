@@ -18,15 +18,14 @@ extends MyEnemyBody
 ######### my functions #########
 
 # core AI design
-func decideInput():
+func decideInput(delta):
 	if is_dead || Manager.player_is_dead:
 		stopMoving(move_component)
 		return
 
 	# if player exists and we have seen them
 	if player != null && has_seen_player:
-		anim.modulate.a=0;
-		gun.modulate.a=0;
+		turnInvis(delta)
 		# if we can rotate such that 
 		# we have line of sight on player
 		if sight_component.player_in_raycircle:
@@ -37,7 +36,9 @@ func decideInput():
 		else: 
 			moveTo(player.global_position, pathfind_component, move_component)
 
-
+func turnInvis(delta):
+	modulate.a -= 0.4 * delta
+	modulate.a = max(0, modulate.a)
 
 
 ######### Godot functions #########
@@ -61,9 +62,9 @@ func _process(delta):
 		# die
 		die(delta)
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	# get AI input
-	decideInput()
+	decideInput(delta)
 
 
 
@@ -78,7 +79,13 @@ func on_can_see_player():
 
 # death
 func onDeath():
+	# make him visible on death
+	if !is_dead:
+		modulate.a = 1
+
+	
 	is_dead = true
+	
 	
 	# remove colliders
 	$CollisionShape2D.queue_free()
@@ -87,6 +94,7 @@ func onDeath():
 func onHurt():
 	# animation
 	anim.play("Damaged")
+	
 	
 	# enemy will agro if u shoot them 
 	# even if they cant see u

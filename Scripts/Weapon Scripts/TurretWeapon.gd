@@ -6,6 +6,9 @@ extends Weapon
 # how fast it shoots, will shoot once every fire_rate seconds
 @export var fire_rate: float = 1
 
+# degree of randomness
+@export var accuracy_degrees: float = 5
+
 # what projectile it shoots
 @export var projectile_tscn: PackedScene
 
@@ -43,7 +46,11 @@ func fire():
 
 		# set its position and direction
 		proj_instance.position = proj_spawnpoint.get_global_position()
-		proj_instance.setDirection(entity.rotation)
+		# add spray 
+		var rng = RandomNumberGenerator.new()
+		var spray = deg_to_rad(rng.randf_range(-accuracy_degrees, accuracy_degrees))
+		
+		proj_instance.setDirection(entity.rotation + spray)
 		
 		# figure out if it shoots a player or enemy projectile
 		if entity.is_in_group("player"):

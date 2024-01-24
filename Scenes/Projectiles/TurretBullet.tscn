@@ -11,9 +11,8 @@ radius = 2.0
 collision_layer = 0
 script = ExtResource("1_1xyud")
 explosion = ExtResource("2_yaqb4")
-proj_speed = 150
-proj_damage = 50
-proj_range = 200.0
+proj_speed = 80
+proj_range = 250.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_df6sw")

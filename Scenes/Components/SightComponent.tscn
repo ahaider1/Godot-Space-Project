@@ -8,6 +8,7 @@ radius = 0.01
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5b2yr"]
 resource_local_to_scene = true
+radius = 0.01
 
 [node name="SightComponent" type="Node2D"]
 rotation = -1.5708

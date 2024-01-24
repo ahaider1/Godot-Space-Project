@@ -7,7 +7,7 @@ signal took_damage
 signal died
 
 # variables related to HealthComponent
-@export var health = 50
+@export var health = 100
 @export var max_health = 100
 
 # take damage

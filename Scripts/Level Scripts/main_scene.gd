@@ -8,6 +8,9 @@ var player_equipment: Equipment = preload("res://Inventory Items/PlayerEquipment
 
 # get reference to default weapon
 const BULLET_SHOOTER = preload("res://Inventory Items/Items/BulletShooter.tres")
+const ENERGY_BLASTER = preload("res://Inventory Items/Items/EnergyBlaster.tres")
+const THICK_BLASTER = preload("res://Inventory Items/Items/ThickBlaster.tres")
+const TURRET_WEAPON = preload("res://Inventory Items/Items/TurretWeapon.tres")
 
 ######### my functions #########
 
@@ -21,6 +24,9 @@ func resetInvAndEquipment():
 	
 	# give the player a default weapon to start
 	player_inventory.items[0] = BULLET_SHOOTER
+	player_inventory.items[1] = TURRET_WEAPON
+	player_inventory.items[2] = THICK_BLASTER
+	player_inventory.items[3] = ENERGY_BLASTER
 
 
 

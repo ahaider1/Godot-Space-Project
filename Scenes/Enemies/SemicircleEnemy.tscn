@@ -40,7 +40,7 @@ height = 16.0
 
 [node name="SemicircleEnemy" type="CharacterBody2D"]
 collision_layer = 8
-collision_mask = 15
+collision_mask = 11
 script = ExtResource("1_ux663")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

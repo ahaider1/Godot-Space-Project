@@ -16,7 +16,7 @@ var player_node: Player
 const BULLET_SHOOTER = preload("res://Inventory Items/Items/BulletShooter.tres")
 const TURRET_WEAPON = preload("res://Inventory Items/Items/TurretWeapon.tres")
 const THICK_BLASTER = preload("res://Inventory Items/Items/ThickBlaster.tres")
-
+const ENERGY_BLASTER = preload("res://Inventory Items/Items/EnergyBlaster.tres")
 
 
 ######### my functions #########
@@ -81,6 +81,10 @@ func upgradePlayer(upgrade):
 		
 		"upgrade 7":
 			addToInventory(THICK_BLASTER)
+		
+		"upgrade 8":
+			addToInventory(ENERGY_BLASTER)
+		
 		
 		# switch statement default (else):
 		_:

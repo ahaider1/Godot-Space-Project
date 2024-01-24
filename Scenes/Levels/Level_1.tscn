@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cytueldhukhkk"]
+[gd_scene load_steps=13 format=3 uid="uid://cytueldhukhkk"]
 
 [ext_resource type="Script" path="res://Scripts/Level Scripts/Level_1.gd" id="1_fr4vf"]
 [ext_resource type="TileSet" uid="uid://dcmulqhgkngjh" path="res://OurTileset.tres" id="3_re42b"]
@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://crci032yq4fo6" path="res://Scenes/Enemies/RedEnemyTurret.tscn" id="8_m7yfc"]
 [ext_resource type="FontFile" uid="uid://bun53tt5c6irt" path="res://Themes/Fonts/Pixeled.ttf" id="9_8nyxy"]
 [ext_resource type="PackedScene" uid="uid://b8h064xd04ley" path="res://Scenes/Player.tscn" id="9_nj0ff"]
+[ext_resource type="PackedScene" uid="uid://ew1ffv43qsgu" path="res://Scenes/Enemies/invis_enemy.tscn" id="10_6kk5k"]
+[ext_resource type="PackedScene" uid="uid://4umb6fwyg1ax" path="res://Scenes/Enemies/SemicircleEnemy.tscn" id="11_cow7k"]
+[ext_resource type="PackedScene" uid="uid://sp44a3aquuw5" path="res://Scenes/Enemies/speedy_enemy.tscn" id="12_cff13"]
 
 [node name="Level_1" type="Node"]
 script = ExtResource("1_fr4vf")
@@ -103,3 +106,12 @@ theme_override_fonts/font = ExtResource("9_8nyxy")
 theme_override_font_sizes/font_size = 10
 text = "Drop and place the weapon into a weaponslot to equip it"
 autowrap_mode = 3
+
+[node name="invis enemy" parent="." instance=ExtResource("10_6kk5k")]
+position = Vector2(-298, -62)
+
+[node name="SemicircleEnemy" parent="." instance=ExtResource("11_cow7k")]
+position = Vector2(-336, -34)
+
+[node name="Speedy Enemy" parent="." instance=ExtResource("12_cff13")]
+position = Vector2(-326, -14)

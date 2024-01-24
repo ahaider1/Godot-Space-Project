@@ -9,10 +9,9 @@ radius = 1.0
 height = 6.0
 
 [node name="HotBullet" type="Area2D"]
-rotation = 1.5708
 script = ExtResource("1_d53pf")
 explosion = ExtResource("2_28igd")
-proj_damage = 60
+proj_range = 150.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1.5, -0.5)

@@ -11,8 +11,8 @@ class_name Player
 @onready var anim = $AnimatedSprite2D
 
 # init other
-@onready var turret_weapon= preload("res://Scenes/Weapons/TurretWeapon.tscn")
-@onready var test_weapon= preload("res://Scenes/Weapons/BulletShooter.tscn")
+var turret_mode = false
+var turret_mode_unlocked = false
 
 # init components
 @onready var health_component: HealthComponent = $HealthComponent
@@ -42,62 +42,34 @@ func getInput():
 		move_component.rotation_direction = 0
 		return
 	
+	# user holds shift for turret mode
+	if turret_mode_unlocked:
+		if Input.is_action_just_pressed("turret_mode"):
+			turret_mode = true
+		elif Input.is_action_just_released("turret_mode"):
+			turret_mode = false
+	
+	
+	
 	# is player going forwards or backwards
 	move_component.forward_backward = Input.get_axis("down", "up")
 
 	# set current direction player wants to rotate
 	move_component.rotation_direction = Input.get_axis("left", "right")
+	
+	if turret_mode:
+		# if player is in turret mode, he cant move
+		move_component.rotation_direction = 0
+		move_component.forward_backward = 0
+		
+		# override move component, set rotation directly
+		rotation = (get_global_mouse_position() - global_position).angle()
 
 	# firing mechanics
 	if Input.is_action_pressed("fire"):
 		is_firing.emit()
 
 
-
-# apply upgrades to player
-func apply_upgrades():
-	if Player_Data.collected_upgrades.size() < 1:
-		return 
-	
-	print(get_tree().current_scene.name)
-	if get_tree().current_scene.name == "Level_1":
-		Player_Data.collected_upgrades.clear()
-		return
-	
-	
-	for i in Player_Data.collected_upgrades:
-		
-		match i:
-			"upgrade 1":
-				health_component.max_health=200
-				health_component.health=200
-			
-				
-			"upgrade 3":
-				#weapon_slot1.weapon=null
-				#var upgrade_weapon=turret_weapon.instantiate()
-				#weapon_slot1.add_child(upgrade_weapon)
-				#weapon_slot1.weapon=upgrade_weapon
-				print("upgrade 3 not yet implemented, i will work on inv system")
-				
-			"upgrade 2":
-				weapon_component_1.weapon.fire_rate /= 2
-				#print("upgrade 2 not yet implemented")
-				
-			"upgrade 4":
-				#var upgrade_weapon=test_weapon.instantiate()
-				#weapon_slot2.add_child(upgrade_weapon)
-				#weapon_slot2.weapon=upgrade_weapon
-				print("upgrade 4 not yet implemented, i will work on inv system")
-				
-			"upgrade 5":
-				move_component.max_speed=move_component.max_speed*1.5
-				move_component.acceleration=move_component.acceleration*1.5
-				
-			"upgrade 6":
-				move_component.max_speed=move_component.max_speed/5
-				move_component.acceleration=move_component.acceleration/5
-				weapon_component_1.weapon.fire_rate=0.05
 
 # assign weapon components to their weapons
 # depending on what is in the player's equipment slots
@@ -116,16 +88,17 @@ func updateWeaponComponent(index: int):
 	if equipment.items[index] == null:
 		# disconnect and delete the weapon instance
 		curr_component.weapon = null
-		var curr_weapon: Weapon = null
 		
-		if curr_component.get_child_count() > 0:
-			curr_weapon = curr_component.get_child(0)
-
-		if curr_weapon:
-			curr_weapon.queue_free()
+		for i in range(curr_component.get_child_count()):
+			curr_component.get_child(i).queue_free()
+		
 
 	# otherwise there is a weapon in the equipment slot
 	else:
+		# clear the slot first
+		for i in range(curr_component.get_child_count()):
+			curr_component.get_child(i).queue_free()
+		
 		# connect the new weapon to weapon component
 		var new_weapon: Weapon = equipment.items[index].weapon.instantiate()
 		curr_component.add_child(new_weapon)

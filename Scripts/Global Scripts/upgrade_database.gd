@@ -43,8 +43,8 @@ var UPGRADES = {
 	},
 	
 	"upgrade 4": {
-		"displayname": "Ol' Fashioned",
-		"details" : "Add an Ol' Fashioned weapon to your inventory",
+		"displayname": "Mini Blaster",
+		"details" : "Add a Mini Blaster weapon to your inventory",
 		"texture" : test_weapon_texture
 	},
 	
@@ -63,15 +63,15 @@ var UPGRADES = {
 	
 	"upgrade 7": {
 		"displayname": "Thicc Blaster",
-		"details": "Adds a thicc blaster to your inventory",
+		"details": "Adds a Thicc Blaster to your inventory",
 		
 		"texture" : thicc_blaster_texture
 	},
 	
 	"upgrade 8": {
 		"displayname": "Energy Blaster",
-		"details": "Adds a Energy Blaster to your inventory",
+		"details": "Adds an Energy Blaster to your inventory",
 		
-		"texture" : thicc_blaster_texture
+		"texture" : energy_blaster_texture
 	}
 }

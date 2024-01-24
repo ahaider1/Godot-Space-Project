@@ -105,12 +105,14 @@ func on_equipment_slot_clicked(index: int):
 	
 	# otherwise something has been grabbed, so we will drop it
 	else:
+		# swap 
+		var temp = curr_grabbed_item
+		curr_grabbed_item = player_equipment.items[index]
+
 		# update data structure
-		player_equipment.items[index] = curr_grabbed_item
+		player_equipment.items[index] = temp
 		# update UI display
-		equipment_slots[index].update(curr_grabbed_item)
-		
-		curr_grabbed_item = null
+		equipment_slots[index].update(temp)
 	
 	player_equipment.equipment_changed.emit(index)
 	
