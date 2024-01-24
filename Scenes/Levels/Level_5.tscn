@@ -56,6 +56,7 @@ rotation = 2.14326
 
 [node name="invis enemy3" parent="." instance=ExtResource("9_hnnrt")]
 position = Vector2(799, 333)
+rotation = 2.43299
 
 [node name="Enemy1" parent="." instance=ExtResource("9_pwljf")]
 position = Vector2(583, 906)
