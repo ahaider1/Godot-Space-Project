@@ -13,8 +13,9 @@ class_name PathfindComponent
 # the vector direction of where the nav_agent is currently pointing at
 @export var current_dir: Vector2
 
-# parent should be an enemy
+# parent should be an enemy17
 @onready var entity: MyEnemyBody = get_parent()
+
 
 ######### my functions #########
 
@@ -22,13 +23,11 @@ class_name PathfindComponent
 func setTarget():
 	nav_agent.target_position = target_pos
 	
-	
 	var processed_dir: Vector2
 	processed_dir = nav_agent.get_next_path_position() - global_position
 	processed_dir = processed_dir.normalized()
 	
 	current_dir = processed_dir
-	
 
 
 
@@ -36,7 +35,6 @@ func setTarget():
 
 func _ready():
 	EnemyManager.connect("pathfind_signal", _on_pathfind)
-
 
 
 

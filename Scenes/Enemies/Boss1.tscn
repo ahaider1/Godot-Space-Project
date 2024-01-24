@@ -33,10 +33,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u1ams"]
-radius = 17.4216
+radius = 31.4072
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xky50"]
-radius = 12.0
+radius = 20.0
 
 [node name="Boss1" type="CharacterBody2D"]
 collision_layer = 8
@@ -46,7 +46,7 @@ script = ExtResource("1_gu36k")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_6j7ua")
-animation = &"Damaged"
+animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.19209e-07, 0)
@@ -75,32 +75,32 @@ rotation_accel = 30
 view_distance = 100.0
 
 [node name="WeaponComponent3" parent="." node_paths=PackedStringArray("weapon") instance=ExtResource("9_vp6hc")]
-position = Vector2(11, 0)
+position = Vector2(21, 0)
 weapon = NodePath("EnergyBlaster")
 
 [node name="EnergyBlaster" parent="WeaponComponent3" instance=ExtResource("10_dvkgp")]
 position = Vector2(1, 0)
 
 [node name="WeaponComponent2" parent="." node_paths=PackedStringArray("weapon") instance=ExtResource("9_vp6hc")]
-position = Vector2(9, -5)
+position = Vector2(19, -7)
 weapon = NodePath("BulletShooter")
 
 [node name="BulletShooter" parent="WeaponComponent2" instance=ExtResource("10_hdjjy")]
 
 [node name="WeaponComponent" parent="." node_paths=PackedStringArray("weapon") instance=ExtResource("9_vp6hc")]
-position = Vector2(9, 5)
+position = Vector2(19, 7)
 weapon = NodePath("BulletShooter")
 
 [node name="BulletShooter" parent="WeaponComponent" instance=ExtResource("10_hdjjy")]
 
 [node name="WeaponComponent4" parent="." node_paths=PackedStringArray("weapon") instance=ExtResource("9_vp6hc")]
-position = Vector2(7, 10)
+position = Vector2(15, 14)
 weapon = NodePath("ThickBlaster")
 
 [node name="ThickBlaster" parent="WeaponComponent4" instance=ExtResource("11_m581c")]
 
 [node name="WeaponComponent5" parent="." node_paths=PackedStringArray("weapon") instance=ExtResource("9_vp6hc")]
-position = Vector2(7, -10)
+position = Vector2(15, -14)
 weapon = NodePath("ThickBlaster")
 
 [node name="ThickBlaster" parent="WeaponComponent5" instance=ExtResource("11_m581c")]
