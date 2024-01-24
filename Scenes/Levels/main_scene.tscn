@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://l0dhjvkvo87c"]
+[gd_scene load_steps=11 format=3 uid="uid://l0dhjvkvo87c"]
 
 [ext_resource type="Script" path="res://Scripts/Level Scripts/main_scene.gd" id="1_py4sb"]
 [ext_resource type="Theme" uid="uid://cg51xn2o6bhqx" path="res://Themes/new_theme.tres" id="2_gk20u"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://t2llvv7kux84" path="res://Sprites/Others/inv controls.png" id="7_yijyu"]
 [ext_resource type="Texture2D" uid="uid://04yby80akgpo" path="res://Sprites/Others/Movement controls.png" id="8_6c1rn"]
 [ext_resource type="Texture2D" uid="uid://cpmv3ugobbpdy" path="res://Sprites/Others/Pause contols.png" id="9_63cpr"]
+[ext_resource type="FontFile" uid="uid://bun53tt5c6irt" path="res://Themes/Fonts/Pixeled.ttf" id="10_haxvi"]
 
 [node name="main" type="Node"]
 script = ExtResource("1_py4sb")
@@ -154,6 +155,40 @@ offset_right = 506.0
 offset_bottom = 821.0
 texture = ExtResource("9_63cpr")
 stretch_mode = 5
+
+[node name="LinkButton" type="LinkButton" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 1318.0
+offset_top = 943.0
+offset_right = 1502.0
+offset_bottom = 999.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("10_haxvi")
+theme_override_font_sizes/font_size = 20
+text = "Xiaoyu Tan"
+uri = "https://www.linkedin.com/in/xiaoyu-tan/"
+
+[node name="LinkButton2" type="LinkButton" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 1613.0
+offset_top = 944.0
+offset_right = 1797.0
+offset_bottom = 1000.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("10_haxvi")
+theme_override_font_sizes/font_size = 20
+text = "Aun Haider"
+uri = "https://www.linkedin.com/in/aun-haider-33853b235/"
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 1282.0
+offset_top = 863.0
+offset_right = 2020.0
+offset_bottom = 947.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Endorse Us Through LinkedIn:"
 
 [node name="Test" type="Node2D" parent="."]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://5hyl7r65t0ib"]
+[gd_scene load_steps=21 format=3 uid="uid://5hyl7r65t0ib"]
 
 [ext_resource type="TileSet" uid="uid://dcmulqhgkngjh" path="res://OurTileset.tres" id="1_auog5"]
 [ext_resource type="Script" path="res://Scripts/Level Scripts/Level_11.gd" id="1_i3m0d"]
@@ -13,9 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://yr51kur28gux" path="res://Scenes/Levels/HealthUp.tscn" id="11_jeib2"]
 [ext_resource type="PackedScene" uid="uid://ew1ffv43qsgu" path="res://Scenes/Enemies/invis_enemy.tscn" id="12_231gd"]
 [ext_resource type="PackedScene" uid="uid://3yexhhct74iq" path="res://Scenes/Enemies/InvertedEnemy.tscn" id="13_74m5l"]
-[ext_resource type="PackedScene" uid="uid://d2wmkttrqfts2" path="res://Scenes/Enemies/InvertedSquare.tscn" id="14_ggvjo"]
-[ext_resource type="PackedScene" uid="uid://cj3ivgug06cr8" path="res://Scenes/Enemies/InvertedTurret.tscn" id="15_2l12m"]
-[ext_resource type="Texture2D" uid="uid://bhm02c0bvpatm" path="res://Sprites/Enemy/FireEnemy.png" id="16_mljx4"]
+[ext_resource type="PackedScene" uid="uid://drh7ckrn0w3ej" path="res://Scenes/Enemies/InvertedSquare.tscn" id="14_ggvjo"]
+[ext_resource type="PackedScene" uid="uid://cm8w6alymaado" path="res://Scenes/Enemies/InvertedTurret.tscn" id="15_2l12m"]
 [ext_resource type="PackedScene" uid="uid://dq1d5ip10tnn5" path="res://Scenes/Enemies/MeleeEnemy.tscn" id="17_fu8y3"]
 [ext_resource type="PackedScene" uid="uid://5lcw7msve10u" path="res://Scenes/Enemies/HeavyEnemy.tscn" id="18_i8a13"]
 [ext_resource type="PackedScene" uid="uid://sinkpvjufnfj" path="res://Scenes/Enemies/FireEnemy.tscn" id="19_p3vwk"]
@@ -156,21 +155,6 @@ rotation = -2.80998
 [node name="Healthup2" parent="." instance=ExtResource("11_jeib2")]
 position = Vector2(557, -35)
 
-[node name="FireEnemy" type="Sprite2D" parent="."]
-position = Vector2(680, -148)
-rotation = -2.19737
-texture = ExtResource("16_mljx4")
-
-[node name="FireEnemy2" type="Sprite2D" parent="."]
-position = Vector2(677, -125)
-rotation = -2.19737
-texture = ExtResource("16_mljx4")
-
-[node name="FireEnemy3" type="Sprite2D" parent="."]
-position = Vector2(701, -139)
-rotation = -4.61989
-texture = ExtResource("16_mljx4")
-
 [node name="MeleeEnemy" parent="." instance=ExtResource("17_fu8y3")]
 position = Vector2(736, -308)
 
@@ -252,3 +236,15 @@ position = Vector2(1288, -716)
 
 [node name="Boss2" parent="." instance=ExtResource("21_h4x0a")]
 position = Vector2(1332, -705)
+
+[node name="FireEnemy" parent="." instance=ExtResource("19_p3vwk")]
+position = Vector2(604, -104)
+rotation = 1.16277
+
+[node name="FireEnemy2" parent="." instance=ExtResource("19_p3vwk")]
+position = Vector2(653, -145)
+rotation = 1.86441
+
+[node name="FireEnemy3" parent="." instance=ExtResource("19_p3vwk")]
+position = Vector2(706, -113)
+rotation = 2.69775
