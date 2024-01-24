@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://c770dh1xgxkqs"]
+[gd_scene load_steps=10 format=3 uid="uid://c770dh1xgxkqs"]
 
 [ext_resource type="TileSet" uid="uid://dcmulqhgkngjh" path="res://OurTileset.tres" id="1_6eabm"]
 [ext_resource type="Script" path="res://Scripts/Level Scripts/Level_4.gd" id="1_x0yo7"]
 [ext_resource type="PackedScene" uid="uid://qpmoiutjx3ki" path="res://Scenes/Levels/LevelObjective.tscn" id="2_klhfe"]
 [ext_resource type="PackedScene" uid="uid://dlu086iuonjm7" path="res://Scenes/HUD.tscn" id="3_huqxi"]
 [ext_resource type="PackedScene" uid="uid://c6yn3mb0ybjoa" path="res://Scenes/Enemies/SquareEnemy.tscn" id="5_jndqr"]
-[ext_resource type="PackedScene" uid="uid://b8h064xd04ley" path="res://Scenes/Player.tscn" id="6_xavsn"]
 [ext_resource type="PackedScene" uid="uid://i50ur55hpmhl" path="res://Scenes/Enemies/enemy1.tscn" id="7_s32ja"]
 [ext_resource type="PackedScene" uid="uid://sp44a3aquuw5" path="res://Scenes/Enemies/speedy_enemy.tscn" id="8_arj7p"]
 [ext_resource type="PackedScene" uid="uid://crci032yq4fo6" path="res://Scenes/Enemies/RedEnemyTurret.tscn" id="9_fjrpg"]
@@ -24,7 +23,6 @@ layer_0/tile_data = PackedInt32Array(-131075, 0, 0, -65539, 0, 0, -3, 0, 0, 6553
 position = Vector2(751, -338)
 
 [node name="HUD" parent="." instance=ExtResource("3_huqxi")]
-visible = false
 
 [node name="SquareEnemy" parent="." instance=ExtResource("5_jndqr")]
 position = Vector2(827, 102)
@@ -45,9 +43,6 @@ rotation = 0.701622
 [node name="SquareEnemy5" parent="." instance=ExtResource("5_jndqr")]
 position = Vector2(251, 392)
 rotation = 0.701622
-
-[node name="Player" parent="." instance=ExtResource("6_xavsn")]
-position = Vector2(654, 503)
 
 [node name="Enemy1" parent="." instance=ExtResource("7_s32ja")]
 position = Vector2(330, 76)
@@ -96,3 +91,6 @@ position = Vector2(921, 160)
 
 [node name="LevelObjective2" parent="." instance=ExtResource("2_klhfe")]
 position = Vector2(19, 311)
+
+[node name="RedEnemyTurret" parent="." instance=ExtResource("9_fjrpg")]
+position = Vector2(34, 354)
