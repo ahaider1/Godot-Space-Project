@@ -12,9 +12,16 @@ var is_paused = false
 # init reference to inventory UI
 @onready var inventory_ui = $GUI/InventoryUI
 
+# init reference to next level button
+@onready var next_level = $GUI/UpgradeMenu/MarginContainer/VBoxContainer/NextLevel
+
 
 # init healthbar variable
 @onready var healthbar = $GUI/Healthbar
+
+# init money display
+@onready var money_display = $GUI/MoneyDisplay
+
 
 # init reference to player
 var player: Player = Manager.player_node
@@ -86,10 +93,24 @@ func toggleUpgradePanel():
 		# unselect upgrade
 		selected_upgrade_option = -1
 		
+		# revert colour back to normal
+		next_level.add_theme_color_override("font_color", Color(1,1,1))
+		
 		resumeGame()
 	
 	# otherwise, show upgrade screen and pause
 	else:
+		# update cost colours
+		if Manager.player_money >= upgrade_option_1.cost_value:
+			upgrade_option_1.cost.remove_theme_color_override("font_color")
+		
+		if Manager.player_money >= upgrade_option_2.cost_value:
+			upgrade_option_2.cost.remove_theme_color_override("font_color")
+		
+		if Manager.player_money >= upgrade_option_3.cost_value:
+			upgrade_option_3.cost.remove_theme_color_override("font_color")
+		
+		
 		upgrade_menu.show()
 		pauseGame()
 
@@ -159,6 +180,10 @@ func updateHealthbar():
 	healthbar.value = player.health_component.health
 	healthbar.max_value = player.health_component.max_health
 
+# update money bar
+func updateMoney():
+	money_display.text = "$: " + str(Manager.player_money)
+
 # assign upgrade options information
 # like name, sprite, description
 func assignUpgradeOptions():
@@ -183,6 +208,9 @@ func _ready():
 	# assign upgrade options
 	assignUpgradeOptions()
 	
+	updateHealthbar()
+	
+	updateMoney()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -195,6 +223,8 @@ func _process(delta):
 	getInput()
 	
 	updateHealthbar()
+	
+	updateMoney()
 
 
 ######### Godot signal functions #########
@@ -245,11 +275,20 @@ func _on_next_level_pressed():
 	
 	# default upgrade is none
 	var current_upgrade: String = "none"
+	var current_upgrade_price = 0
+	
 	# if an upgrade is selected
 	if (selected_upgrade_option != -1):
 		current_upgrade = offered_upgrades[selected_upgrade_option]
+		current_upgrade_price = Database.UPGRADES[current_upgrade]["cost"]
+	
+	# if player cant afford 
+	if current_upgrade != "none" && current_upgrade_price > Manager.player_money:
+		return
 
 	resumeGame()
+	
+	Manager.player_money -= current_upgrade_price
 	
 	# proceed to the next level with the selected upgrade
 	Manager.nextLevel(current_upgrade)
