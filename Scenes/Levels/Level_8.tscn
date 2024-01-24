@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b8er3xvpbtaj3"]
+[gd_scene load_steps=13 format=3 uid="uid://b8er3xvpbtaj3"]
 
 [ext_resource type="Script" path="res://Scripts/Level Scripts/Level_8.gd" id="1_qp322"]
 [ext_resource type="TileSet" uid="uid://dcmulqhgkngjh" path="res://OurTileset.tres" id="1_r8jlo"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bvojblgathx3m" path="res://Scenes/Enemies/Diamond_Enemy.tscn" id="10_esbxb"]
 [ext_resource type="PackedScene" uid="uid://sp44a3aquuw5" path="res://Scenes/Enemies/speedy_enemy.tscn" id="10_pp20l"]
 [ext_resource type="PackedScene" uid="uid://c6yn3mb0ybjoa" path="res://Scenes/Enemies/SquareEnemy.tscn" id="11_87u4e"]
+[ext_resource type="PackedScene" path="res://Scenes/Enemies/FireEnemy.tscn" id="12_w1eiy"]
 
 [node name="Level_8" type="Node"]
 script = ExtResource("1_qp322")
@@ -29,26 +30,6 @@ position = Vector2(1057, 385)
 [node name="InvertedEnemy" parent="." instance=ExtResource("5_mywt4")]
 position = Vector2(270, 10)
 rotation = 3.084
-
-[node name="FireThrower1" parent="." instance=ExtResource("6_fr6a1")]
-position = Vector2(392, -39)
-rotation = 4.0928
-
-[node name="FireThrower3" parent="." instance=ExtResource("6_fr6a1")]
-position = Vector2(645, 125)
-rotation = 5.64963
-
-[node name="FireThrower4" parent="." instance=ExtResource("6_fr6a1")]
-position = Vector2(1031, 408)
-rotation = 2.70352
-
-[node name="FireThrower5" parent="." instance=ExtResource("6_fr6a1")]
-position = Vector2(616, 160)
-rotation = 2.23926
-
-[node name="FireThrower2" parent="." instance=ExtResource("6_fr6a1")]
-position = Vector2(359, 84)
-rotation = 4.57451
 
 [node name="Healthup" parent="." instance=ExtResource("8_id8mb")]
 position = Vector2(1021, -310)
@@ -159,3 +140,35 @@ rotation = 3.53255
 [node name="SquareEnemy5" parent="." instance=ExtResource("11_87u4e")]
 position = Vector2(917, -305)
 rotation = 3.53255
+
+[node name="FireEnemy" parent="." instance=ExtResource("12_w1eiy")]
+position = Vector2(385, -52)
+rotation = -2.64417
+
+[node name="FireEnemy3" parent="." instance=ExtResource("12_w1eiy")]
+position = Vector2(354, 73)
+rotation = -2.17294
+
+[node name="FireEnemy2" parent="." instance=ExtResource("12_w1eiy")]
+position = Vector2(380, -147)
+rotation = -3.51335
+
+[node name="FireEnemy4" parent="." instance=ExtResource("12_w1eiy")]
+position = Vector2(615, 170)
+rotation = -4.16959
+
+[node name="FireEnemy5" parent="." instance=ExtResource("12_w1eiy")]
+position = Vector2(663, 107)
+rotation = -1.27409
+
+[node name="FireEnemy6" parent="." instance=ExtResource("12_w1eiy")]
+position = Vector2(1022, 400)
+rotation = -3.82227
+
+[node name="FireEnemy7" parent="." instance=ExtResource("12_w1eiy")]
+position = Vector2(949, 372)
+rotation = -4.63385
+
+[node name="FireEnemy8" parent="." instance=ExtResource("12_w1eiy")]
+position = Vector2(986, 273)
+rotation = -1.21649

@@ -61,7 +61,7 @@ shape = SubResource("CircleShape2D_ydhef")
 
 [node name="MovementComponent" parent="." instance=ExtResource("5_ajus7")]
 max_speed = 120
-max_rotation_speed = 6.0
+max_rotation_speed = 4.0
 rotation_accel = 30.0
 aim_accuracy_angle = 5
 

@@ -149,6 +149,7 @@ position = Vector2(1285, -140)
 position = Vector2(1312, -157)
 
 [node name="LevelObjective" parent="." instance=ExtResource("2_c6b6a")]
+visible = false
 position = Vector2(1590, -147)
 
 [node name="RedEnemyTurret3" parent="." instance=ExtResource("5_t5aa6")]
