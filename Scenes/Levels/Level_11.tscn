@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://5hyl7r65t0ib"]
+[gd_scene load_steps=20 format=3 uid="uid://5hyl7r65t0ib"]
 
 [ext_resource type="TileSet" uid="uid://dcmulqhgkngjh" path="res://OurTileset.tres" id="1_auog5"]
 [ext_resource type="Script" path="res://Scripts/Level Scripts/Level_11.gd" id="1_i3m0d"]
@@ -15,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://3yexhhct74iq" path="res://Scenes/Enemies/InvertedEnemy.tscn" id="13_74m5l"]
 [ext_resource type="PackedScene" uid="uid://drh7ckrn0w3ej" path="res://Scenes/Enemies/InvertedSquare.tscn" id="14_ggvjo"]
 [ext_resource type="PackedScene" uid="uid://cm8w6alymaado" path="res://Scenes/Enemies/InvertedTurret.tscn" id="15_2l12m"]
-[ext_resource type="Texture2D" uid="uid://bhm02c0bvpatm" path="res://Sprites/Enemy/FireEnemy.png" id="16_mljx4"]
 [ext_resource type="PackedScene" path="res://Scenes/Enemies/MeleeEnemy.tscn" id="17_fu8y3"]
 [ext_resource type="PackedScene" path="res://Scenes/Enemies/HeavyEnemy.tscn" id="18_i8a13"]
 [ext_resource type="PackedScene" path="res://Scenes/Enemies/FireEnemy.tscn" id="19_p3vwk"]
@@ -155,21 +154,6 @@ rotation = -2.80998
 [node name="Healthup2" parent="." instance=ExtResource("11_jeib2")]
 position = Vector2(557, -35)
 
-[node name="FireEnemy" type="Sprite2D" parent="."]
-position = Vector2(680, -148)
-rotation = -2.19737
-texture = ExtResource("16_mljx4")
-
-[node name="FireEnemy2" type="Sprite2D" parent="."]
-position = Vector2(677, -125)
-rotation = -2.19737
-texture = ExtResource("16_mljx4")
-
-[node name="FireEnemy3" type="Sprite2D" parent="."]
-position = Vector2(701, -139)
-rotation = -4.61989
-texture = ExtResource("16_mljx4")
-
 [node name="MeleeEnemy" parent="." instance=ExtResource("17_fu8y3")]
 position = Vector2(736, -308)
 
@@ -248,3 +232,13 @@ position = Vector2(993, -760)
 
 [node name="Boss1" parent="." instance=ExtResource("20_dwj4i")]
 position = Vector2(1341, -732)
+
+[node name="FireEnemy" parent="." instance=ExtResource("19_p3vwk")]
+position = Vector2(699, -120)
+
+[node name="FireEnemy3" parent="." instance=ExtResource("19_p3vwk")]
+position = Vector2(682, -134)
+rotation = -3.64774
+
+[node name="FireEnemy2" parent="." instance=ExtResource("19_p3vwk")]
+position = Vector2(704, -141)
