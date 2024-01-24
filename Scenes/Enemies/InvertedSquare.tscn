@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d2wmkttrqfts2"]
+[gd_scene load_steps=15 format=3 uid="uid://drh7ckrn0w3ej"]
 
 [ext_resource type="Texture2D" uid="uid://dlo3yxmw41w5e" path="res://Sprites/Enemy/InvertedSquareDamaged.png" id="1_1j6ky"]
 [ext_resource type="Script" path="res://Scripts/Enemy Scripts/InvertedSquare.gd" id="1_6mo2g"]
@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://b72r5cu2ik1sv" path="res://Scenes/Components/SightComponent.tscn" id="6_bns5y"]
 [ext_resource type="PackedScene" uid="uid://bo7etjs2vl81y" path="res://Scenes/Components/PathfindComponent.tscn" id="7_l18dv"]
 [ext_resource type="PackedScene" uid="uid://bjrgoe3hux3j3" path="res://Scenes/Components/WeaponComponent.tscn" id="9_fuii1"]
-[ext_resource type="PackedScene" uid="uid://dimvu4wppvcxj" path="res://Scenes/Weapons/InvertedBlaster.tscn" id="10_k6ish"]
-[ext_resource type="PackedScene" uid="uid://cqeg556568csj" path="res://Scenes/Weapons/InvertedHeavy.tscn" id="11_3u82s"]
+[ext_resource type="PackedScene" path="res://Scenes/Weapons/InvertedBlaster.tscn" id="10_k6ish"]
+[ext_resource type="PackedScene" path="res://Scenes/Weapons/InvertedHeavy.tscn" id="11_3u82s"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sc6y8"]
 animations = [{
