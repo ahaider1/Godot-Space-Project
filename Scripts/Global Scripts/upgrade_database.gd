@@ -138,7 +138,7 @@ var UPGRADES = {
 		"details": "Does not add a Blaster to your inventory",
 		"texture" : NOT_A_BLASTER,
 		"disabled" : false,
-		"cost" : 200
+		"cost" : 300
 	},
 	
 	"upgrade 14": {

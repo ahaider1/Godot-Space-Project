@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dcym0dlatto3d"]
+[gd_scene load_steps=10 format=3 uid="uid://dcym0dlatto3d"]
 
 [ext_resource type="TileSet" uid="uid://dcmulqhgkngjh" path="res://OurTileset.tres" id="1_hnmfv"]
 [ext_resource type="Script" path="res://Scripts/Level_7.gd" id="1_n8l11"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://3yexhhct74iq" path="res://Scenes/Enemies/InvertedEnemy.tscn" id="5_5frqc"]
 [ext_resource type="PackedScene" uid="uid://sp44a3aquuw5" path="res://Scenes/Enemies/speedy_enemy.tscn" id="6_vju6t"]
 [ext_resource type="PackedScene" uid="uid://ew1ffv43qsgu" path="res://Scenes/Enemies/invis_enemy.tscn" id="7_h6cdn"]
-[ext_resource type="PackedScene" uid="uid://b8h064xd04ley" path="res://Scenes/Player.tscn" id="8_g7ule"]
 [ext_resource type="PackedScene" uid="uid://yr51kur28gux" path="res://Scenes/Levels/HealthUp.tscn" id="9_1amgh"]
 [ext_resource type="PackedScene" uid="uid://bvojblgathx3m" path="res://Scenes/Enemies/Diamond_Enemy.tscn" id="10_2wuh4"]
 
@@ -50,9 +49,6 @@ position = Vector2(214, -44)
 [node name="invis enemy2" parent="." instance=ExtResource("7_h6cdn")]
 position = Vector2(214, -26)
 rotation = 3.14159
-
-[node name="Player" parent="." instance=ExtResource("8_g7ule")]
-position = Vector2(16, -8)
 
 [node name="Healthup" parent="." instance=ExtResource("9_1amgh")]
 position = Vector2(1018, 175)

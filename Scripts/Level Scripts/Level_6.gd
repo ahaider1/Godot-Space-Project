@@ -14,5 +14,5 @@ func _ready():
 	add_child(Manager.player_node)
 
 func _process(delta):
-	if boss_1 == null:
+	if !boss_1:  
 		level_objective.visible = true

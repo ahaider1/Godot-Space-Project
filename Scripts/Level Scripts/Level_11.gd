@@ -9,11 +9,11 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-
+	level_objective.visible=false
 	# add the stored player node to level
 	add_child(Manager.player_node)
 
 func _process(delta):
 	
-	if boss_2.is_dead:
+	if !boss_2:
 		level_objective.visible = true
