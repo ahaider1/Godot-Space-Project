@@ -1,4 +1,5 @@
-
+![image](https://github.com/ahaider1/Godot-Space-Project/assets/104745974/29deb1fa-7b34-4223-93a6-4c260c491e58)
+![Inventory_System](https://github.com/ahaider1/Godot-Space-Project/assets/104745974/d3bd4602-661c-4dff-ae32-4dc9ea8d4b66)
 ![project2](https://github.com/ahaider1/Godot-Space-Project/assets/104745974/ca1326b4-f6f7-4111-8c60-936356321236)
 # Shape Shooter 2D
 This was a personal project created alongside another programmer in an attempt to build a video game using a high-level language in GDScript. Having had experience with low-level programming in C++, we wished to use this language and the Godot Game Engine to see if we could design and create a functional video game with our knowledge of software development and design.
